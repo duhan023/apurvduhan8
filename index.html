@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Apurv Duhan — Project Manager who ships on time</title>
+<meta name="description" content="Apurv Duhan — PMP-certified Project Manager. I turn chaos into on-time, on-budget delivery. $600K+ projects, 100% on-time, 32% fewer defects. Dallas, TX · Remote / Relocation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#05070d;--bg2:#0a1120;--card:#0f1830;--line:#1c2a44;--ink:#eef4fe;--muted:#9fb2cc;--accent:#3da9fc;--accent2:#27e3b3;--glow:rgba(61,169,252,.5);}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+::selection{background:var(--accent2);color:#04121f}
+body{font-family:'Inter',system-ui,Arial,sans-serif;color:var(--ink);background:#070b16;line-height:1.65;overflow-x:hidden}
+/* ===== uniform moon + Saturn night-sky theme (fixed, behind everything) ===== */
+body::before{content:"";position:fixed;inset:0;z-index:-3;background:
+  radial-gradient(1200px 760px at 78% -6%, rgba(54,86,150,.20), transparent 60%),
+  radial-gradient(1000px 640px at 6% 108%, rgba(34,120,104,.12), transparent 60%),
+  linear-gradient(180deg,#060912 0%,#0a1326 55%,#070b16 100%)}
+.stars{position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background-image:
+    radial-gradient(1.4px 1.4px at 24px 32px,#ffffff,transparent),
+    radial-gradient(1.2px 1.2px at 140px 88px,rgba(255,255,255,.75),transparent),
+    radial-gradient(1px 1px at 70px 160px,rgba(255,255,255,.6),transparent),
+    radial-gradient(1.6px 1.6px at 190px 40px,rgba(200,225,255,.85),transparent),
+    radial-gradient(1px 1px at 30px 200px,rgba(255,255,255,.5),transparent),
+    radial-gradient(1.2px 1.2px at 230px 150px,rgba(255,255,255,.7),transparent);
+  background-repeat:repeat;background-size:260px 260px;opacity:.55;animation:twinkle 7s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.4}50%{opacity:.7}}
+.moon{position:fixed;top:60px;right:7vw;width:120px;height:120px;border-radius:50%;z-index:-2;pointer-events:none;
+  background:radial-gradient(circle at 38% 36%,#f3f6ff 0%,#d8e0f0 45%,#aab6cf 100%);
+  box-shadow:0 0 70px 18px rgba(200,215,255,.18),inset -16px -10px 26px rgba(60,70,100,.45);opacity:.16}
+.moon::after{content:"";position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(8px 8px at 60% 40%,rgba(90,100,130,.5),transparent),radial-gradient(6px 6px at 42% 62%,rgba(90,100,130,.4),transparent),radial-gradient(5px 5px at 70% 68%,rgba(90,100,130,.4),transparent)}
+.saturn{position:fixed;bottom:9vh;left:5vw;width:96px;height:96px;z-index:-2;pointer-events:none;opacity:.13;transform:rotate(-18deg)}
+h1,h2,h3,.role,.metric .n,.logo,.huge{font-family:'Sora',sans-serif}
+a{color:var(--accent);text-decoration:none;transition:.25s}a:hover{opacity:.82}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:80;background:rgba(5,7,13,.6);backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:.3s}
+nav.scrolled{background:rgba(5,7,13,.85);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
+.logo{font-weight:800;font-size:1.1rem;letter-spacing:1.5px;background:linear-gradient(90deg,#3da9fc,#27e3b3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+nav .links a{color:var(--muted);font-weight:500;margin-left:26px;font-size:.9rem}
+nav .links a:hover{color:#fff}
+@media(max-width:680px){nav .links{display:none}}
+
+header{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:radial-gradient(1000px 560px at 78% -8%,rgba(61,169,252,.16),transparent 60%),radial-gradient(760px 460px at -5% 108%,rgba(39,227,179,.12),transparent 60%)}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:52px 52px;opacity:.13;mask-image:radial-gradient(circle at 60% 35%,#000,transparent 78%)}
+.blob{position:absolute;border-radius:50%;filter:blur(70px)}
+.b1{width:420px;height:420px;background:#1c5fd0;opacity:.5;top:-140px;right:-80px;animation:float 11s ease-in-out infinite}
+.b2{width:320px;height:320px;background:#0f8c72;opacity:.45;bottom:-130px;left:-70px;animation:float 14s ease-in-out infinite reverse}
+@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(34px) scale(1.07)}}
+.hero{position:relative;z-index:3;display:flex;gap:46px;align-items:center;flex-wrap:wrap;padding:120px 0 80px}
+.avatar{flex:0 0 168px;width:168px;height:168px;border-radius:26px;background:linear-gradient(135deg,#27e3b3,#3da9fc);display:flex;align-items:center;justify-content:center;font-family:'Sora';font-weight:800;font-size:3.4rem;color:#04121f;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 24px 70px var(--glow);background-size:cover;background-position:center;animation:pulse 4.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.12),0 24px 70px var(--glow)}50%{box-shadow:0 0 0 1px rgba(255,255,255,.2),0 30px 90px rgba(39,227,179,.55)}}
+.intro{flex:1;min-width:300px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--accent2);font-weight:600;letter-spacing:2.5px;font-size:.74rem;text-transform:uppercase;margin-bottom:14px}
+.eyebrow .live{width:8px;height:8px;border-radius:50%;background:var(--accent2);box-shadow:0 0 12px var(--accent2);animation:blink 1.6s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.huge{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:800;line-height:1.02;letter-spacing:.5px;background:linear-gradient(94deg,#ffffff 28%,#9fd2ff 72%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.pitch{font-size:1.25rem;color:#cad8ee;margin-top:18px;max-width:620px;font-weight:500}
+.pitch b{color:var(--accent2);font-weight:600}
+.badges{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
+.badge{background:rgba(255,255,255,.05);border:1px solid var(--line);padding:8px 15px;border-radius:30px;font-size:.83rem;color:#cfe0f5}
+.badge b{color:var(--accent2)}
+.cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:13px}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;padding:14px 26px;border-radius:11px;transition:transform .22s,box-shadow .22s,border-color .22s;font-size:.96rem}
+.btn.accent{background:linear-gradient(135deg,#3da9fc,#27e3b3);color:#04121f}
+.btn.accent:hover{transform:translateY(-4px);box-shadow:0 18px 44px var(--glow)}
+.btn.ghost{background:transparent;border:1.5px solid var(--line);color:#dbe7f7}
+.btn.ghost:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 14px 32px rgba(61,169,252,.25)}
+.scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);color:var(--muted);font-size:.74rem;letter-spacing:2px;z-index:3;animation:bob 2s infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+section{padding:96px 0;position:relative}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,.8,.3,1),transform .9s cubic-bezier(.16,.8,.3,1)}
+.reveal.show{opacity:1;transform:none}
+.kicker{color:var(--accent2);font-weight:600;letter-spacing:2.5px;font-size:.74rem;text-transform:uppercase}
+h2{font-size:clamp(1.8rem,3.6vw,2.6rem);font-weight:800;margin:8px 0 8px;letter-spacing:.3px}
+.lead{color:var(--muted);margin-bottom:34px;max-width:680px;font-size:1.05rem}
+
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.whycard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 26px;transition:transform .3s,box-shadow .3s,border-color .3s}
+.whycard:hover{transform:translateY(-8px);border-color:var(--accent);box-shadow:0 26px 56px rgba(61,169,252,.2)}
+.whycard .ic{font-size:1.8rem;margin-bottom:12px}
+.whycard h3{font-size:1.15rem;color:#fff;margin-bottom:8px}
+.whycard p{color:var(--muted);font-size:.95rem}
+
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:18px;margin-top:8px}
+.metric{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px 18px;text-align:center;transition:transform .3s,box-shadow .3s,border-color .3s}
+.metric:hover{transform:translateY(-8px);border-color:var(--accent2);box-shadow:0 22px 50px rgba(39,227,179,.18)}
+.metric .n{font-size:2.5rem;font-weight:800;background:linear-gradient(120deg,#3da9fc,#27e3b3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.metric .l{color:var(--muted);font-size:.88rem;margin-top:8px}
+
+/* ACCORDION COMPANY CARDS */
+.exp-list{display:flex;flex-direction:column;gap:16px}
+.exp{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:border-color .3s,box-shadow .3s}
+.exp.open{border-color:var(--accent);box-shadow:0 24px 60px rgba(61,169,252,.18)}
+.exp-head{display:flex;align-items:center;gap:18px;padding:22px 26px;cursor:pointer;transition:background .25s}
+.exp-head:hover{background:rgba(61,169,252,.06)}
+.logo-badge{flex:0 0 56px;width:56px;height:56px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:transform .3s}
+.exp-head:hover .logo-badge{transform:scale(1.07) rotate(-2deg)}
+.logo-badge img{width:46px;height:46px;object-fit:contain}
+.exp-titles{flex:1;min-width:0}
+.exp-titles .role{font-size:1.18rem;color:#fff;font-weight:700;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.exp-titles .co{color:var(--accent);font-weight:600;font-size:.96rem;margin-top:2px}
+.exp-meta{text-align:right;color:var(--muted);font-size:.85rem;white-space:nowrap}
+.tap{display:inline-block;font-size:.68rem;letter-spacing:1.5px;color:var(--accent2);border:1px solid var(--line);border-radius:20px;padding:3px 10px;margin-top:6px}
+.chev{flex:0 0 auto;color:var(--muted);transition:transform .35s;font-size:1.1rem}
+.exp.open .chev{transform:rotate(180deg);color:var(--accent)}
+.exp-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,.8,.3,1)}
+.exp-inner{padding:4px 26px 26px}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:640px){.exp-grid{grid-template-columns:1fr}.exp-meta{display:none}}
+.panel h4{font-size:.74rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.panel.about h4{color:var(--accent)}.panel.did h4{color:var(--accent2)}
+.panel p{color:#c4d3e8;font-size:.95rem;margin-bottom:10px}
+.panel ul{margin-left:18px;color:#c4d3e8}.panel li{margin-bottom:8px;font-size:.94rem}
+.visit{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:.85rem;color:var(--accent)}
+
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.pr{border:1px solid var(--line);border-radius:16px;padding:24px;background:linear-gradient(160deg,rgba(61,169,252,.06),transparent)}
+.pr .num{font-family:'Sora';font-weight:800;font-size:1.4rem;color:var(--accent2)}
+.pr h3{color:#fff;font-size:1.05rem;margin:6px 0}
+.pr p{color:var(--muted);font-size:.93rem}
+
+/* FAQ-style dropdowns */
+.faq{border-bottom:1px solid var(--line)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px 4px;cursor:pointer;font-weight:600;color:#eef4fe;font-size:1.05rem}
+.faq-q:hover{color:var(--accent2)}
+.faq-q .pm{color:var(--accent);font-size:1.4rem;transition:transform .3s}
+.faq.open .pm{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.faq-a p{color:var(--muted);padding:0 4px 20px;font-size:.97rem}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.gphoto{position:relative;aspect-ratio:4/5;border-radius:16px;border:1px dashed var(--line);background:linear-gradient(160deg,rgba(61,169,252,.06),rgba(39,227,179,.04));display:flex;align-items:flex-end;justify-content:center;color:#5a6b7b;font-size:.82rem;text-align:center;padding:14px;background-size:cover!important;background-position:center;overflow:hidden;transition:transform .35s,box-shadow .35s}
+.gphoto.filled{cursor:pointer;color:#fff}
+.gphoto.filled:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 22px 50px rgba(0,0,0,.5)}
+.gphoto .cap{position:relative;z-index:2;font-size:.8rem;font-weight:600;letter-spacing:.3px;padding-bottom:4px}
+
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:rgba(255,255,255,.03);color:#cfe0f5;padding:9px 16px;border-radius:24px;font-size:.88rem;border:1px solid var(--line);transition:.25s;cursor:default}
+.chip:hover{background:linear-gradient(135deg,#3da9fc,#27e3b3);color:#04121f;transform:translateY(-3px);border-color:transparent;box-shadow:0 10px 26px var(--glow)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:680px){.two{grid-template-columns:1fr}.avatar{margin:0 auto}}
+
+.final{text-align:center;background:radial-gradient(700px 360px at 50% 0%,rgba(39,227,179,.14),transparent 65%)}
+.final h2{background:linear-gradient(92deg,#fff,#9fd2ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.final .cta{justify-content:center}
+.socials{margin-top:38px;display:flex;justify-content:center;gap:18px}
+.soc{width:52px;height:52px;border-radius:14px;border:1px solid var(--line);background:var(--card);display:flex;align-items:center;justify-content:center;transition:transform .25s,box-shadow .25s,border-color .25s}
+.soc:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 16px 34px var(--glow)}
+.soc svg{width:22px;height:22px;fill:#cfe0f5;transition:.25s}
+.soc:hover svg{fill:#fff}
+.handle{color:var(--muted);font-size:.82rem;margin-top:10px}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:.84rem}
+
+/* credentials peek */
+.cred-peek{margin-top:30px;border:1px solid var(--line);border-radius:16px;padding:20px 22px;background:linear-gradient(160deg,rgba(39,227,179,.05),transparent)}
+.cred-label{font-size:.74rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent2);font-weight:600}
+.cred-thumbs{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px}
+.cred-thumb{width:150px;cursor:zoom-in;margin:0}
+.cred-thumb img{width:100%;height:96px;object-fit:cover;border-radius:10px;border:1px solid var(--line);filter:saturate(.9) brightness(.96);transition:transform .3s,box-shadow .3s,filter .3s}
+.cred-thumb:hover img{transform:translateY(-5px) scale(1.03);box-shadow:0 16px 34px rgba(0,0,0,.5);filter:none}
+.cred-thumb figcaption{color:var(--muted);font-size:.78rem;margin-top:6px;text-align:center}
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(3,5,10,.92);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:30px;cursor:zoom-out}
+.lightbox.show{display:flex}
+.lightbox img{max-width:92%;max-height:88vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.7);border:1px solid var(--line)}
+.lb-close{position:absolute;top:22px;right:30px;color:#fff;font-size:2.4rem;cursor:pointer;line-height:1}
+
+/* sudoku */
+.sudoku-wrap{display:flex;gap:34px;flex-wrap:wrap;align-items:center}
+.sudoku{display:grid;grid-template-columns:repeat(4,58px);grid-template-rows:repeat(4,58px);gap:0;background:var(--line);border:3px solid var(--accent);border-radius:10px;overflow:hidden}
+.scell{display:flex;align-items:center;justify-content:center;font-family:'Sora';font-weight:700;font-size:1.5rem;background:var(--card);color:#fff;cursor:pointer;transition:background .2s;border:1px solid #14203a;user-select:none}
+.scell:nth-child(4n+2),.scell:nth-child(4n+3){}
+.scell.box{box-shadow:inset 0 0 0 0}
+.scell.given{color:var(--accent2);background:#0b1326;cursor:default}
+.scell.sel{background:rgba(61,169,252,.25);outline:2px solid var(--accent)}
+.scell.bad{color:#ff6b6b}
+.sudoku-side{flex:1;min-width:200px}
+.sudoku-msg{font-size:1rem;color:#cad8ee;min-height:48px;font-weight:500}
+.sudoku-btns{display:flex;gap:10px;margin-top:8px}
+/* thick box borders for 2x2 */
+.sudoku .scell:nth-child(2),.sudoku .scell:nth-child(6),.sudoku .scell:nth-child(10),.sudoku .scell:nth-child(14){border-right:2px solid var(--accent)}
+.sudoku .scell:nth-child(5),.sudoku .scell:nth-child(6),.sudoku .scell:nth-child(7),.sudoku .scell:nth-child(8){border-bottom:2px solid var(--accent)}
+
+/* world clock */
+.clocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.clock{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px;text-align:center;transition:transform .3s,border-color .3s,box-shadow .3s}
+.clock:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 16px 34px rgba(61,169,252,.16)}
+.clock .city{font-size:.78rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent2);font-weight:600}
+.clock .time{font-family:'Sora';font-weight:700;font-size:1.7rem;color:#fff;margin-top:6px;font-variant-numeric:tabular-nums}
+.clock .ampm{font-size:.85rem;color:var(--muted);margin-left:3px}
+.clock .day{font-size:.74rem;color:var(--muted);margin-top:2px}
+/* markets */
+.market-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px 8px;overflow:hidden}
+
+/* cursor glow */
+#glow{position:fixed;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(61,169,252,.13),transparent 65%);pointer-events:none;transform:translate(-50%,-50%);z-index:1;transition:opacity .3s;mix-blend-mode:screen}
+</style></head><body>
+
+<div id="glow"></div>
+<div class="stars"></div>
+<div class="moon"></div>
+<svg class="saturn" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs><radialGradient id="sat" cx="40%" cy="38%"><stop offset="0%" stop-color="#f4e2c0"/><stop offset="60%" stop-color="#d9b888"/><stop offset="100%" stop-color="#9c8460"/></radialGradient></defs>
+  <ellipse cx="60" cy="60" rx="56" ry="17" fill="none" stroke="#e7d3ad" stroke-width="3" opacity=".85"/>
+  <ellipse cx="60" cy="60" rx="44" ry="12" fill="none" stroke="#cbb488" stroke-width="1.5" opacity=".6"/>
+  <circle cx="60" cy="60" r="26" fill="url(#sat)"/>
+  <ellipse cx="60" cy="60" rx="56" ry="17" fill="none" stroke="#e7d3ad" stroke-width="3" opacity=".85" stroke-dasharray="120 200"/>
+</svg>
+<nav id="nav"><div class="wrap">
+<span class="logo">APURV&nbsp;DUHAN</span>
+<span class="links"><a href="#why">Why Me</a><a href="#impact">Impact</a><a href="#exp">Experience</a><a href="#how">How I Work</a><a href="#beyond">Beyond Work</a><a href="#play">Play</a><a href="#contact">Connect</a></span>
+</div></nav>
+
+<header><div class="grid-bg"></div><span class="blob b1"></span><span class="blob b2"></span>
+<div class="wrap hero">
+  <!-- Add profile.jpg next to index.html; the monogram swaps to your photo automatically. -->
+  <div class="avatar" id="avatar">AD</div>
+  <div class="intro">
+    <span class="eyebrow"><span class="live"></span> Available now · Dallas, TX</span>
+    <h1 class="huge">I turn chaos<br>into on-time delivery.</h1>
+    <p class="pitch">PMP-certified Project Manager who takes tangled, high-stakes initiatives and ships them <b>on time, on budget, and defect-free</b> — so leaders stop worrying and teams start moving.</p>
+    <div class="badges">
+      <span class="badge">📍 Remote / <b>Relocation-ready</b></span>
+      <span class="badge">✅ <b>No sponsorship</b> needed</span>
+      <span class="badge">🎓 M.S. <b>3.82 GPA</b> · MBA in progress</span>
+    </div>
+    <div class="cta">
+      <a class="btn accent" href="Apurv_Duhan_Resume.pdf" download>⬇ Download CV</a>
+      <a class="btn ghost" href="#contact">Let's connect →</a>
+    </div>
+  </div>
+</div>
+<div class="scrollcue">SCROLL ↓</div>
+</header>
+
+<section id="why" class="reveal"><div class="wrap">
+<span class="kicker">Why Apurv</span>
+<h2>Four reasons to keep reading.</h2>
+<p class="lead">Most PMs manage tasks. I manage outcomes — and I can prove it.</p>
+<div class="why">
+<div class="whycard"><div class="ic">🎯</div><h3>I deliver, period</h3><p>100% on-time milestones across 16 sprints on a $600K+ program. Zero slippage isn't luck — it's a system.</p></div>
+<div class="whycard"><div class="ic">🛡️</div><h3>I de-risk early</h3><p>Structured risk registers and dependency matrices that surface problems weeks before they become fires.</p></div>
+<div class="whycard"><div class="ic">📈</div><h3>I move the numbers</h3><p>32% fewer defects, 22% fewer escalations, 18–20% faster supply chains. I lead with metrics, not adjectives.</p></div>
+<div class="whycard"><div class="ic">🤝</div><h3>I'm ready day one</h3><p>U.S. work-authorized, no sponsorship, open to remote or relocation. PMP, Six Sigma, Agile — credentialed and current.</p></div>
+</div></div></section>
+
+<section id="impact" class="reveal"><div class="wrap">
+<span class="kicker">The Receipts</span>
+<h2>Impact at a glance.</h2>
+<div class="metrics">
+<div class="metric"><div class="n" data-v="600">$600K+</div><div class="l">Delivered, zero slippage</div></div>
+<div class="metric"><div class="n" data-v="100">100%</div><div class="l">On-time / 16 sprints</div></div>
+<div class="metric"><div class="n" data-v="32">32%</div><div class="l">Defect reduction</div></div>
+<div class="metric"><div class="n" data-v="20">20+</div><div class="l">Cross-functional team led</div></div>
+</div></div></section>
+
+<section id="exp" class="reveal"><div class="wrap">
+<span class="kicker">Track Record</span>
+<h2>Where I've made an impact.</h2>
+<p class="lead">Tap a company to see what they do — and exactly what I did there.</p>
+<div class="exp-list">
+
+  <div class="exp" data-exp>
+    <div class="exp-head">
+      <div class="logo-badge"><img alt="Freedom Mortgage" src="https://logo.clearbit.com/freedommortgage.com" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&domain=freedommortgage.com'"></div>
+      <div class="exp-titles"><div class="role">Project Manager</div><div class="co">Freedom Mortgage</div></div>
+      <div class="exp-meta">Aug 2024 – Apr 2025<br>Dallas, TX (Remote)<div class="tap">TAP TO EXPAND</div></div>
+      <span class="chev">⌄</span>
+    </div>
+    <div class="exp-body"><div class="exp-inner"><div class="exp-grid">
+      <div class="panel about"><h4>🏢 What they do</h4><p>Freedom Mortgage is one of the largest privately held, full-service mortgage lenders and servicers in the U.S., managing millions of home loans nationwide across origination, servicing, and customer-facing digital platforms.</p><a class="visit" href="https://www.freedommortgage.com/" target="_blank">Visit freedommortgage.com ↗</a></div>
+      <div class="panel did"><h4>🚀 What I did</h4><ul>
+        <li>Maintained <b>zero schedule slippage</b> on a $600K+ project protecting 12,000+ loan accounts.</li>
+        <li>Delivered a <b>zero-defect</b> customer portal migration on time and on budget.</li>
+        <li>Cut customer-impacting defects <b>32%</b> via UAT gates and sprint quality checkpoints.</li>
+        <li><b>100% on-time</b> milestones across 16 sprints leading a 20-member cross-functional team.</li>
+        <li>Reduced post-launch escalations <b>22%</b> through UX and workflow redesign.</li>
+      </ul></div>
+    </div></div></div>
+  </div>
+
+  <div class="exp" data-exp>
+    <div class="exp-head">
+      <div class="logo-badge"><img alt="Agilent" src="https://logo.clearbit.com/agilent.com" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&domain=agilent.com'"></div>
+      <div class="exp-titles"><div class="role">Supply Chain Project Manager</div><div class="co">Agilent Technologies</div></div>
+      <div class="exp-meta">Feb 2022 – Aug 2023<br>Manesar, India<div class="tap">TAP TO EXPAND</div></div>
+      <span class="chev">⌄</span>
+    </div>
+    <div class="exp-body"><div class="exp-inner"><div class="exp-grid">
+      <div class="panel about"><h4>🏢 What they do</h4><p>Agilent Technologies is a global leader in life sciences, diagnostics, and applied chemical markets — building laboratory instruments, software, and services used by scientists and labs in over 110 countries.</p><a class="visit" href="https://www.agilent.com/" target="_blank">Visit agilent.com ↗</a></div>
+      <div class="panel did"><h4>🚀 What I did</h4><ul>
+        <li>Reduced supply-chain turnaround <b>18–20%</b> via process redesign, SOP standardization, and vendor escalation.</li>
+        <li>Maintained <b>96% supply-continuity compliance</b> coordinating 12+ vendors across 4 continents.</li>
+        <li>Built Power BI / Excel KPI dashboards across <b>120+ SKUs</b> in a multi-region network.</li>
+        <li>Ran capital scheduling &amp; budget tracking for <b>6 concurrent</b> import work streams.</li>
+        <li>Lifted new-associate productivity <b>30%</b> through SAP ECC coaching and onboarding.</li>
+      </ul></div>
+    </div></div></div>
+  </div>
+
+  <div class="exp" data-exp>
+    <div class="exp-head">
+      <div class="logo-badge"><svg viewBox="0 0 100 100" width="46" height="46"><defs><linearGradient id="bo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b3d91"/><stop offset="1" stop-color="#1c7ed6"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#bo)"/><path d="M22 64 L50 30 L78 64 Z" fill="#fff" opacity=".95"/><rect x="34" y="60" width="32" height="10" rx="2" fill="#ffd43b"/><circle cx="40" cy="74" r="5" fill="#fff"/><circle cx="60" cy="74" r="5" fill="#fff"/></svg></div>
+      <div class="exp-titles"><div class="role">Customer Service Specialist</div><div class="co">Bharat Optimum Sales &amp; Services</div></div>
+      <div class="exp-meta">Jul 2020 – Jan 2022<br>Gurugram, India<div class="tap">TAP TO EXPAND</div></div>
+      <span class="chev">⌄</span>
+    </div>
+    <div class="exp-body"><div class="exp-inner"><div class="exp-grid">
+      <div class="panel about"><h4>🏢 What they do</h4><p>Bharat Optimum Sales &amp; Services is a high-volume sales and distribution operation handling order management, logistics coordination, and after-sales support for a fast-paced regional customer base.</p></div>
+      <div class="panel did"><h4>🚀 What I did</h4><ul>
+        <li>Improved order-processing accuracy <b>15%</b> with data-validation checks and SOPs.</li>
+        <li>Cut average issue-resolution time <b>25%</b> via cross-functional coordination.</li>
+        <li>Standardized workflows across <b>50–70 daily</b> SAP ECC transactions.</li>
+      </ul></div>
+    </div></div></div>
+  </div>
+
+</div></div></section>
+
+<section id="how" class="reveal"><div class="wrap">
+<span class="kicker">How I Work</span>
+<h2>A few things I try to live by.</h2>
+<p class="lead">Not rules I've mastered — just the things I keep coming back to.</p>
+<div class="principles">
+<div class="pr"><div class="num">01</div><h3>The team gets the credit</h3><p>When a project lands well, it's because the people around me showed up. My job is to make their work a little easier and then get out of their way.</p></div>
+<div class="pr"><div class="num">02</div><h3>Listen before I lead</h3><p>I assume the people doing the work understand it better than I do. So I ask a lot of questions, learn, and only then figure out how I can help.</p></div>
+<div class="pr"><div class="num">03</div><h3>Small promises, kept</h3><p>I'd rather quietly under-promise and deliver than impress in a meeting and let someone down later. Trust is built in the boring, reliable moments.</p></div>
+<div class="pr"><div class="num">04</div><h3>Stay calm, stay kind</h3><p>When things go sideways — and they do — I try to steady the room instead of adding to the noise. People do their best work when they feel safe, not stressed.</p></div>
+</div></div></section>
+
+<section class="reveal"><div class="wrap">
+<span class="kicker">Toolkit</span>
+<h2>Skills &amp; tools.</h2>
+<div class="chips" style="margin-top:18px">
+<span class="chip">Agile / Scrum</span><span class="chip">SAFe</span><span class="chip">Kanban</span><span class="chip">Waterfall</span><span class="chip">Risk &amp; RAID</span><span class="chip">Roadmap Planning</span><span class="chip">Budget Tracking</span><span class="chip">OKRs / KPIs</span><span class="chip">Stakeholder Mgmt</span><span class="chip">JIRA</span><span class="chip">Confluence</span><span class="chip">Asana</span><span class="chip">Smartsheet</span><span class="chip">MS Project</span><span class="chip">ServiceNow</span><span class="chip">Salesforce</span><span class="chip">SAP ECC/CRM</span><span class="chip">Power BI</span><span class="chip">Tableau</span><span class="chip">SQL</span><span class="chip">Lucidchart</span>
+</div>
+<div class="two" style="margin-top:30px">
+<div class="card" style="border-left:3px solid var(--accent2);border-radius:16px;background:var(--card);border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 30px"><div class="role" style="color:#fff;font-weight:700;font-size:1.2rem">Certifications</div><ul style="margin-top:10px;margin-left:18px;color:#c4d3e8">
+<li>PMP — PMI, 2026</li><li>Six Sigma Green Belt — AIGPE, 2026</li><li>Scrum (SFPC) — ScrumStudy, 2026</li><li>Agile with Atlassian Jira — LinkedIn Learning, 2026</li><li>Salesforce Platform Foundations — 2024</li></ul></div>
+<div class="card" style="border-left:3px solid var(--accent2);border-radius:16px;background:var(--card);border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 30px"><div class="role" style="color:#fff;font-weight:700;font-size:1.2rem">Education</div><ul style="margin-top:10px;margin-left:18px;color:#c4d3e8">
+<li>M.S. Information Studies (GPA 3.82) — Trine University, 2026</li><li>MBA (in progress) — Trine University, 2026</li><li>B.Tech Computer Science — Kurukshetra University, 2021</li></ul></div>
+</div>
+</div></section>
+
+<section id="beyond" class="reveal"><div class="wrap">
+<span class="kicker">Beyond Work</span>
+<h2>The person behind the projects.</h2>
+<p class="lead" style="margin-bottom:18px">People who've worked with me have a line they like: <b style="color:var(--accent2)">"a gardener in a war, and a warrior in the garden."</b> When everything's on fire, I'm the calm one — patient, steady, tending to the team. When things are calm, I'm the one pushing relentlessly for better. Tap a question to know me a little more.</p>
+<div style="max-width:760px">
+  <div class="faq"><div class="faq-q">What am I like to work with?<span class="pm">+</span></div><div class="faq-a"><p>Calm in the chaos, driven in the quiet. I hold high standards and sweat the details — but I'm the first to hand the spotlight to my team. If we win, it's because <i>they</i> showed up; my job is to clear the path and keep everyone moving.</p></div></div>
+  <div class="faq"><div class="faq-q">What do teammates and clients say?<span class="pm">+</span></div><div class="faq-a"><p>That I make work feel personal. I take the time to actually know the people I work with — clients and teammates alike — so trust comes fast and the hard conversations get easier. Delivery is a team sport, and relationships are how you win it.</p></div></div>
+  <div class="faq"><div class="faq-q">What do I do outside of work?<span class="pm">+</span></div><div class="faq-a"><p>You'll find me at the gym, out on long walks to think, or playing cricket whenever I get the chance. And when I can, exploring the outdoors — most recently the mountains and red rocks of Colorado.</p></div></div>
+  <div class="faq"><div class="faq-q">What am I looking for next?<span class="pm">+</span></div><div class="faq-a"><p>A Project Manager role where delivery actually matters — remote or relocation-friendly, with a team that values clarity, momentum, and treating people well.</p></div></div>
+</div>
+<div class="chips" style="margin-top:26px">
+  <span class="chip">🏋️ Gym</span><span class="chip">🚶 Long walks</span><span class="chip">🏏 Cricket</span><span class="chip">🏔️ The outdoors</span><span class="chip">✈️ Travel</span>
+</div>
+<h3 style="color:#fff;margin:44px 0 16px;font-size:1.1rem">Recently, in Colorado 📸</h3>
+<div class="gallery" id="gallery">
+  <div class="gphoto" data-img="photo1.jpg" data-cap="Rocky Mountains, CO">Add photo1.jpg</div>
+  <div class="gphoto" data-img="photo2.jpg" data-cap="Big Thompson River, CO">Add photo2.jpg<br><small>(re-upload as photo2.jpg)</small></div>
+  <div class="gphoto" data-img="photo3.jpg" data-cap="Estes Park, CO">Add photo3.jpg<br><small>(re-upload as photo3.jpg)</small></div>
+</div>
+</div></section>
+
+<section id="world" class="reveal"><div class="wrap">
+<span class="kicker">Always On</span>
+<h2>A little global. 🌙</h2>
+<p class="lead">I work across time zones without missing a beat — here's the world right now.</p>
+<div class="clocks" id="clocks">
+  <div class="clock" data-tz="Asia/Kolkata" data-city="Delhi"></div>
+  <div class="clock" data-tz="Europe/London" data-city="London"></div>
+  <div class="clock" data-tz="Australia/Melbourne" data-city="Melbourne"></div>
+  <div class="clock" data-tz="America/New_York" data-city="New York"></div>
+  <div class="clock" data-tz="America/Chicago" data-city="Dallas"></div>
+  <div class="clock" data-tz="America/Los_Angeles" data-city="Los Angeles"></div>
+</div>
+</div></section>
+
+<section id="markets" class="reveal"><div class="wrap">
+<span class="kicker">On My Radar</span>
+<h2>Markets I'm watching. 📈</h2>
+<p class="lead">A PM keeps an eye on the bigger picture — live prices, updated in real time.</p>
+<div class="market-card">
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {"symbols":[{"proName":"NASDAQ:AAPL","title":"Apple"},{"proName":"NASDAQ:MSFT","title":"Microsoft"},{"proName":"NASDAQ:GOOGL","title":"Alphabet"},{"proName":"NASDAQ:AMZN","title":"Amazon"},{"proName":"NYSE:WMT","title":"Walmart"},{"proName":"NASDAQ:NVDA","title":"NVIDIA"},{"proName":"FOREXCOM:SPXUSD","title":"S&P 500"}],"showSymbolLogo":true,"isTransparent":true,"displayMode":"adaptive","colorTheme":"dark","locale":"en"}
+    </script>
+  </div>
+</div>
+</div></section>
+
+<section id="play" class="reveal"><div class="wrap">
+<span class="kicker">Coffee Break</span>
+<h2>Sudoku of the day. ☕</h2>
+<p class="lead">A PM's brain likes a tidy grid. Fill it so every row, column, and 2×2 box has 1–4. New puzzle daily — beat it before you email me.</p>
+<div class="sudoku-wrap">
+  <div id="sudoku" class="sudoku"></div>
+  <div class="sudoku-side">
+    <div id="sudoku-msg" class="sudoku-msg">Pick a cell, type 1–4.</div>
+    <div class="sudoku-btns">
+      <button id="sud-check" class="btn accent" style="padding:10px 18px">Check</button>
+      <button id="sud-reset" class="btn ghost" style="padding:10px 18px">Reset</button>
+    </div>
+    <p style="color:var(--muted);font-size:.82rem;margin-top:14px">🧩 Puzzle #<span id="sud-num"></span> · resets at midnight</p>
+  </div>
+</div>
+</div></section>
+
+<div id="lightbox" class="lightbox"><span class="lb-close">&times;</span><img id="lb-img" alt="credential"></div>
+
+<section id="contact" class="final reveal"><div class="wrap">
+<span class="kicker">Let's Talk</span>
+<h2>Ready when you are.</h2>
+<p class="lead" style="margin:8px auto 0">Got a project that needs to land on time? I'm one message away. Grab my CV, save my card, or just say hi.</p>
+<div class="cta">
+<a class="btn accent" href="Apurv_Duhan_Resume.pdf" download>⬇ Download CV</a>
+<a class="btn ghost" href="Apurv_Duhan_BusinessCard.pdf" download>💳 Download Business Card</a>
+<a class="btn ghost" href="mailto:apurvduhan23@gmail.com">✉ Email Me</a>
+</div>
+<div class="socials">
+  <a class="soc" href="https://linkedin.com/in/apurvduhan23" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+  <a class="soc" href="https://instagram.com/duhan_23" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.12 1.38C1.35 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.12.66.66 1.33 1.08 2.12 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.72 2.12-1.38.66-.66 1.08-1.33 1.38-2.12.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.72-1.46-1.38-2.12C21.32 1.35 20.65.93 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.41a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
+  <a class="soc" href="https://x.com/duhan_23" target="_blank" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.48 3.24H4.29L17.61 20.65z"/></svg></a>
+</div>
+<div class="handle">LinkedIn /apurvduhan23 &nbsp;·&nbsp; Instagram @duhan_23 &nbsp;·&nbsp; X @duhan_23</div>
+</div></section>
+
+<footer><div class="wrap">© 2026 Apurv Duhan · Dallas, TX · apurvduhan23@gmail.com · (940) 703-1721 · www.apurvduhan-8.com</div></footer>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// company accordion
+document.querySelectorAll('[data-exp]').forEach(card=>{
+  card.querySelector('.exp-head').addEventListener('click',()=>{
+    const body=card.querySelector('.exp-body');const open=card.classList.contains('open');
+    document.querySelectorAll('[data-exp]').forEach(c=>{c.classList.remove('open');c.querySelector('.exp-body').style.maxHeight=null});
+    if(!open){card.classList.add('open');body.style.maxHeight=body.scrollHeight+'px';}
+  });
+});
+// FAQ dropdowns
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{const f=q.parentElement;const a=f.querySelector('.faq-a');const open=f.classList.contains('open');
+    f.classList.toggle('open');a.style.maxHeight=open?null:a.scrollHeight+'px';});
+});
+// avatar + gallery photo swap-in
+const img=new Image();img.onload=()=>{const a=document.getElementById('avatar');a.style.backgroundImage="url('profile.jpg')";a.textContent='';a.style.fontSize='0';};img.src='profile.jpg';
+document.querySelectorAll('.gphoto').forEach(g=>{const f=g.dataset.img;const cap=g.dataset.cap||'';const t=new Image();t.onload=()=>{g.style.backgroundImage="linear-gradient(to top,rgba(5,7,13,.85),transparent 45%),url('"+f+"')";g.innerHTML='<span class="cap">'+cap+'</span>';g.style.border='1px solid var(--line)';g.classList.add('filled');};t.src=f;});
+
+// cursor glow
+const glow=document.getElementById('glow');
+addEventListener('mousemove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';});
+
+// world clock
+function tick(){document.querySelectorAll('.clock').forEach(c=>{const tz=c.dataset.tz;const now=new Date();
+  const t=new Intl.DateTimeFormat('en-US',{timeZone:tz,hour:'2-digit',minute:'2-digit',hour12:true}).formatToParts(now);
+  const hh=t.find(p=>p.type==='hour').value,mm=t.find(p=>p.type==='minute').value,ap=t.find(p=>p.type==='dayPeriod').value;
+  const day=new Intl.DateTimeFormat('en-US',{timeZone:tz,weekday:'short'}).format(now);
+  c.innerHTML='<div class="city">'+c.dataset.city+'</div><div class="time">'+hh+':'+mm+'<span class="ampm">'+ap+'</span></div><div class="day">'+day+'</div>';});}
+tick();setInterval(tick,1000);
+
+// count-up metrics
+const fmt=(el,target,suffix,prefix)=>{let n=0;const step=target/40;const t=setInterval(()=>{n+=step;if(n>=target){n=target;clearInterval(t);}el.textContent=(prefix||'')+Math.round(n)+(suffix||'');},22);};
+const mio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const el=e.target;const raw=el.dataset.v;if(el.dataset.done)return;el.dataset.done=1;
+  if(raw==='600')fmt(el,600,'K+','$');else if(raw==='100')fmt(el,100,'%','');else if(raw==='32')fmt(el,32,'%','');else if(raw==='20')fmt(el,20,'+','');mio.unobserve(el);}}),{threshold:.5});
+document.querySelectorAll('.metric .n[data-v]').forEach(el=>mio.observe(el));
+
+// credentials lightbox
+const lb=document.getElementById('lightbox'),lbi=document.getElementById('lb-img');
+document.querySelectorAll('.cred-thumb').forEach(c=>c.addEventListener('click',()=>{lbi.src=c.dataset.full;lb.classList.add('show');}));
+lb.addEventListener('click',()=>lb.classList.remove('show'));
+addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('show');});
+
+// Sudoku of the day (4x4) — deterministic by date
+const base=[[1,2,3,4],[3,4,1,2],[2,1,4,3],[4,3,2,1]];
+function seededShuffle(arr,seed){const a=arr.slice();for(let i=a.length-1;i>0;i--){seed=(seed*9301+49297)%233280;const j=Math.floor(seed/233280*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+const today=new Date();const daynum=Math.floor(today/8.64e7);
+document.getElementById('sud-num').textContent=daynum%1000;
+// build a valid grid via row/col permutations within bands
+let sol=base.map(r=>r.slice());
+const rb=seededShuffle([0,1],daynum)[0]?[1,0,3,2]:[0,1,2,3];
+sol=rb.map(i=>base[i]);
+const cols=daynum%2?[1,0,3,2]:[0,1,2,3];
+sol=sol.map(r=>cols.map(i=>r[i]));
+// pick givens (about 8)
+const cells=[...Array(16).keys()];const givenSet=new Set(seededShuffle(cells,daynum+7).slice(0,8));
+const grid=document.getElementById('sudoku');let sel=null;const state=Array(16).fill(0);
+for(let i=0;i<16;i++){const d=document.createElement('div');d.className='scell';const r=Math.floor(i/4),c=i%4;const val=sol[r][c];
+  if(givenSet.has(i)){d.classList.add('given');d.textContent=val;state[i]=val;d.dataset.given=1;}
+  d.addEventListener('click',()=>{if(d.dataset.given)return;if(sel)sel.classList.remove('sel');sel=d;d.classList.add('sel');});
+  grid.appendChild(d);}
+addEventListener('keydown',e=>{if(!sel||sel.dataset.given)return;if(e.key>='1'&&e.key<='4'){const i=[...grid.children].indexOf(sel);state[i]=+e.key;sel.textContent=e.key;sel.classList.remove('bad');}if(e.key==='Backspace'){const i=[...grid.children].indexOf(sel);state[i]=0;sel.textContent='';}});
+document.getElementById('sud-check').addEventListener('click',()=>{const msg=document.getElementById('sudoku-msg');let filled=true,ok=true;
+  for(let i=0;i<16;i++){const r=Math.floor(i/4),c=i%4;if(state[i]===0){filled=false;}else if(state[i]!==sol[r][c]){ok=false;grid.children[i].classList.add('bad');}else{grid.children[i].classList.remove('bad');}}
+  if(!filled){msg.textContent='Almost — a few cells still empty. 🙂';}else if(ok){msg.innerHTML='🎉 Solved it! You\'d make a great PM. Now <a href="#contact">say hi</a>.';}else{msg.textContent='Close! The red ones need another look.';}});
+document.getElementById('sud-reset').addEventListener('click',()=>{for(let i=0;i<16;i++){if(!grid.children[i].dataset.given){state[i]=0;grid.children[i].textContent='';grid.children[i].classList.remove('bad');}}document.getElementById('sudoku-msg').textContent='Fresh grid. Pick a cell, type 1–4.';});
+</script>
+</body></html>
