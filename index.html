@@ -1,493 +1,835 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en" data-theme="dark" data-lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Apurv Duhan — Project Manager | Delivery that lands on time</title>
 <meta name="description" content="Apurv Duhan — PMP-certified Project Manager. $600K+ delivered with zero slippage, 100% on-time, 32% fewer defects. Dallas, TX · Remote / Relocation · U.S. work-authorized.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
-:root{--bg:#070b16;--card:#0f1830;--card2:#0c1426;--line:#1c2a44;--ink:#eef4fe;--muted:#9fb2cc;--accent:#3da9fc;--accent2:#27e3b3;--glow:rgba(61,169,252,.5);}
+/* ============ TOKENS ============ */
+:root,[data-theme="dark"]{
+  --bg:#080c14;--surface:#0d1120;--surface2:#111827;--border:#1e2d45;
+  --ink:#f0f6ff;--muted:#8899b4;
+  --gold:#f59e0b;--gold2:#fbbf24;--blue:#3b82f6;--blue2:#60a5fa;--green:#10b981;
+  --glow:rgba(245,158,11,.35);--blueglow:rgba(59,130,246,.32);
+  --grid:rgba(59,130,246,.07);--chipbg:rgba(255,255,255,.03);--navbg:rgba(8,12,20,.7);
+  --shadow:0 24px 60px rgba(0,0,0,.5);
+}
+[data-theme="light"]{
+  --bg:#f7f8fb;--surface:#ffffff;--surface2:#f1f4f9;--border:#e4e8f0;
+  --ink:#0f172a;--muted:#5a6883;
+  --gold:#b45309;--gold2:#d97706;--blue:#1d4ed8;--blue2:#2563eb;--green:#059669;
+  --glow:rgba(180,83,9,.18);--blueglow:rgba(29,78,216,.14);
+  --grid:rgba(29,78,216,.06);--chipbg:rgba(10,20,40,.03);--navbg:rgba(247,248,251,.78);
+  --shadow:0 24px 60px rgba(60,80,120,.14);
+}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-::selection{background:var(--accent2);color:#04121f}
-body{font-family:'Inter',system-ui,Arial,sans-serif;color:var(--ink);background:#070b16;line-height:1.7;overflow-x:hidden}
-h1,h2,h3,.role,.metric .n,.logo,.huge{font-family:'Sora',sans-serif}
-a{color:var(--accent);text-decoration:none;transition:.25s}a:hover{opacity:.82}
-.wrap{max-width:1060px;margin:0 auto;padding:0 24px}
-body::before{content:"";position:fixed;inset:0;z-index:-3;background:
-  radial-gradient(1200px 760px at 78% -6%, rgba(54,86,150,.20), transparent 60%),
-  radial-gradient(1000px 640px at 6% 108%, rgba(34,120,104,.12), transparent 60%),
-  linear-gradient(180deg,#060912 0%,#0a1326 55%,#070b16 100%)}
-.stars{position:fixed;inset:0;z-index:-2;pointer-events:none;
-  background-image:radial-gradient(1.4px 1.4px at 24px 32px,#fff,transparent),radial-gradient(1.2px 1.2px at 140px 88px,rgba(255,255,255,.75),transparent),radial-gradient(1px 1px at 70px 160px,rgba(255,255,255,.6),transparent),radial-gradient(1.6px 1.6px at 190px 40px,rgba(200,225,255,.85),transparent),radial-gradient(1px 1px at 30px 200px,rgba(255,255,255,.5),transparent),radial-gradient(1.2px 1.2px at 230px 150px,rgba(255,255,255,.7),transparent);
-  background-repeat:repeat;background-size:260px 260px;opacity:.55;animation:twinkle 7s ease-in-out infinite}
-@keyframes twinkle{0%,100%{opacity:.4}50%{opacity:.7}}
-.moon{position:fixed;top:60px;right:7vw;width:120px;height:120px;border-radius:50%;z-index:-2;pointer-events:none;background:radial-gradient(circle at 38% 36%,#f3f6ff 0%,#d8e0f0 45%,#aab6cf 100%);box-shadow:0 0 70px 18px rgba(200,215,255,.18),inset -16px -10px 26px rgba(60,70,100,.45);opacity:.16}
-.moon::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(8px 8px at 60% 40%,rgba(90,100,130,.5),transparent),radial-gradient(6px 6px at 42% 62%,rgba(90,100,130,.4),transparent),radial-gradient(5px 5px at 70% 68%,rgba(90,100,130,.4),transparent)}
-.saturn{position:fixed;bottom:8vh;left:4vw;width:168px;height:168px;z-index:-2;pointer-events:none;opacity:.16;transform:rotate(-18deg)}
-nav{position:fixed;top:0;left:0;right:0;z-index:80;background:rgba(7,11,22,.55);backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:.3s}
-nav.scrolled{background:rgba(7,11,22,.85);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;justify-content:space-between;align-items:center;height:62px}
-.logo{font-weight:800;font-size:1.1rem;letter-spacing:1.5px;background:linear-gradient(90deg,#3da9fc,#27e3b3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-nav .links a{color:var(--muted);font-weight:500;margin-left:22px;font-size:.88rem}
-nav .links a:hover{color:#fff}
-@media(max-width:760px){nav .links{display:none}}
-header{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:radial-gradient(1000px 560px at 78% -8%,rgba(61,169,252,.16),transparent 60%),radial-gradient(760px 460px at -5% 108%,rgba(39,227,179,.12),transparent 60%)}
-.hero{position:relative;z-index:3;display:flex;gap:48px;align-items:center;flex-wrap:wrap;padding:120px 0 80px}
-.avatar{flex:0 0 172px;width:172px;height:172px;border-radius:26px;background:#0f1830;background-size:cover;background-position:center;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 24px 70px var(--glow);display:flex;align-items:center;justify-content:center;font-family:'Sora';font-weight:800;font-size:3.4rem;color:#04121f;animation:pulse 4.5s ease-in-out infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.12),0 24px 70px var(--glow)}50%{box-shadow:0 0 0 1px rgba(255,255,255,.2),0 30px 90px rgba(39,227,179,.55)}}
-.intro{flex:1;min-width:300px}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--accent2);font-weight:600;letter-spacing:2.5px;font-size:.74rem;text-transform:uppercase;margin-bottom:14px}
-.eyebrow .live{width:8px;height:8px;border-radius:50%;background:var(--accent2);box-shadow:0 0 12px var(--accent2);animation:blink 1.6s infinite}
+::selection{background:var(--gold);color:#1a1205}
+body{font-family:'Inter',system-ui,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;overflow-x:hidden;
+  transition:background .35s ease,color .35s ease}
+h1,h2,h3,.role,.metric .n,.logo,.huge,.win .big,.np .npn,.stat .sv,.pr .num,.cert-name{font-family:'Plus Jakarta Sans',sans-serif}
+a{color:var(--blue2);text-decoration:none;transition:.25s}a:hover{opacity:.85}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+
+/* ============ BACKDROP ============ */
+body::before{content:"";position:fixed;inset:0;z-index:-3;transition:opacity .35s;background:
+  radial-gradient(1200px 760px at 80% -8%,var(--blueglow),transparent 60%),
+  radial-gradient(1000px 640px at 4% 110%,var(--glow),transparent 60%),
+  var(--bg)}
+
+/* ============ SCROLL PROGRESS ============ */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:300;
+  background:linear-gradient(90deg,var(--gold),var(--gold2),var(--blue));background-size:200% 100%;
+  box-shadow:0 0 12px var(--glow);animation:bar 2.2s linear infinite}
+@keyframes bar{to{background-position:200% 0}}
+
+/* ============ GLOW CURSOR ============ */
+#glow{position:fixed;width:440px;height:440px;border-radius:50%;pointer-events:none;z-index:1;
+  transform:translate(-50%,-50%);mix-blend-mode:screen;
+  background:radial-gradient(circle,var(--glow),transparent 64%)}
+[data-theme="light"] #glow{mix-blend-mode:multiply;opacity:.5}
+
+/* ============ NAV ============ */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;border-bottom:1px solid transparent;transition:.35s}
+nav.scrolled{background:var(--navbg);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:68px}
+.logo{font-weight:800;font-size:1.05rem;letter-spacing:1.5px;cursor:pointer;
+  background:linear-gradient(90deg,var(--gold),var(--blue2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.nav-right{display:flex;align-items:center;gap:8px}
+.links{display:flex;align-items:center}
+.links a{color:var(--muted);font-weight:500;margin-left:24px;font-size:.86rem;position:relative}
+.links a::after{content:'';position:absolute;left:0;bottom:-5px;width:0;height:1.5px;border-radius:2px;
+  background:linear-gradient(90deg,var(--gold),var(--blue2));transition:width .3s}
+.links a:hover{color:var(--ink);opacity:1}
+.links a:hover::after{width:100%}
+.icbtn{width:38px;height:38px;border-radius:11px;border:1px solid var(--border);background:var(--surface);
+  color:var(--ink);cursor:pointer;font-size:.95rem;display:flex;align-items:center;justify-content:center;
+  transition:.25s;font-family:'Plus Jakarta Sans';font-weight:700;margin-left:10px}
+.icbtn-lang{width:auto;padding:0 13px;font-size:.78rem;letter-spacing:.5px}
+.icbtn:hover,.icbtn:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 8px 20px var(--glow)}
+.hamburger{display:none;width:38px;height:38px;border-radius:11px;border:1px solid var(--border);background:var(--surface);
+  color:var(--ink);cursor:pointer;font-size:1.2rem;align-items:center;justify-content:center;margin-left:10px}
+.mobile-drawer{position:fixed;inset:0;z-index:99;background:var(--navbg);backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);display:none;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.mobile-drawer.open{display:flex;animation:fade .25s ease}
+.mobile-drawer a{color:var(--ink);font-size:1.4rem;font-weight:700;font-family:'Plus Jakarta Sans';padding:12px}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@media(max-width:860px){.links{display:none}.hamburger{display:flex}}
+
+/* ============ BUTTONS ============ */
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;padding:15px 28px;border-radius:13px;font-size:.95rem;
+  transition:transform .2s,box-shadow .2s,border-color .2s;position:relative;overflow:hidden;will-change:transform;cursor:pointer;border:none}
+.btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1205}
+.btn.gold:hover{transform:translateY(-4px);box-shadow:0 20px 50px var(--glow)}
+.btn.ghost{background:transparent;border:1.5px solid var(--border);color:var(--ink)}
+.btn.ghost:hover{transform:translateY(-4px);border-color:var(--blue);box-shadow:0 16px 36px var(--blueglow)}
+.btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.18),transparent 60%);opacity:0;transition:.3s}
+.btn:hover::before{opacity:1}
+
+/* ============ HERO ============ */
+header{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-grid{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:54px 54px;animation:drift 34s linear infinite;
+  -webkit-mask-image:radial-gradient(ellipse 78% 78% at 50% 42%,#000,transparent);
+  mask-image:radial-gradient(ellipse 78% 78% at 50% 42%,#000,transparent)}
+@keyframes drift{to{background-position:54px 54px}}
+.hero-blob{position:absolute;top:38%;left:50%;width:680px;height:680px;z-index:0;pointer-events:none;
+  transform:translate(-50%,-50%);filter:blur(70px);opacity:.5;animation:breathe 9s ease-in-out infinite;
+  background:radial-gradient(circle at 38% 38%,var(--glow),transparent 55%),radial-gradient(circle at 66% 64%,var(--blueglow),transparent 58%)}
+@keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.42}50%{transform:translate(-50%,-50%) scale(1.12);opacity:.6}}
+.hero{position:relative;z-index:3;text-align:center;padding:120px 0 90px;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--border);
+  border-radius:30px;padding:8px 18px;font-size:.74rem;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:30px}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);animation:blink 1.6s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.huge{font-size:clamp(2.3rem,5vw,3.7rem);font-weight:800;line-height:1.05;letter-spacing:.4px;background:linear-gradient(94deg,#fff 28%,#9fd2ff 72%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.position{font-size:1.18rem;color:#cad8ee;margin-top:18px;max-width:640px;font-weight:500}
-.position b{color:var(--accent2);font-weight:600}
-.roles-line{margin-top:16px;font-size:.95rem;color:var(--muted)}
-.roles-line .rtag{display:inline-block;background:rgba(61,169,252,.1);border:1px solid var(--line);color:#cfe0f5;padding:5px 12px;border-radius:20px;margin:4px 6px 0 0;font-size:.82rem;font-weight:500}
-.badges{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px}
-.badge{background:rgba(255,255,255,.05);border:1px solid var(--line);padding:8px 15px;border-radius:30px;font-size:.83rem;color:#cfe0f5}
-.badge b{color:var(--accent2)}
-.cta{margin-top:26px;display:flex;flex-wrap:wrap;gap:13px}
-.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;padding:14px 26px;border-radius:11px;transition:transform .22s,box-shadow .22s,border-color .22s;font-size:.95rem}
-.btn.accent{background:linear-gradient(135deg,#3da9fc,#27e3b3);color:#04121f}
-.btn.accent:hover{transform:translateY(-4px);box-shadow:0 18px 44px var(--glow)}
-.btn.ghost{background:transparent;border:1.5px solid var(--line);color:#dbe7f7}
-.btn.ghost:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 14px 32px rgba(61,169,252,.25)}
-.scrollcue{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:var(--muted);font-size:.72rem;letter-spacing:2px;z-index:3;animation:bob 2s infinite}
-@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
-section{padding:84px 0;position:relative}
-.reveal{opacity:0;transform:translateY(38px);transition:opacity .8s cubic-bezier(.16,.8,.3,1),transform .8s cubic-bezier(.16,.8,.3,1)}
+.huge{font-size:clamp(3rem,8vw,6rem);font-weight:800;line-height:.98;letter-spacing:-1px;
+  background:linear-gradient(120deg,var(--ink) 30%,var(--blue2) 72%,var(--gold) 110%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.role-line{margin-top:22px;font-size:clamp(1.2rem,2.6vw,1.7rem);font-weight:700;color:var(--ink);min-height:1.5em;font-family:'Plus Jakarta Sans'}
+.role-line .tw{background:linear-gradient(120deg,var(--gold),var(--gold2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.role-line .cursor{display:inline-block;width:3px;height:1.05em;background:var(--gold);vertical-align:-3px;margin-left:3px;animation:caret .8s steps(1) infinite}
+@keyframes caret{50%{opacity:0}}
+.hero-sub{font-size:1.08rem;color:var(--muted);margin:18px auto 0;max-width:560px}
+.hero-sub b{color:var(--ink);font-weight:600}
+.hero-meta{margin-top:14px;font-size:.92rem;color:var(--muted)}
+.hero-meta b{color:var(--gold2);font-weight:600}
+.hero .cta{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);color:var(--muted);font-size:.7rem;letter-spacing:2.5px;z-index:3;animation:bob 2s infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,9px)}}
+
+/* ============ MARQUEE ============ */
+.marquee-sec{padding:34px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:var(--surface)}
+.marquee{display:flex;gap:0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee-track{display:flex;flex-shrink:0;align-items:center;gap:40px;padding-right:40px;white-space:nowrap;animation:scroll-l 38s linear infinite}
+.marquee.rev .marquee-track{animation:scroll-r 44s linear infinite;margin-top:18px}
+@keyframes scroll-l{to{transform:translateX(-100%)}}
+@keyframes scroll-r{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+.marquee-item{font-family:'Plus Jakarta Sans';font-weight:700;font-size:1.05rem;color:var(--muted);letter-spacing:.3px;display:flex;align-items:center;gap:40px}
+.marquee-item::after{content:'◆';color:var(--gold);font-size:.6rem;opacity:.6}
+
+/* ============ SECTIONS ============ */
+section{padding:96px 0;position:relative}
+.reveal{opacity:0;transform:translateY(42px);transition:opacity .85s cubic-bezier(.16,.8,.3,1),transform .85s cubic-bezier(.16,.8,.3,1)}
 .reveal.show{opacity:1;transform:none}
-.kicker{color:var(--accent2);font-weight:600;letter-spacing:2.5px;font-size:.74rem;text-transform:uppercase}
-h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:800;margin:8px 0 10px;letter-spacing:.3px}
-.lead{color:var(--muted);margin-bottom:36px;max-width:700px;font-size:1.05rem}
-.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px}
-.metric{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px 20px;text-align:center;transition:transform .3s,box-shadow .3s,border-color .3s}
-.metric:hover{transform:translateY(-8px);border-color:var(--accent2);box-shadow:0 22px 50px rgba(39,227,179,.18)}
-.metric .n{font-size:2.6rem;font-weight:800;background:linear-gradient(120deg,#3da9fc,#27e3b3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.metric .l{color:var(--muted);font-size:.9rem;margin-top:8px}
-.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.tile{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 26px;transition:transform .3s,box-shadow .3s,border-color .3s}
-.tile:hover{transform:translateY(-8px);border-color:var(--accent);box-shadow:0 26px 56px rgba(61,169,252,.2)}
-.tile .ic{font-size:1.7rem;margin-bottom:12px}.tile h3{font-size:1.12rem;color:#fff;margin-bottom:8px}.tile p{color:var(--muted);font-size:.95rem}
-.wins{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.win{background:linear-gradient(165deg,rgba(61,169,252,.08),rgba(39,227,179,.04));border:1px solid var(--line);border-radius:18px;padding:28px 24px;transition:transform .3s,box-shadow .3s}
-.win:hover{transform:translateY(-6px);box-shadow:0 24px 54px rgba(0,0,0,.5)}
-.win .big{font-family:'Sora';font-weight:800;font-size:2.3rem;background:linear-gradient(120deg,#3da9fc,#27e3b3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.win h3{color:#fff;font-size:1.05rem;margin:6px 0}.win p{color:var(--muted);font-size:.92rem}
-.case{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px;margin-bottom:24px;transition:border-color .3s,box-shadow .3s}
-.case:hover{border-color:var(--accent);box-shadow:0 24px 60px rgba(0,0,0,.45)}
-.case-top{display:flex;align-items:center;gap:16px;margin-bottom:18px;flex-wrap:wrap}
-.case-logo{width:52px;height:52px;border-radius:13px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;flex:0 0 52px}
+.kicker{color:var(--gold2);font-weight:700;letter-spacing:2.5px;font-size:.72rem;text-transform:uppercase;display:inline-block}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;margin:10px 0 12px;letter-spacing:-.5px;line-height:1.1}
+.lead{color:var(--muted);margin-bottom:42px;max-width:680px;font-size:1.06rem}
+
+/* ============ METRICS ============ */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.metric{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px 22px;text-align:center;
+  transition:transform .3s,box-shadow .3s,border-color .3s;overflow:hidden;will-change:transform}
+.metric::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));opacity:.9}
+.metric::after{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);transition:left .6s}
+.metric:hover::after{left:170%}
+.metric:hover{transform:translateY(-8px);border-color:var(--gold);box-shadow:0 24px 54px var(--glow)}
+.metric .n{font-size:2.7rem;font-weight:800;background:linear-gradient(120deg,var(--gold),var(--gold2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.metric .l{color:var(--muted);font-size:.9rem;margin-top:10px}
+
+/* ============ TILES ============ */
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.tile{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px 28px;
+  transition:transform .28s,box-shadow .28s,border-color .28s;overflow:hidden;will-change:transform}
+.tile::after{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.05),transparent);transition:left .6s}
+.tile:hover::after{left:170%}
+.tile:hover{transform:translateY(-8px);border-color:var(--blue);box-shadow:0 26px 56px var(--blueglow)}
+.tile .ic{font-size:1.8rem;margin-bottom:14px;display:inline-block}
+.tile h3{font-size:1.15rem;color:var(--ink);margin-bottom:9px;font-weight:700}
+.tile p{color:var(--muted);font-size:.95rem}
+
+/* ============ WINS ============ */
+.wins{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.win{position:relative;background:linear-gradient(165deg,var(--glow),transparent 70%),var(--surface);border:1px solid var(--border);
+  border-radius:20px;padding:32px 28px;transition:transform .3s,box-shadow .3s,border-color .3s;overflow:hidden;will-change:transform}
+.win::after{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);transition:left .6s}
+.win:hover::after{left:170%}
+.win:hover{transform:translateY(-7px);border-color:var(--gold);box-shadow:var(--shadow)}
+.win .big{font-weight:800;font-size:2.5rem;background:linear-gradient(120deg,var(--gold),var(--blue2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.win h3{color:var(--ink);font-size:1.1rem;margin:8px 0;font-weight:700}.win p{color:var(--muted);font-size:.93rem}
+
+/* ============ CASES ============ */
+.case{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:34px;margin-bottom:24px;
+  transition:border-color .3s,box-shadow .3s,transform .3s;will-change:transform}
+.case:hover{border-color:var(--blue);box-shadow:var(--shadow);transform:translateY(-4px)}
+.case-top{display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.case-logo{width:54px;height:54px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;flex:0 0 54px}
 .case-logo img{width:42px;height:42px;object-fit:contain}
-.case-top .role{font-size:1.2rem;font-weight:700;color:#fff}.case-top .co{color:var(--accent);font-weight:600;font-size:.92rem}
+.case-top .role{font-size:1.25rem;font-weight:700;color:var(--ink)}.case-top .co{color:var(--blue2);font-weight:600;font-size:.92rem}
 .case-top .when{margin-left:auto;color:var(--muted);font-size:.84rem;text-align:right}
-.case-body{display:grid;grid-template-columns:1.1fr .9fr;gap:26px}
+.case-body{display:grid;grid-template-columns:1.1fr .9fr;gap:28px}
 @media(max-width:760px){.case-body{grid-template-columns:1fr}.case-top .when{margin-left:0;text-align:left;width:100%}}
-.par p{margin-bottom:12px;color:#c4d3e8;font-size:.96rem}
-.par .tag{display:inline-block;font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;padding:2px 9px;border-radius:6px;margin-right:8px}
-.tag.p{background:rgba(255,107,107,.14);color:#ff8e8e}.tag.a{background:rgba(61,169,252,.16);color:#7fc3ff}.tag.r{background:rgba(39,227,179,.16);color:#5fe6c4}
-.toolrow{margin-top:6px}.toolchip{display:inline-block;background:rgba(255,255,255,.04);border:1px solid var(--line);color:#cfe0f5;padding:5px 11px;border-radius:18px;font-size:.78rem;margin:4px 6px 0 0}
-.proof{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:16px}
-.proof-label{font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent2);font-weight:600;margin-bottom:12px}
+.par p{margin-bottom:13px;color:var(--ink);font-size:.96rem;opacity:.9}
+.par .tag{display:inline-block;font-size:.66rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;padding:3px 10px;border-radius:6px;margin-right:8px}
+.tag.p{background:rgba(239,68,68,.14);color:#f87171}.tag.a{background:var(--blueglow);color:var(--blue2)}.tag.r{background:rgba(16,185,129,.16);color:var(--green)}
+.toolrow{margin-top:8px}
+.toolchip{display:inline-block;background:var(--chipbg);border:1px solid var(--border);color:var(--muted);padding:5px 12px;border-radius:18px;font-size:.78rem;margin:4px 6px 0 0;transition:.2s}
+.toolchip:hover{border-color:var(--gold);color:var(--ink);transform:translateY(-2px)}
+.proof{background:var(--surface2);border:1px solid var(--border);border-radius:16px;padding:18px}
+.proof-label{font-size:.66rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold2);font-weight:700;margin-bottom:13px}
 .statgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 10px;text-align:center}
-.stat .sv{display:block;font-family:'Sora';font-weight:800;font-size:1.45rem;background:linear-gradient(120deg,#3da9fc,#27e3b3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.stat .sl{display:block;color:var(--muted);font-size:.76rem;margin-top:3px}
-.skillcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.skillcol{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
-.skillcol h3{color:#fff;font-size:1.02rem;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.chips{display:flex;flex-wrap:wrap;gap:9px}
-.chip{background:rgba(255,255,255,.03);color:#cfe0f5;padding:8px 14px;border-radius:22px;font-size:.85rem;border:1px solid var(--line);transition:.25s;cursor:default}
-.chip:hover{background:linear-gradient(135deg,#3da9fc,#27e3b3);color:#04121f;transform:translateY(-3px);border-color:transparent}
-.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-.pr{border:1px solid var(--line);border-radius:16px;padding:24px;background:linear-gradient(160deg,rgba(61,169,252,.06),transparent)}
-.pr .num{font-family:'Sora';font-weight:800;font-size:1.4rem;color:var(--accent2)}
-.pr h3{color:#fff;font-size:1.05rem;margin:6px 0}.pr p{color:var(--muted);font-size:.93rem}
-.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.review{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
-.review .quote{font-size:2.4rem;color:var(--accent);line-height:1;font-family:'Sora';opacity:.5}
-.review p{color:#d3e0f2;font-size:.97rem;margin:6px 0 16px;font-style:italic}
-.review .who{display:flex;align-items:center;gap:12px}
-.review .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#27e3b3,#3da9fc);display:flex;align-items:center;justify-content:center;font-weight:700;color:#04121f;font-size:.9rem}
-.review .name{color:#fff;font-weight:600;font-size:.9rem}.review .meta{color:var(--muted);font-size:.78rem}
-.stars-row{color:#ffd166;font-size:.95rem;margin-bottom:6px}
-.faq{border-bottom:1px solid var(--line)}
-.faq-q{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 4px;cursor:pointer;font-weight:600;color:#eef4fe;font-size:1.02rem}
-.faq-q:hover{color:var(--accent2)}.faq-q .pm{color:var(--accent);font-size:1.4rem;transition:transform .3s}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:15px 10px;text-align:center}
+.stat .sv{display:block;font-weight:800;font-size:1.5rem;background:linear-gradient(120deg,var(--gold),var(--blue2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat .sl{display:block;color:var(--muted);font-size:.74rem;margin-top:4px}
+
+/* ============ CERTIFICATIONS CAROUSEL ============ */
+.cert-carousel{position:relative;overflow:hidden;padding:8px 0 4px}
+.cert-track{display:flex;gap:20px;transition:transform .6s cubic-bezier(.16,.8,.3,1);will-change:transform}
+.cert-card{flex:0 0 calc((100% - 40px)/3);background:var(--surface);border:1px solid var(--border);border-radius:20px;
+  padding:28px 24px;transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden}
+.cert-card:hover{transform:translateY(-8px);border-color:var(--cc,var(--gold));box-shadow:0 24px 54px rgba(0,0,0,.4)}
+.cert-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--cc,var(--gold))}
+.cert-rank{position:absolute;top:16px;right:18px;font-family:'Plus Jakarta Sans';font-weight:800;font-size:.78rem;color:var(--muted);opacity:.5}
+.cert-badge{width:56px;height:56px;border-radius:15px;display:flex;align-items:center;justify-content:center;
+  font-family:'Plus Jakarta Sans';font-weight:800;font-size:1.15rem;color:#fff;margin-bottom:18px;
+  background:linear-gradient(135deg,var(--cc,var(--gold)),color-mix(in srgb,var(--cc,var(--gold)) 60%,#000))}
+.cert-name{font-size:1.12rem;font-weight:700;color:var(--ink);line-height:1.25;margin-bottom:8px}
+.cert-issuer{color:var(--blue2);font-weight:600;font-size:.86rem}
+.cert-date{color:var(--muted);font-size:.8rem;margin-top:3px}
+.cert-tag{display:inline-block;margin-top:14px;font-size:.66rem;letter-spacing:1px;text-transform:uppercase;font-weight:700;
+  padding:4px 11px;border-radius:20px;background:var(--chipbg);border:1px solid var(--border);color:var(--cc,var(--gold))}
+.cert-flagship{box-shadow:0 0 0 1px var(--gold),0 18px 44px var(--glow)}
+.cert-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:30px}
+.cert-arrow{width:46px;height:46px;border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--ink);
+  cursor:pointer;font-size:1.1rem;transition:.25s;display:flex;align-items:center;justify-content:center}
+.cert-arrow:hover{border-color:var(--gold);background:var(--gold);color:#1a1205;transform:scale(1.08)}
+.cert-dots{display:flex;gap:9px}
+.cert-dot{width:9px;height:9px;border-radius:50%;background:var(--border);cursor:pointer;transition:.25s}
+.cert-dot.active{background:var(--gold);width:26px;border-radius:5px}
+@media(max-width:860px){.cert-card{flex:0 0 calc((100% - 20px)/2)}}
+@media(max-width:560px){.cert-card{flex:0 0 100%}}
+
+/* ============ SKILLS ============ */
+.skillcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.skillcol{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:28px;transition:.3s}
+.skillcol:hover{border-color:var(--blue);transform:translateY(-4px)}
+.skillcol h3{color:var(--ink);font-size:1.05rem;margin-bottom:16px;display:flex;align-items:center;gap:8px;font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:var(--chipbg);color:var(--muted);padding:9px 15px;border-radius:24px;font-size:.85rem;border:1px solid var(--border);transition:.25s;cursor:default}
+.chip:hover{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1205;transform:translateY(-3px);border-color:transparent;box-shadow:0 8px 20px var(--glow)}
+
+/* ============ PHILOSOPHY ============ */
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.pr{border:1px solid var(--border);border-radius:18px;padding:28px;background:linear-gradient(160deg,var(--blueglow),transparent 70%),var(--surface);transition:.3s}
+.pr:hover{border-color:var(--gold);transform:translateY(-6px);box-shadow:0 20px 44px var(--glow)}
+.pr .num{font-weight:800;font-size:1.5rem;background:linear-gradient(120deg,var(--gold),var(--blue2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.pr h3{color:var(--ink);font-size:1.08rem;margin:8px 0;font-weight:700}.pr p{color:var(--muted);font-size:.93rem}
+
+/* ============ FAQ ============ */
+.faq{border-bottom:1px solid var(--border)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px 4px;cursor:pointer;font-weight:600;color:var(--ink);font-size:1.04rem;transition:.2s}
+.faq-q:hover{color:var(--gold2)}.faq-q .pm{color:var(--gold);font-size:1.5rem;transition:transform .3s}
 .faq.open .pm{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .45s ease}.faq-a p{color:var(--muted);padding:0 4px 18px;font-size:.96rem}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
-.gphoto{position:relative;aspect-ratio:4/5;border-radius:16px;border:1px dashed var(--line);background:linear-gradient(160deg,rgba(61,169,252,.06),rgba(39,227,179,.04));display:flex;align-items:flex-end;justify-content:center;color:#5a6b7b;font-size:.82rem;text-align:center;padding:14px;background-size:cover!important;background-position:center;overflow:hidden;transition:transform .35s,box-shadow .35s}
-.gphoto.filled{cursor:pointer;color:#fff}.gphoto.filled:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 22px 50px rgba(0,0,0,.5)}
-.gphoto .cap{position:relative;z-index:2;font-size:.8rem;font-weight:600;padding-bottom:4px}
-.clocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
-.clock{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px;text-align:center;transition:transform .3s,border-color .3s}
-.clock:hover{transform:translateY(-5px);border-color:var(--accent)}
-.clock .city{font-size:.76rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent2);font-weight:600}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s ease}.faq-a p{color:var(--muted);padding:0 4px 20px;font-size:.96rem}
+
+/* ============ GALLERY ============ */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.gphoto{position:relative;aspect-ratio:4/5;border-radius:18px;border:1px dashed var(--border);background:var(--surface2);
+  display:flex;align-items:flex-end;justify-content:center;color:var(--muted);font-size:.82rem;text-align:center;padding:14px;
+  background-size:cover!important;background-position:center;overflow:hidden;transition:transform .35s,box-shadow .35s}
+.gphoto.filled{cursor:pointer;color:#fff}.gphoto.filled:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 28px 60px rgba(0,0,0,.6)}
+.gphoto .cap{position:relative;z-index:2;font-size:.82rem;font-weight:600;padding-bottom:4px}
+
+/* ============ CLOCKS ============ */
+.clocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:16px}
+.clock{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px 16px;text-align:center;transition:.3s}
+.clock:hover{transform:translateY(-5px);border-color:var(--gold);box-shadow:0 14px 32px var(--glow)}
+.clock .city{font-size:.74rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--gold2);font-weight:700}
 .clock .off{font-size:.66rem;color:var(--muted)}
-.clock .time{font-family:'Sora';font-weight:700;font-size:1.6rem;color:#fff;margin-top:4px;font-variant-numeric:tabular-nums}
+.clock .time{font-family:'Plus Jakarta Sans';font-weight:700;font-size:1.65rem;color:var(--ink);margin-top:5px;font-variant-numeric:tabular-nums}
 .clock .ampm{font-size:.8rem;color:var(--muted);margin-left:3px}.clock .day{font-size:.72rem;color:var(--muted)}
-.market-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px 8px;overflow:hidden}
-.sudoku-wrap{display:flex;gap:34px;flex-wrap:wrap;align-items:center}
-.sudoku{display:grid;grid-template-columns:repeat(4,56px);grid-template-rows:repeat(4,56px);background:var(--line);border:3px solid var(--accent);border-radius:10px;overflow:hidden}
-.scell{display:flex;align-items:center;justify-content:center;font-family:'Sora';font-weight:700;font-size:1.4rem;background:var(--card);color:#fff;cursor:pointer;border:1px solid #14203a;user-select:none}
-.scell.given{color:var(--accent2);background:#0b1326;cursor:default}
-.scell.sel{background:rgba(61,169,252,.25);outline:2px solid var(--accent)}.scell.bad{color:#ff6b6b}
-.sudoku-side{flex:1;min-width:200px}.sudoku-msg{font-size:1rem;color:#cad8ee;min-height:46px;font-weight:500}
-.sudoku-btns{display:flex;gap:10px;margin-top:8px}
-.sudoku .scell:nth-child(2),.sudoku .scell:nth-child(6),.sudoku .scell:nth-child(10),.sudoku .scell:nth-child(14){border-right:2px solid var(--accent)}
-.sudoku .scell:nth-child(5),.sudoku .scell:nth-child(6),.sudoku .scell:nth-child(7),.sudoku .scell:nth-child(8){border-bottom:2px solid var(--accent)}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media(max-width:680px){.two{grid-template-columns:1fr}.avatar{margin:0 auto}}
-.final{text-align:center;background:radial-gradient(700px 360px at 50% 0%,rgba(39,227,179,.14),transparent 65%)}
-.final h2{background:linear-gradient(92deg,#fff,#9fd2ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.final .cta{justify-content:center}
-.socials{margin-top:36px;display:flex;justify-content:center;gap:18px}
-.soc{width:52px;height:52px;border-radius:14px;border:1px solid var(--line);background:var(--card);display:flex;align-items:center;justify-content:center;transition:transform .25s,box-shadow .25s,border-color .25s}
-.soc:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 16px 34px var(--glow)}
-.soc svg{width:22px;height:22px;fill:#cfe0f5}.soc:hover svg{fill:#fff}
-.handle{color:var(--muted);font-size:.82rem;margin-top:10px}
-footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:var(--muted);font-size:.84rem}
-#glow{position:fixed;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(61,169,252,.13),transparent 65%);pointer-events:none;transform:translate(-50%,-50%);z-index:1;mix-blend-mode:screen}
-.divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:0 auto;max-width:1060px}
-/* hero quote + numbers dropdown */
-.hero-quote{font-style:italic;color:#b9c9e2;font-size:1.05rem;line-height:1.6;max-width:600px;border-left:3px solid var(--accent2);padding-left:16px;margin-bottom:20px}
-.hero-quote .qauth{display:block;font-style:normal;color:var(--muted);font-size:.85rem;margin-top:6px;font-weight:600}
-.numbers-toggle{margin-top:18px;background:rgba(61,169,252,.08);border:1px solid var(--line);color:var(--accent);font-weight:600;font-size:.86rem;padding:9px 16px;border-radius:10px;cursor:pointer;transition:.25s;font-family:'Inter'}
-.numbers-toggle:hover{border-color:var(--accent);background:rgba(61,169,252,.16)}
-.numbers-toggle.open{color:#04121f;background:linear-gradient(135deg,#3da9fc,#27e3b3);border-color:transparent}
-.numbers-panel{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.16,.8,.3,1);display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px}
-.numbers-panel.open{max-height:240px;margin-top:14px}
-.np{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 12px;text-align:center}
-.npn{display:block;font-family:'Sora';font-weight:800;font-size:1.5rem;background:linear-gradient(120deg,#3da9fc,#27e3b3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.npl{display:block;color:var(--muted);font-size:.78rem;margin-top:4px}
-/* sudoku number pad (mobile-friendly) */
+
+/* ============ EDUCATION ============ */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:680px){.two{grid-template-columns:1fr}}
+.two ul{margin-left:18px;color:var(--ink);line-height:2.1;opacity:.9}
+
+/* ============ SUDOKU ============ */
+.sudoku-wrap{display:flex;gap:36px;flex-wrap:wrap;align-items:center}
+.sudoku{display:grid;grid-template-columns:repeat(4,58px);grid-template-rows:repeat(4,58px);background:var(--border);border:3px solid var(--gold);border-radius:12px;overflow:hidden}
+.scell{display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans';font-weight:700;font-size:1.4rem;background:var(--surface);color:var(--ink);cursor:pointer;border:1px solid var(--border);user-select:none;transition:.15s}
+.scell:hover:not(.given){background:var(--surface2)}
+.scell.given{color:var(--gold2);background:var(--surface2);cursor:default}
+.scell.sel{background:var(--glow);outline:2px solid var(--gold)}.scell.bad{color:#f87171}
+.sudoku-side{flex:1;min-width:210px}.sudoku-msg{font-size:1rem;color:var(--ink);min-height:46px;font-weight:500}
+.sudoku-btns{display:flex;gap:10px;margin-top:10px}
+.sudoku .scell:nth-child(2),.sudoku .scell:nth-child(6),.sudoku .scell:nth-child(10),.sudoku .scell:nth-child(14){border-right:2px solid var(--gold)}
+.sudoku .scell:nth-child(5),.sudoku .scell:nth-child(6),.sudoku .scell:nth-child(7),.sudoku .scell:nth-child(8){border-bottom:2px solid var(--gold)}
 .numpad{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
-.numpad button{width:46px;height:46px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:#fff;font-family:'Sora';font-weight:700;font-size:1.2rem;cursor:pointer;transition:.2s}
-.numpad button:hover,.numpad button:active{background:linear-gradient(135deg,#3da9fc,#27e3b3);color:#04121f;border-color:transparent}
+.numpad button{width:48px;height:48px;border-radius:11px;border:1px solid var(--border);background:var(--surface);color:var(--ink);font-family:'Plus Jakarta Sans';font-weight:700;font-size:1.2rem;cursor:pointer;transition:.2s}
+.numpad button:hover{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1205;border-color:transparent}
 .numpad button.clr{width:auto;padding:0 14px;font-size:.9rem}
-/* feedback / reviews form */
-.fb-form{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;max-width:560px;margin-top:8px}
-.rate{display:flex;gap:6px;font-size:1.8rem;cursor:pointer;margin:6px 0 16px}
-.rate .st{color:#39465f;transition:.15s}
-.rate .st.on{color:#ffd166}
-.fb-form input,.fb-form textarea{width:100%;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:#eef4fe;font-family:'Inter';font-size:.95rem;margin-bottom:12px}
-.fb-form textarea{min-height:96px;resize:vertical}
+
+/* ============ FEEDBACK ============ */
+.fb-form{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:30px;max-width:560px;margin-top:8px}
+.rate{display:flex;gap:7px;font-size:1.9rem;cursor:pointer;margin:8px 0 18px}
+.rate .st{color:var(--border);transition:.15s}.rate .st.on{color:var(--gold)}
+.fb-form input,.fb-form textarea{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:11px;padding:13px 15px;color:var(--ink);font-family:'Inter';font-size:.95rem;margin-bottom:13px;outline:none;transition:.2s}
+.fb-form input:focus,.fb-form textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--glow)}
+.fb-form textarea{min-height:100px;resize:vertical}
 .fb-note{color:var(--muted);font-size:.8rem;margin-top:10px}
-/* chatbot */
-.chat-fab{position:fixed;bottom:22px;right:22px;z-index:120;width:60px;height:60px;border-radius:50%;border:none;cursor:pointer;background:linear-gradient(135deg,#3da9fc,#27e3b3);color:#04121f;font-size:1.6rem;box-shadow:0 12px 34px var(--glow);transition:transform .25s}
-.chat-fab:hover{transform:scale(1.08)}
-.chat-panel{position:fixed;bottom:92px;right:22px;z-index:120;width:330px;max-width:calc(100vw - 44px);background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.6);display:none;flex-direction:column;overflow:hidden}
-.chat-panel.open{display:flex}
-.chat-head{position:relative;background:linear-gradient(135deg,#10203c,#0c1730);padding:14px 16px;border-bottom:1px solid var(--line)}
-.chat-close{position:absolute;top:10px;right:12px;background:none;border:none;color:var(--muted);font-size:1.5rem;line-height:1;cursor:pointer;transition:.2s}
-.chat-close:hover{color:#fff}
-.chat-bubble{position:fixed;bottom:90px;right:24px;z-index:119;background:var(--card);border:1px solid var(--line);color:#dbe7f7;padding:10px 14px;border-radius:14px;border-bottom-right-radius:3px;font-size:.84rem;max-width:200px;box-shadow:0 12px 30px rgba(0,0,0,.5);display:none;animation:pop .3s ease}
+
+/* ============ FINAL ============ */
+.final{text-align:center;background:radial-gradient(760px 380px at 50% 0%,var(--glow),transparent 64%)}
+.final h2{background:linear-gradient(92deg,var(--ink),var(--gold2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.final .cta{justify-content:center;display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+.socials{margin-top:38px;display:flex;justify-content:center;gap:18px}
+.soc{width:54px;height:54px;border-radius:15px;border:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:center;transition:.25s}
+.soc:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 16px 34px var(--glow)}
+.soc svg{width:22px;height:22px;fill:var(--muted);transition:.25s}.soc:hover svg{fill:var(--ink)}
+.handle{color:var(--muted);font-size:.82rem;margin-top:14px}
+footer{border-top:1px solid var(--border);padding:30px 0;text-align:center;color:var(--muted);font-size:.84rem}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);max-width:1140px;margin:0 auto}
+
+/* ============ CHATBOT ============ */
+.chat-fab{position:fixed;bottom:24px;right:24px;z-index:140;width:62px;height:62px;border-radius:50%;border:none;cursor:pointer;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1205;font-size:1.6rem;
+  box-shadow:0 12px 34px var(--glow);animation:fabpulse 3s ease-in-out infinite;transition:transform .25s}
+@keyframes fabpulse{0%,100%{box-shadow:0 12px 34px var(--glow),0 0 0 0 var(--glow)}50%{box-shadow:0 16px 44px var(--glow),0 0 0 12px transparent}}
+.chat-fab:hover{transform:scale(1.1);animation:none}
+.chat-bubble{position:fixed;bottom:94px;right:26px;z-index:139;background:var(--surface);border:1px solid var(--border);color:var(--ink);
+  padding:10px 15px;border-radius:14px;border-bottom-right-radius:3px;font-size:.84rem;max-width:210px;box-shadow:var(--shadow);display:none;animation:pop .3s ease}
 .chat-bubble.show{display:block}
 @keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.chat-head b{color:#fff;font-size:.95rem}.chat-head span{display:block;color:var(--accent2);font-size:.74rem}
-.chat-body{padding:14px;max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
-.msg{padding:9px 13px;border-radius:12px;font-size:.88rem;max-width:85%;line-height:1.45}
-.msg.bot{background:var(--card2);border:1px solid var(--line);color:#dbe7f7;align-self:flex-start;border-bottom-left-radius:3px}
-.msg.user{background:linear-gradient(135deg,#3da9fc,#27e3b3);color:#04121f;align-self:flex-end;border-bottom-right-radius:3px;font-weight:500}
-.chat-sugg{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 10px}
-.chat-sugg button{background:rgba(61,169,252,.1);border:1px solid var(--line);color:#cfe0f5;font-size:.76rem;padding:6px 10px;border-radius:14px;cursor:pointer;transition:.2s}
-.chat-sugg button:hover{background:var(--accent);color:#04121f}
-.chat-input{display:flex;border-top:1px solid var(--line)}
-.chat-input input{flex:1;background:transparent;border:none;padding:13px 14px;color:#eef4fe;font-family:'Inter';font-size:.88rem;outline:none}
-.chat-input button{background:none;border:none;color:var(--accent);font-size:1.2rem;padding:0 14px;cursor:pointer}
-.msg.typing{display:flex;gap:5px;align-items:center}
-.msg.typing .dot{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:td 1s infinite}
-.msg.typing .dot:nth-child(2){animation-delay:.15s}.msg.typing .dot:nth-child(3){animation-delay:.3s}
-@keyframes td{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
-</style></head><body>
+.chat-panel{position:fixed;bottom:98px;right:24px;z-index:140;width:380px;max-width:calc(100vw - 40px);background:var(--surface);
+  border:1px solid var(--border);border-radius:22px;box-shadow:0 40px 90px rgba(0,0,0,.7);display:none;flex-direction:column;overflow:hidden}
+.chat-panel.open{display:flex;animation:chatin .3s cubic-bezier(.16,.8,.3,1)}
+@keyframes chatin{from{opacity:0;transform:translateY(16px) scale(.96)}to{opacity:1;transform:none}}
+.chat-head{position:relative;background:linear-gradient(135deg,var(--gold),var(--gold2));padding:17px 18px 15px}
+.chat-head-row{display:flex;align-items:center;gap:11px}
+.chat-bot-av{width:40px;height:40px;border-radius:50%;background:rgba(26,18,5,.18);display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0}
+.chat-head-text b{color:#1a1205;font-size:.98rem;display:block;font-family:'Plus Jakarta Sans'}
+.chat-head-text span{color:rgba(26,18,5,.72);font-size:.73rem;display:flex;align-items:center;gap:5px}
+.chat-online{width:6px;height:6px;border-radius:50%;background:#1a4d2e;box-shadow:0 0 6px #1a4d2e;animation:blink 2s infinite;display:inline-block}
+.chat-close{position:absolute;top:15px;right:15px;background:rgba(26,18,5,.14);border:none;color:#1a1205;font-size:1rem;cursor:pointer;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:8px;transition:.2s}
+.chat-close:hover{background:rgba(26,18,5,.26)}
+.chat-body{padding:16px;max-height:320px;overflow-y:auto;display:flex;flex-direction:column;gap:11px}
+.chat-body::-webkit-scrollbar{width:3px}.chat-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.msg{padding:11px 15px;border-radius:15px;font-size:.875rem;max-width:90%;line-height:1.5;animation:msgin .2s ease}
+@keyframes msgin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.msg.bot{background:var(--surface2);border:1px solid var(--border);color:var(--ink);align-self:flex-start;border-bottom-left-radius:3px}
+.msg.user{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1205;align-self:flex-end;border-bottom-right-radius:3px;font-weight:500}
+.msg.bot strong{color:var(--gold2)}
+.typing{display:flex;gap:4px;padding:13px 16px;align-self:flex-start;background:var(--surface2);border:1px solid var(--border);border-radius:15px;border-bottom-left-radius:3px}
+.typing span{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:bounce 1.4s infinite}
+.typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-7px);opacity:1}}
+.chat-sugg{display:flex;flex-wrap:wrap;gap:7px;padding:0 16px 12px}
+.chat-sugg button{background:var(--chipbg);border:1px solid var(--border);color:var(--muted);font-size:.75rem;padding:7px 12px;border-radius:15px;cursor:pointer;transition:.2s}
+.chat-sugg button:hover{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1205;border-color:transparent;transform:translateY(-2px)}
+.chat-input{display:flex;border-top:1px solid var(--border);padding:8px;gap:7px;align-items:center}
+.chat-input input{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:13px;padding:11px 15px;color:var(--ink);font-family:'Inter';font-size:.875rem;outline:none}
+.chat-input input:focus{border-color:var(--gold)}
+.chat-input button{background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;color:#1a1205;width:40px;height:40px;cursor:pointer;border-radius:11px;font-weight:700;font-size:1rem;flex-shrink:0;transition:.2s}
+.chat-input button:hover{transform:scale(1.08)}
+</style>
+</head>
+<body>
 
+<div id="progress"></div>
 <div id="glow"></div>
-<div class="stars"></div><div class="moon"></div>
-<svg class="saturn" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="sat" cx="40%" cy="38%"><stop offset="0%" stop-color="#f4e2c0"/><stop offset="60%" stop-color="#d9b888"/><stop offset="100%" stop-color="#9c8460"/></radialGradient></defs><ellipse cx="60" cy="60" rx="56" ry="17" fill="none" stroke="#e7d3ad" stroke-width="3" opacity=".85"/><ellipse cx="60" cy="60" rx="44" ry="12" fill="none" stroke="#cbb488" stroke-width="1.5" opacity=".6"/><circle cx="60" cy="60" r="26" fill="url(#sat)"/></svg>
 
+<!-- NAV -->
 <nav id="nav"><div class="wrap">
-<span class="logo">APURV&nbsp;DUHAN</span>
-<span class="links"><a href="#impact">Impact</a><a href="#why">Why Me</a><a href="#wins">Wins</a><a href="#cases">Case Studies</a><a href="#skills">Skills</a><a href="#beyond">Beyond</a><a href="#contact">Connect</a></span>
+  <span class="logo" onclick="scrollTo(0,0)">APURV&nbsp;DUHAN</span>
+  <div class="nav-right">
+    <span class="links">
+      <a href="#impact" data-en="Impact" data-es="Impacto">Impact</a>
+      <a href="#why" data-en="Why Me" data-es="Por Qué Yo">Why Me</a>
+      <a href="#wins" data-en="Wins" data-es="Logros">Wins</a>
+      <a href="#cases" data-en="Cases" data-es="Casos">Cases</a>
+      <a href="#certifications" data-en="Certs" data-es="Certificados">Certs</a>
+      <a href="#skills" data-en="Skills" data-es="Habilidades">Skills</a>
+      <a href="#beyond" data-en="Beyond" data-es="Personal">Beyond</a>
+      <a href="#contact" data-en="Connect" data-es="Contacto">Connect</a>
+    </span>
+    <button class="icbtn icbtn-lang" id="langToggle" aria-label="Language">EN</button>
+    <button class="icbtn" id="themeToggle" aria-label="Theme">🌙</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+  </div>
 </div></nav>
 
-<header><div class="wrap hero">
-  <div class="avatar" id="avatar">AD</div>
-  <div class="intro">
-    <span class="eyebrow"><span class="live"></span> Available now · Dallas, TX · Remote / Relocation</span>
-    <p class="hero-quote">"Outstanding leaders go out of their way to boost the self-esteem of their personnel. If people believe in themselves, it's amazing what they can accomplish."<span class="qauth">— Sam Walton</span></p>
-    <h1 class="huge">Delivery you can count on.</h1>
-    <p class="position"><b>Apurv Duhan</b> — PMI-certified <b>Project Management Professional (PMP)</b>, leading cross-functional delivery across fintech, supply chain, and enterprise technology.</p>
-    <button class="numbers-toggle" id="numToggle" aria-expanded="false">▸ By the numbers</button>
-    <div class="numbers-panel" id="numPanel">
-      <div class="np"><span class="npn">4+</span><span class="npl">years in delivery</span></div>
-      <div class="np"><span class="npn">$600K+</span><span class="npl">flagship program delivered</span></div>
-      <div class="np"><span class="npn">100%</span><span class="npl">on-time milestones</span></div>
-      <div class="np"><span class="npn">20+</span><span class="npl">team members led</span></div>
-    </div>
-    <div class="roles-line"><span class="rtag" style="background:linear-gradient(135deg,#3da9fc,#27e3b3);color:#04121f;border:none;font-weight:700">Project Manager</span> &nbsp;<span style="font-size:.88rem">— with strengths that also fit Program, Delivery &amp; Operations PM roles.</span></div>
-    <div class="badges">
-      <span class="badge">✅ U.S. work-authorized · <b>No sponsorship</b></span>
-      <span class="badge">🎓 M.S. <b>3.82 GPA</b></span>
-    </div>
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="drawer">
+  <a href="#impact" data-en="Impact" data-es="Impacto">Impact</a>
+  <a href="#why" data-en="Why Me" data-es="Por Qué Yo">Why Me</a>
+  <a href="#wins" data-en="Wins" data-es="Logros">Wins</a>
+  <a href="#cases" data-en="Cases" data-es="Casos">Cases</a>
+  <a href="#certifications" data-en="Certifications" data-es="Certificados">Certifications</a>
+  <a href="#skills" data-en="Skills" data-es="Habilidades">Skills</a>
+  <a href="#beyond" data-en="Beyond" data-es="Personal">Beyond</a>
+  <a href="#contact" data-en="Connect" data-es="Contacto">Connect</a>
+</div>
+
+<!-- HERO -->
+<header>
+  <div class="hero-grid"></div>
+  <div class="hero-blob"></div>
+  <div class="wrap hero">
+    <span class="hero-badge"><span class="dot"></span><span data-en="Available Now · Dallas, TX · U.S. Work-Authorized" data-es="Disponible Ahora · Dallas, TX · Autorizado en EE.UU.">Available Now · Dallas, TX · U.S. Work-Authorized</span></span>
+    <h1 class="huge">APURV DUHAN</h1>
+    <div class="role-line"><span class="tw" id="typewriter">Project Manager</span><span class="cursor"></span></div>
+    <p class="hero-sub"><b data-en="Delivered a $600K+ program. Zero slippage." data-es="Entregué un programa de $600K+. Cero retrasos.">Delivered a $600K+ program. Zero slippage.</b></p>
+    <p class="hero-meta"><b>PMP</b> · <b>Six Sigma Green Belt</b> · <span data-en="4+ years cross-industry delivery" data-es="4+ años de entrega multisectorial">4+ years cross-industry delivery</span></p>
     <div class="cta">
-      <a class="btn accent" href="Apurv_Duhan_Resume.pdf" download>⬇ Download Résumé</a>
-      <a class="btn ghost" href="#contact">📅 Let's talk →</a>
+      <a class="btn gold mag" href="Apurv_Duhan_Resume.pdf" download><span data-en="⬇ Download Résumé" data-es="⬇ Descargar CV">⬇ Download Résumé</span></a>
+      <a class="btn ghost mag" href="#contact"><span data-en="📅 Let's Talk →" data-es="📅 Hablemos →">📅 Let's Talk →</span></a>
     </div>
   </div>
-</div>
-<div class="scrollcue">SCROLL ↓</div>
+  <div class="scrollcue">SCROLL ↓</div>
 </header>
 
+<!-- MARQUEE -->
+<div class="marquee-sec">
+  <div class="marquee"><div class="marquee-track" id="mq1"></div><div class="marquee-track" id="mq1b"></div></div>
+  <div class="marquee rev"><div class="marquee-track" id="mq2"></div><div class="marquee-track" id="mq2b"></div></div>
+</div>
+
+<!-- IMPACT -->
 <section id="impact" class="reveal"><div class="wrap">
-<span class="kicker">Selected Impact · the proof up front</span>
-<h2>Numbers a hiring manager can trust.</h2>
-<p class="lead">Specific, measured, and repeatable — here's what delivery looks like when I run it.</p>
-<div class="metrics">
-<div class="metric"><div class="n" data-v="600">$600K+</div><div class="l">Delivered with zero schedule slippage</div></div>
-<div class="metric"><div class="n" data-v="100">100%</div><div class="l">On-time milestones across 16 sprints</div></div>
-<div class="metric"><div class="n" data-v="32">32%</div><div class="l">Reduction in customer-impacting defects</div></div>
-<div class="metric"><div class="n" data-v="20">20+</div><div class="l">Cross-functional team members led</div></div>
-</div>
+  <span class="kicker" data-en="Selected Impact · the proof up front" data-es="Impacto · la prueba primero">Selected Impact · the proof up front</span>
+  <h2 data-en="Numbers a hiring manager can trust." data-es="Números en los que un reclutador puede confiar.">Numbers a hiring manager can trust.</h2>
+  <p class="lead" data-en="Specific, measured, and repeatable — here's what delivery looks like when I run it." data-es="Específico, medido y repetible — así se ve la entrega cuando la dirijo yo.">Specific, measured, and repeatable — here's what delivery looks like when I run it.</p>
+  <div class="metrics">
+    <div class="metric"><div class="n" data-v="600">$600K+</div><div class="l" data-en="Delivered with zero schedule slippage" data-es="Entregado sin retrasos de cronograma">Delivered with zero schedule slippage</div></div>
+    <div class="metric"><div class="n" data-v="100">100%</div><div class="l" data-en="On-time milestones across 16 sprints" data-es="Hitos a tiempo en 16 sprints">On-time milestones across 16 sprints</div></div>
+    <div class="metric"><div class="n" data-v="32">32%</div><div class="l" data-en="Reduction in customer-impacting defects" data-es="Reducción de defectos que afectan al cliente">Reduction in customer-impacting defects</div></div>
+    <div class="metric"><div class="n" data-v="20">20+</div><div class="l" data-en="Cross-functional team members led" data-es="Miembros de equipo multifuncional dirigidos">Cross-functional team members led</div></div>
+  </div>
 </div></section>
 
+<!-- WHY -->
 <section id="why" class="reveal"><div class="wrap">
-<span class="kicker">Why Me · the differentiators</span>
-<h2>Why shortlist me over the other 99.</h2>
-<p class="lead">Plenty of PMs can run a standup. Here's what actually separates me on a delivery team.</p>
-<div class="grid3">
-<div class="tile"><div class="ic">🎯</div><h3>Predictable delivery</h3><p>Zero slippage on a $600K+ program and 100% on-time across 16 sprints. I don't promise heroics — I build systems that make on-time the default.</p></div>
-<div class="tile"><div class="ic">🛡️</div><h3>Risk killed early</h3><p>RAID logs and dependency matrices that surface problems weeks ahead. Sponsors hear about risks from me before they become escalations.</p></div>
-<div class="tile"><div class="ic">📊</div><h3>Fluent in metrics</h3><p>Defect density, velocity, KPI dashboards in Power BI / Tableau. If I claim it, I can show the data behind it.</p></div>
-<div class="tile"><div class="ic">🌐</div><h3>Scale + cross-industry</h3><p>Fintech delivery, global supply chains across 4 continents, 120+ SKUs. I adapt fast and speak both the engineering and the business side.</p></div>
-<div class="tile"><div class="ic">🤝</div><h3>Teams that trust me</h3><p>I make work personal, give away the credit, and protect focus. Retention and morale follow good PMs — that's the quiet ROI.</p></div>
-<div class="tile"><div class="ic">⚡</div><h3>Ready day one</h3><p>U.S. work-authorized, no sponsorship, remote or relocation. PMP, Six Sigma, Agile — current, not expired.</p></div>
-</div>
+  <span class="kicker" data-en="Why Me · the differentiators" data-es="Por Qué Yo · los diferenciadores">Why Me · the differentiators</span>
+  <h2 data-en="Why shortlist me over the other 99." data-es="Por qué elegirme sobre los otros 99.">Why shortlist me over the other 99.</h2>
+  <p class="lead" data-en="Plenty of PMs can run a standup. Here's what actually separates me on a delivery team." data-es="Muchos PMs saben dirigir una reunión. Esto es lo que de verdad me distingue.">Plenty of PMs can run a standup. Here's what actually separates me on a delivery team.</p>
+  <div class="grid3">
+    <div class="tile"><div class="ic">🎯</div><h3 data-en="Systems over heroics" data-es="Sistemas, no heroísmos">Systems over heroics</h3><p data-en="I don't wing it. I build the process that makes on-time the default — not a scramble at the end." data-es="No improviso. Construyo el proceso que hace que entregar a tiempo sea lo normal.">I don't wing it. I build the process that makes on-time the default — not a scramble at the end.</p></div>
+    <div class="tile"><div class="ic">🛡️</div><h3 data-en="Risk killed before it escalates" data-es="El riesgo, eliminado antes de escalar">Risk killed before it escalates</h3><p data-en="RAID logs and dependency matrices that surface problems weeks ahead. Sponsors hear it from me first." data-es="Registros RAID y matrices de dependencias que detectan problemas con semanas de antelación.">RAID logs and dependency matrices that surface problems weeks ahead. Sponsors hear it from me first.</p></div>
+    <div class="tile"><div class="ic">📊</div><h3 data-en="Every claim is data-backed" data-es="Cada afirmación respaldada por datos">Every claim is data-backed</h3><p data-en="Defect density, velocity, KPI dashboards in Power BI / Tableau. If I claim it, I can show you." data-es="Densidad de defectos, velocidad, paneles KPI en Power BI / Tableau. Si lo digo, lo demuestro.">Defect density, velocity, KPI dashboards in Power BI / Tableau. If I claim it, I can show you.</p></div>
+    <div class="tile"><div class="ic">🌐</div><h3 data-en="Cross-industry at scale" data-es="Multisectorial y a escala">Cross-industry at scale</h3><p data-en="Fintech delivery, global supply chains across 4 continents, 120+ SKUs. I speak engineering and business." data-es="Fintech, cadenas de suministro globales en 4 continentes, 120+ SKUs. Hablo ingeniería y negocio.">Fintech delivery, global supply chains across 4 continents, 120+ SKUs. I speak engineering and business.</p></div>
+    <div class="tile"><div class="ic">🤝</div><h3 data-en="Teams choose to work with me again" data-es="Los equipos vuelven a elegirme">Teams choose to work with me again</h3><p data-en="I make work personal, give away the credit, and protect focus. Retention and morale are the quiet ROI." data-es="Hago el trabajo personal, cedo el crédito y protejo el enfoque. La moral es el ROI silencioso.">I make work personal, give away the credit, and protect focus. Retention and morale are the quiet ROI.</p></div>
+    <div class="tile"><div class="ic">⚡</div><h3 data-en="No sponsorship. No ramp." data-es="Sin patrocinio. Sin demora.">No sponsorship. No ramp.</h3><p data-en="U.S. work-authorized, no sponsorship, remote or relocation. PMP current, Six Sigma active. Day one." data-es="Autorizado en EE.UU., sin patrocinio, remoto o reubicación. PMP vigente, Six Sigma activo.">U.S. work-authorized, no sponsorship, remote or relocation. PMP current, Six Sigma active. Day one.</p></div>
+  </div>
 </div></section>
 
+<!-- WINS -->
 <section id="wins" class="reveal"><div class="wrap">
-<span class="kicker">Featured Wins · top 3 outcomes</span>
-<h2>If you read nothing else.</h2>
-<div class="wins">
-<div class="win"><div class="big">$600K · 0</div><h3>Zero-slippage delivery</h3><p>Ran a $600K+ program protecting 12,000+ loan accounts to a flawless schedule — no slippage, no surprises, sponsors fully informed throughout.</p></div>
-<div class="win"><div class="big">−32%</div><h3>Defects cut by a third</h3><p>Introduced UAT gates and sprint quality checkpoints that dropped customer-impacting defects 32% (measured via defect-density reports).</p></div>
-<div class="win"><div class="big">−20%</div><h3>Supply chain sped up</h3><p>Redesigned a multi-region process to cut delivery turnaround 18–20% across 18 monthly cycles and 120+ SKUs on 4 continents.</p></div>
-</div>
+  <span class="kicker" data-en="Featured Wins · top 3 outcomes" data-es="Logros Destacados · top 3">Featured Wins · top 3 outcomes</span>
+  <h2 data-en="If you read nothing else." data-es="Si no lees nada más.">If you read nothing else.</h2>
+  <div class="wins">
+    <div class="win"><div class="big">$600K · 0</div><h3 data-en="Zero-slippage delivery" data-es="Entrega sin retrasos">Zero-slippage delivery</h3><p data-en="Ran a $600K+ program protecting 12,000+ loan accounts to a flawless schedule — no slippage, sponsors fully informed." data-es="Dirigí un programa de $600K+ protegiendo 12,000+ cuentas a un cronograma impecable.">Ran a $600K+ program protecting 12,000+ loan accounts to a flawless schedule — no slippage, sponsors fully informed.</p></div>
+    <div class="win"><div class="big">−32%</div><h3 data-en="Defects cut by a third" data-es="Defectos reducidos un tercio">Defects cut by a third</h3><p data-en="Introduced UAT gates and sprint quality checkpoints that dropped customer-impacting defects 32%." data-es="Introduje puertas UAT y puntos de control de calidad que redujeron los defectos un 32%.">Introduced UAT gates and sprint quality checkpoints that dropped customer-impacting defects 32%.</p></div>
+    <div class="win"><div class="big">−20%</div><h3 data-en="Supply chain sped up" data-es="Cadena de suministro acelerada">Supply chain sped up</h3><p data-en="Redesigned a multi-region process to cut delivery turnaround 18–20% across 18 cycles and 120+ SKUs." data-es="Rediseñé un proceso multirregional para reducir los tiempos un 18–20% en 18 ciclos.">Redesigned a multi-region process to cut delivery turnaround 18–20% across 18 cycles and 120+ SKUs.</p></div>
+  </div>
 </div></section>
 
 <div class="divider"></div>
 
+<!-- CASES -->
 <section id="cases" class="reveal"><div class="wrap">
-<span class="kicker">Case Studies · problem → action → result</span>
-<h2>How the wins actually happened.</h2>
-<p class="lead">Each one is the real arc of the work — the mess I walked into, what I did, and what changed.</p>
+  <span class="kicker" data-en="Case Studies · problem → action → result" data-es="Casos · problema → acción → resultado">Case Studies · problem → action → result</span>
+  <h2 data-en="How the wins actually happened." data-es="Cómo ocurrieron realmente los logros.">How the wins actually happened.</h2>
+  <p class="lead" data-en="Each one is the real arc of the work — the mess I walked into, what I did, and what changed." data-es="Cada uno es el arco real del trabajo — el caos que encontré, qué hice y qué cambió.">Each one is the real arc of the work — the mess I walked into, what I did, and what changed.</p>
 
-<div class="case">
-  <div class="case-top">
-    <div class="case-logo"><img alt="Freedom Mortgage" src="https://logo.clearbit.com/freedommortgage.com" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&domain=freedommortgage.com'"></div>
-    <div><div class="role">Project Manager</div><div class="co">Freedom Mortgage · fintech / mortgage servicing</div></div>
-    <div class="when">Aug 2024 – Apr 2025<br>Dallas, TX (Remote)</div>
-  </div>
-  <div class="case-body">
-    <div class="par">
-      <p><span class="tag p">Problem</span> A customer-portal migration touched 12,000+ loan accounts across delinquent, cured, and paid-off segments — high regulatory risk, zero room for downtime or data defects, a 20-person cross-functional team, and a $600K budget on a fixed timeline.</p>
-      <p><span class="tag a">Action</span> Owned end-to-end planning: built a structured risk register + dependency matrix, instituted UAT gates and sprint quality checkpoints, ran 2-week Agile cycles with clear ownership, and gave sponsors weekly, data-backed status.</p>
-      <p><span class="tag r">Result</span> Zero schedule slippage, a zero-defect launch on budget, 100% on-time milestones across 16 sprints, defects down 32%, and post-launch escalations down 22%.</p>
-      <div class="toolrow"><span class="toolchip">JIRA</span><span class="toolchip">Confluence</span><span class="toolchip">Agile/Scrum</span><span class="toolchip">RAID</span><span class="toolchip">UAT</span><span class="toolchip">Power BI</span></div>
+  <div class="case">
+    <div class="case-top">
+      <div class="case-logo"><img alt="Freedom Mortgage" src="https://logo.clearbit.com/freedommortgage.com" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&domain=freedommortgage.com'"></div>
+      <div><div class="role">Project Manager</div><div class="co">Freedom Mortgage · fintech / mortgage servicing</div></div>
+      <div class="when">Aug 2024 – Apr 2025<br>Dallas, TX (Remote)</div>
     </div>
-    <div class="proof">
-      <div class="proof-label">📊 By the numbers</div>
-      <div class="statgrid">
-        <div class="stat"><span class="sv">0</span><span class="sl">schedule slippage</span></div>
-        <div class="stat"><span class="sv">−32%</span><span class="sl">defects</span></div>
-        <div class="stat"><span class="sv">100%</span><span class="sl">on-time / 16 sprints</span></div>
-        <div class="stat"><span class="sv">−22%</span><span class="sl">escalations</span></div>
+    <div class="case-body">
+      <div class="par">
+        <p><span class="tag p">Problem</span> A customer-portal migration touched 12,000+ loan accounts across delinquent, cured, and paid-off segments — high regulatory risk, zero room for downtime or data defects, a 20-person cross-functional team, and a $600K budget on a fixed timeline.</p>
+        <p><span class="tag a">Action</span> Owned end-to-end planning: built a structured risk register + dependency matrix, instituted UAT gates and sprint quality checkpoints, ran 2-week Agile cycles with clear ownership, and gave sponsors weekly, data-backed status.</p>
+        <p><span class="tag r">Result</span> Zero schedule slippage, a zero-defect launch on budget, 100% on-time milestones across 16 sprints, defects down 32%, and post-launch escalations down 22%.</p>
+        <div class="toolrow"><span class="toolchip">JIRA</span><span class="toolchip">Confluence</span><span class="toolchip">Agile/Scrum</span><span class="toolchip">RAID</span><span class="toolchip">UAT</span><span class="toolchip">Power BI</span></div>
+      </div>
+      <div class="proof">
+        <div class="proof-label">📊 By the numbers</div>
+        <div class="statgrid">
+          <div class="stat"><span class="sv">0</span><span class="sl">schedule slippage</span></div>
+          <div class="stat"><span class="sv">−32%</span><span class="sl">defects</span></div>
+          <div class="stat"><span class="sv">100%</span><span class="sl">on-time / 16 sprints</span></div>
+          <div class="stat"><span class="sv">−22%</span><span class="sl">escalations</span></div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="case">
-  <div class="case-top">
-    <div class="case-logo"><img alt="Agilent" src="https://logo.clearbit.com/agilent.com" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&domain=agilent.com'"></div>
-    <div><div class="role">Supply Chain Project Manager</div><div class="co">Agilent Technologies · global life-sciences</div></div>
-    <div class="when">Feb 2022 – Aug 2023<br>Manesar, India</div>
-  </div>
-  <div class="case-body">
-    <div class="par">
-      <p><span class="tag p">Problem</span> A multi-region supply chain — 12+ vendors, 120+ SKUs, customs across Germany, Brazil, Europe and Asia Pacific — had slow turnaround and limited visibility for leadership, risking costly disruptions.</p>
-      <p><span class="tag a">Action</span> Led a process redesign (root-cause analysis, SOP standardization, vendor escalation protocols), built Power BI / Excel KPI dashboards, and ran capital scheduling + budget tracking for 6 concurrent import work streams.</p>
-      <p><span class="tag r">Result</span> Turnaround down 18–20% across 18 monthly cycles, 96% supply-continuity compliance, full leadership visibility, and 30% faster onboarding for new associates.</p>
-      <div class="toolrow"><span class="toolchip">SAP ECC</span><span class="toolchip">Power BI</span><span class="toolchip">Excel</span><span class="toolchip">SOP design</span><span class="toolchip">Vendor mgmt</span><span class="toolchip">Six Sigma</span></div>
+  <div class="case">
+    <div class="case-top">
+      <div class="case-logo"><img alt="Agilent" src="https://logo.clearbit.com/agilent.com" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&domain=agilent.com'"></div>
+      <div><div class="role">Supply Chain Project Manager</div><div class="co">Agilent Technologies · global life-sciences</div></div>
+      <div class="when">Feb 2022 – Aug 2023<br>Manesar, India</div>
     </div>
-    <div class="proof">
-      <div class="proof-label">📈 By the numbers</div>
-      <div class="statgrid">
-        <div class="stat"><span class="sv">−18–20%</span><span class="sl">turnaround time</span></div>
-        <div class="stat"><span class="sv">96%</span><span class="sl">supply continuity</span></div>
-        <div class="stat"><span class="sv">120+</span><span class="sl">SKUs managed</span></div>
-        <div class="stat"><span class="sv">4</span><span class="sl">continents</span></div>
+    <div class="case-body">
+      <div class="par">
+        <p><span class="tag p">Problem</span> A multi-region supply chain — 12+ vendors, 120+ SKUs, customs across Germany, Brazil, Europe and Asia Pacific — had slow turnaround and limited visibility for leadership, risking costly disruptions.</p>
+        <p><span class="tag a">Action</span> Led a process redesign (root-cause analysis, SOP standardization, vendor escalation protocols), built Power BI / Excel KPI dashboards, and ran capital scheduling + budget tracking for 6 concurrent import work streams.</p>
+        <p><span class="tag r">Result</span> Turnaround down 18–20% across 18 monthly cycles, 96% supply-continuity compliance, full leadership visibility, and 30% faster onboarding for new associates.</p>
+        <div class="toolrow"><span class="toolchip">SAP ECC</span><span class="toolchip">Power BI</span><span class="toolchip">Excel</span><span class="toolchip">SOP design</span><span class="toolchip">Vendor mgmt</span><span class="toolchip">Six Sigma</span></div>
+      </div>
+      <div class="proof">
+        <div class="proof-label">📈 By the numbers</div>
+        <div class="statgrid">
+          <div class="stat"><span class="sv">−18–20%</span><span class="sl">turnaround time</span></div>
+          <div class="stat"><span class="sv">96%</span><span class="sl">supply continuity</span></div>
+          <div class="stat"><span class="sv">120+</span><span class="sl">SKUs managed</span></div>
+          <div class="stat"><span class="sv">4</span><span class="sl">continents</span></div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div></section>
 
 <div class="divider"></div>
 
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="reveal"><div class="wrap">
+  <span class="kicker" data-en="Certifications · sorted by what recruiters love" data-es="Certificaciones · ordenadas por valor">Certifications · sorted by what recruiters love</span>
+  <h2 data-en="Credentials, current and verified." data-es="Credenciales, vigentes y verificadas.">Credentials, current and verified.</h2>
+  <p class="lead" data-en="PMP is the gold standard — the rest stack depth across Agile, quality, and AI-driven delivery." data-es="PMP es el estándar de oro — el resto suma profundidad en Agile, calidad y entrega con IA.">PMP is the gold standard — the rest stack depth across Agile, quality, and AI-driven delivery.</p>
+
+  <div class="cert-carousel">
+    <div class="cert-track" id="certTrack"></div>
+  </div>
+  <div class="cert-nav">
+    <button class="cert-arrow" id="certPrev" aria-label="Previous">‹</button>
+    <div class="cert-dots" id="certDots"></div>
+    <button class="cert-arrow" id="certNext" aria-label="Next">›</button>
+  </div>
+</div></section>
+
+<!-- TIMELINE -->
 <section id="timeline" class="reveal"><div class="wrap">
-<span class="kicker">Experience · the timeline</span>
-<h2>The track record, at a glance.</h2>
-<div class="grid3" style="margin-top:6px">
-<div class="tile"><h3>2024–25 · Project Manager</h3><p style="color:var(--accent);font-weight:600;margin-bottom:6px">Freedom Mortgage</p><p>$600K fintech delivery, zero slippage, 32% fewer defects, 20-person team.</p></div>
-<div class="tile"><h3>2022–23 · Supply Chain PM</h3><p style="color:var(--accent);font-weight:600;margin-bottom:6px">Agilent Technologies</p><p>−20% turnaround, 96% continuity, 120+ SKUs across 4 continents.</p></div>
-<div class="tile"><h3>2020–22 · CS Specialist</h3><p style="color:var(--accent);font-weight:600;margin-bottom:6px">Bharat Optimum</p><p>+15% order accuracy, −25% resolution time via SOPs and validation.</p></div>
-</div>
+  <span class="kicker" data-en="Experience · the timeline" data-es="Experiencia · la línea de tiempo">Experience · the timeline</span>
+  <h2 data-en="The track record, at a glance." data-es="La trayectoria, de un vistazo.">The track record, at a glance.</h2>
+  <div class="grid3" style="margin-top:6px">
+    <div class="tile"><h3>2024–25 · Project Manager</h3><p style="color:var(--blue2);font-weight:600;margin-bottom:6px">Freedom Mortgage</p><p data-en="$600K fintech delivery, zero slippage, 32% fewer defects, 20-person team." data-es="Entrega fintech de $600K, cero retrasos, 32% menos defectos, equipo de 20.">$600K fintech delivery, zero slippage, 32% fewer defects, 20-person team.</p></div>
+    <div class="tile"><h3>2022–23 · Supply Chain PM</h3><p style="color:var(--blue2);font-weight:600;margin-bottom:6px">Agilent Technologies</p><p data-en="−20% turnaround, 96% continuity, 120+ SKUs across 4 continents." data-es="−20% en tiempos, 96% continuidad, 120+ SKUs en 4 continentes.">−20% turnaround, 96% continuity, 120+ SKUs across 4 continents.</p></div>
+    <div class="tile"><h3>2020–22 · CS Specialist</h3><p style="color:var(--blue2);font-weight:600;margin-bottom:6px">Bharat Optimum</p><p data-en="+15% order accuracy, −25% resolution time via SOPs and validation." data-es="+15% precisión de pedidos, −25% tiempo de resolución vía SOPs.">+15% order accuracy, −25% resolution time via SOPs and validation.</p></div>
+  </div>
 </div></section>
 
+<!-- SKILLS -->
 <section id="skills" class="reveal"><div class="wrap">
-<span class="kicker">Skills · grouped by what you're hiring for</span>
-<h2>Tooling and methods, current.</h2>
-<div class="skillcols">
-<div class="skillcol"><h3>🚦 Delivery &amp; Methods</h3><div class="chips"><span class="chip">Agile / Scrum</span><span class="chip">SAFe</span><span class="chip">Kanban</span><span class="chip">Waterfall</span><span class="chip">Risk &amp; RAID</span><span class="chip">Roadmaps</span><span class="chip">Budget tracking</span><span class="chip">OKRs / KPIs</span><span class="chip">Change mgmt</span></div></div>
-<div class="skillcol"><h3>🛠️ Tools &amp; Platforms</h3><div class="chips"><span class="chip">JIRA</span><span class="chip">Confluence</span><span class="chip">Asana</span><span class="chip">Smartsheet</span><span class="chip">MS Project</span><span class="chip">ServiceNow</span><span class="chip">Salesforce</span><span class="chip">SAP ECC/CRM</span><span class="chip">Power BI</span><span class="chip">Tableau</span><span class="chip">SQL</span></div></div>
-<div class="skillcol"><h3>🤝 Leadership</h3><div class="chips"><span class="chip">Stakeholder mgmt</span><span class="chip">Exec presentations</span><span class="chip">Vendor mgmt</span><span class="chip">UAT coordination</span><span class="chip">Team coaching</span><span class="chip">Process docs</span></div></div>
-</div>
+  <span class="kicker" data-en="Skills · grouped by what you're hiring for" data-es="Habilidades · agrupadas por lo que buscas">Skills · grouped by what you're hiring for</span>
+  <h2 data-en="Tooling and methods, current." data-es="Herramientas y métodos, vigentes.">Tooling and methods, current.</h2>
+  <div class="skillcols">
+    <div class="skillcol"><h3>🚦 <span data-en="Delivery & Methods" data-es="Entrega y Métodos">Delivery &amp; Methods</span></h3><div class="chips"><span class="chip">Agile / Scrum</span><span class="chip">SAFe</span><span class="chip">Kanban</span><span class="chip">Waterfall</span><span class="chip">Risk &amp; RAID</span><span class="chip">Roadmaps</span><span class="chip">Budget tracking</span><span class="chip">OKRs / KPIs</span><span class="chip">Change mgmt</span></div></div>
+    <div class="skillcol"><h3>🛠️ <span data-en="Tools & Platforms" data-es="Herramientas y Plataformas">Tools &amp; Platforms</span></h3><div class="chips"><span class="chip">JIRA</span><span class="chip">Confluence</span><span class="chip">Asana</span><span class="chip">Smartsheet</span><span class="chip">MS Project</span><span class="chip">ServiceNow</span><span class="chip">Salesforce</span><span class="chip">SAP ECC/CRM</span><span class="chip">Power BI</span><span class="chip">Tableau</span><span class="chip">SQL</span></div></div>
+    <div class="skillcol"><h3>🤝 <span data-en="Leadership" data-es="Liderazgo">Leadership</span></h3><div class="chips"><span class="chip">Stakeholder mgmt</span><span class="chip">Exec presentations</span><span class="chip">Vendor mgmt</span><span class="chip">UAT coordination</span><span class="chip">Team coaching</span><span class="chip">Process docs</span></div></div>
+  </div>
 </div></section>
 
-<section id="how" class="reveal"><div class="wrap">
-<span class="kicker">How I Work</span>
-<h2>A few things I try to live by.</h2>
-<p class="lead">Not rules I've mastered — just the things I keep coming back to.</p>
-<div class="principles">
-<div class="pr"><div class="num">01</div><h3>The team gets the credit</h3><p>When a project lands well, it's because the people around me showed up. My job is to make their work easier and then get out of their way.</p></div>
-<div class="pr"><div class="num">02</div><h3>Listen before I lead</h3><p>I assume the people doing the work understand it better than I do. So I ask, learn, and only then figure out how I can help.</p></div>
-<div class="pr"><div class="num">03</div><h3>Small promises, kept</h3><p>I'd rather quietly under-promise and deliver than impress in a meeting and let someone down later. Trust is built in the boring, reliable moments.</p></div>
-<div class="pr"><div class="num">04</div><h3>Stay calm, stay kind</h3><p>When things go sideways — and they do — I steady the room instead of adding to the noise. People do their best work when they feel safe.</p></div>
-</div>
+<!-- PHILOSOPHY -->
+<section id="philosophy" class="reveal"><div class="wrap">
+  <span class="kicker" data-en="How I Work" data-es="Cómo Trabajo">How I Work</span>
+  <h2 data-en="A few things I try to live by." data-es="Algunas cosas por las que intento guiarme.">A few things I try to live by.</h2>
+  <p class="lead" data-en="Not rules I've mastered — just the things I keep coming back to." data-es="No son reglas que domino — solo a lo que siempre vuelvo.">Not rules I've mastered — just the things I keep coming back to.</p>
+  <div class="principles">
+    <div class="pr"><div class="num">01</div><h3 data-en="The team gets the credit" data-es="El equipo se lleva el crédito">The team gets the credit</h3><p data-en="When a project lands well, it's because the people around me showed up. My job is to make their work easier and then get out of their way." data-es="Cuando un proyecto sale bien, es porque la gente a mi alrededor respondió. Mi trabajo es facilitarles el suyo.">When a project lands well, it's because the people around me showed up. My job is to make their work easier and then get out of their way.</p></div>
+    <div class="pr"><div class="num">02</div><h3 data-en="Listen before I lead" data-es="Escuchar antes de liderar">Listen before I lead</h3><p data-en="I assume the people doing the work understand it better than I do. So I ask, learn, and only then figure out how I can help." data-es="Asumo que quienes hacen el trabajo lo entienden mejor que yo. Pregunto, aprendo, y luego ayudo.">I assume the people doing the work understand it better than I do. So I ask, learn, and only then figure out how I can help.</p></div>
+    <div class="pr"><div class="num">03</div><h3 data-en="Small promises, kept" data-es="Promesas pequeñas, cumplidas">Small promises, kept</h3><p data-en="I'd rather quietly under-promise and deliver than impress in a meeting and let someone down later. Trust is built in the boring, reliable moments." data-es="Prefiero prometer poco y cumplir que impresionar y decepcionar después. La confianza se construye en lo fiable.">I'd rather quietly under-promise and deliver than impress in a meeting and let someone down later. Trust is built in the boring, reliable moments.</p></div>
+    <div class="pr"><div class="num">04</div><h3 data-en="Stay calm, stay kind" data-es="Mantener la calma, la amabilidad">Stay calm, stay kind</h3><p data-en="When things go sideways — and they do — I steady the room instead of adding to the noise. People do their best work when they feel safe." data-es="Cuando todo se tuerce — y pasa — calmo la sala en vez de sumar ruido. La gente rinde mejor cuando se siente segura.">When things go sideways — and they do — I steady the room instead of adding to the noise. People do their best work when they feel safe.</p></div>
+  </div>
 </div></section>
 
+<!-- REVIEWS -->
 <section id="reviews" class="reveal"><div class="wrap">
-<span class="kicker">Feedback &amp; Reviews</span>
-<h2>Leave a review.</h2>
-<p class="lead">Worked with me, or just enjoyed the site? I'd love your honest take.</p>
-<div class="fb-form">
-  <h3 style="color:#fff;font-size:1.05rem;margin-bottom:6px">⭐ Leave a review</h3>
-  <p style="color:var(--muted);font-size:.86rem;margin-bottom:10px">Worked with me, or just enjoyed the site? Rate it and leave a note — it comes straight to me and won't appear publicly unless I add it.</p>
-  <div class="rate" id="rate" aria-label="star rating">
-    <span class="st" data-v="1">★</span><span class="st" data-v="2">★</span><span class="st" data-v="3">★</span><span class="st" data-v="4">★</span><span class="st" data-v="5">★</span>
+  <span class="kicker" data-en="Feedback & Reviews" data-es="Opiniones y Reseñas">Feedback &amp; Reviews</span>
+  <h2 data-en="Leave a review." data-es="Deja una reseña.">Leave a review.</h2>
+  <p class="lead" data-en="Worked with me, or just enjoyed the site? I'd love your honest take." data-es="¿Trabajaste conmigo o te gustó el sitio? Me encantaría tu opinión honesta.">Worked with me, or just enjoyed the site? I'd love your honest take.</p>
+  <div class="fb-form">
+    <h3 style="color:var(--ink);font-size:1.05rem;margin-bottom:6px">⭐ <span data-en="Leave a review" data-es="Deja una reseña">Leave a review</span></h3>
+    <p style="color:var(--muted);font-size:.86rem;margin-bottom:12px" data-en="Rate it and leave a note — it comes straight to me and won't appear publicly unless I add it." data-es="Califícalo y deja una nota — me llega directamente y no se publica sin mi aprobación.">Rate it and leave a note — it comes straight to me and won't appear publicly unless I add it.</p>
+    <div class="rate" id="rate"><span class="st" data-v="1">★</span><span class="st" data-v="2">★</span><span class="st" data-v="3">★</span><span class="st" data-v="4">★</span><span class="st" data-v="5">★</span></div>
+    <input type="text" id="fb-name" placeholder="Your name (optional)">
+    <input type="text" id="fb-role" placeholder="Role / company (optional)">
+    <textarea id="fb-msg" placeholder="Your feedback…"></textarea>
+    <button class="btn gold" id="fb-send" style="padding:12px 24px"><span data-en="Send feedback →" data-es="Enviar →">Send feedback →</span></button>
+    <p class="fb-note" id="fb-note">🔒 <span data-en="Private — submissions come straight to me and are never posted without my approval." data-es="Privado — las respuestas me llegan directamente y nunca se publican sin mi aprobación.">Private — submissions come straight to me and are never posted without my approval.</span></p>
   </div>
-  <input type="text" id="fb-name" placeholder="Your name (optional)">
-  <input type="text" id="fb-role" placeholder="Role / company (optional)">
-  <textarea id="fb-msg" placeholder="Your feedback…"></textarea>
-  <button class="btn accent" id="fb-send" style="padding:11px 22px">Send feedback →</button>
-  <p class="fb-note" id="fb-note">🔒 Private — submissions come straight to me and are never posted to the site without my approval.</p>
-</div>
 </div></section>
 
+<!-- BEYOND -->
 <section id="beyond" class="reveal"><div class="wrap">
-<span class="kicker">Beyond Work</span>
-<h2>The person behind the projects.</h2>
-<p class="lead" style="margin-bottom:18px">People I've worked with have a line they like: <b style="color:var(--accent2)">"a gardener in a war, and a warrior in the garden."</b> Calm and steady when everything's on fire; relentless about better when things are calm.</p>
-<div style="max-width:760px">
-  <div class="faq"><div class="faq-q">What am I like to work with?<span class="pm">+</span></div><div class="faq-a"><p>High standards, sweat the details — but the first to hand the team the spotlight. If we win, it's because they showed up; I just cleared the path.</p></div></div>
-  <div class="faq"><div class="faq-q">What do teammates &amp; clients say?<span class="pm">+</span></div><div class="faq-a"><p>That I make work feel personal. I take time to actually know the people I work with, so trust comes fast and hard conversations get easier.</p></div></div>
-  <div class="faq"><div class="faq-q">Outside of work?<span class="pm">+</span></div><div class="faq-a"><p>Gym, long walks to think, cricket whenever I can, and exploring the outdoors — most recently the mountains of Colorado.</p></div></div>
-</div>
-<div class="chips" style="margin-top:24px"><span class="chip">🏋️ Gym</span><span class="chip">🚶 Walks</span><span class="chip">🏏 Cricket</span><span class="chip">🏔️ Outdoors</span><span class="chip">✈️ Travel</span></div>
-<h3 style="color:#fff;margin:40px 0 16px;font-size:1.05rem">Recently, in Colorado 📸</h3>
-<div class="gallery" id="gallery">
-  <div class="gphoto" data-img="photo1.jpg" data-cap="Rocky Mountains, CO">photo1.jpg</div>
-  <div class="gphoto" data-img="photo2.jpg" data-cap="Big Thompson River, CO">photo2.jpg</div>
-  <div class="gphoto" data-img="photo3.jpg" data-cap="Estes Park, CO">photo3.jpg</div>
-</div>
-</div></section>
-
-<section id="world" class="reveal"><div class="wrap">
-<span class="kicker">Always On</span>
-<h2>A little global. 🌙</h2>
-<p class="lead">Comfortable working across time zones — ordered west to east, live right now.</p>
-<div class="clocks" id="clocks">
-  <div class="clock" data-tz="America/Los_Angeles" data-city="Los Angeles" data-off="UTC−7"></div>
-  <div class="clock" data-tz="America/Chicago" data-city="Dallas" data-off="UTC−5"></div>
-  <div class="clock" data-tz="America/New_York" data-city="New York" data-off="UTC−4"></div>
-  <div class="clock" data-tz="Europe/London" data-city="London" data-off="UTC+1"></div>
-  <div class="clock" data-tz="Asia/Kolkata" data-city="Delhi" data-off="UTC+5:30"></div>
-  <div class="clock" data-tz="Australia/Melbourne" data-city="Melbourne" data-off="UTC+10"></div>
-</div>
-</div></section>
-
-<section id="education" class="reveal"><div class="wrap">
-<span class="kicker">Credentials</span>
-<h2>Certifications &amp; education.</h2>
-<div class="two" style="margin-top:6px">
-<div class="skillcol"><h3>📜 Certifications</h3><ul style="margin-left:18px;color:#c4d3e8;line-height:2"><li>PMP — PMI, 2026</li><li>Six Sigma Green Belt — AIGPE, 2026</li><li>Scrum (SFPC) — ScrumStudy, 2026</li><li>Agile with Atlassian Jira — LinkedIn Learning, 2026</li><li>Salesforce Platform Foundations — 2024</li></ul></div>
-<div class="skillcol"><h3>🎓 Education</h3><ul style="margin-left:18px;color:#c4d3e8;line-height:2"><li>M.S. Information Studies (GPA 3.82) — Trine University, 2026</li><li>MBA — Trine University · starting Aug 2026 (online, weekends)</li><li>B.Tech Computer Science — Kurukshetra University, 2021</li></ul></div>
-</div>
-</div></section>
-
-<section id="play" class="reveal"><div class="wrap">
-<span class="kicker">Coffee Break</span>
-<h2>Stuck around this long? Have a Sudoku. ☕</h2>
-<p class="lead">Fill it so every row, column, and 2×2 box has 1–4. New puzzle daily.</p>
-<div class="sudoku-wrap">
-  <div id="sudoku" class="sudoku"></div>
-  <div class="sudoku-side">
-    <div id="sudoku-msg" class="sudoku-msg">Pick a cell, type 1–4.</div>
-    <div class="numpad" id="numpad"><button data-n="1">1</button><button data-n="2">2</button><button data-n="3">3</button><button data-n="4">4</button><button class="clr" data-n="0">Clear</button></div>
-    <div class="sudoku-btns" style="margin-top:12px"><button id="sud-check" class="btn accent" style="padding:10px 18px">Check</button><button id="sud-reset" class="btn ghost" style="padding:10px 18px">Reset</button></div>
-    <p style="color:var(--muted);font-size:.82rem;margin-top:14px">🧩 Puzzle #<span id="sud-num"></span> · resets at midnight · tap a cell, then a number</p>
+  <span class="kicker" data-en="Beyond Work" data-es="Más Allá del Trabajo">Beyond Work</span>
+  <h2 data-en="The person behind the projects." data-es="La persona detrás de los proyectos.">The person behind the projects.</h2>
+  <p class="lead" style="margin-bottom:18px" data-en="A line people like: &quot;a gardener in a war, and a warrior in the garden.&quot; Calm when everything's on fire; relentless about better when things are calm." data-es="Una frase que gusta: &quot;jardinero en guerra, guerrero en el jardín.&quot; Calmo cuando todo arde; incansable cuando hay calma.">People I've worked with have a line they like: <b style="color:var(--gold2)">"a gardener in a war, and a warrior in the garden."</b> Calm and steady when everything's on fire; relentless about better when things are calm.</p>
+  <div style="max-width:760px">
+    <div class="faq"><div class="faq-q"><span data-en="What am I like to work with?" data-es="¿Cómo es trabajar conmigo?">What am I like to work with?</span><span class="pm">+</span></div><div class="faq-a"><p data-en="High standards, sweat the details — but the first to hand the team the spotlight. If we win, it's because they showed up; I just cleared the path." data-es="Altos estándares, cuido los detalles — pero el primero en ceder el protagonismo al equipo.">High standards, sweat the details — but the first to hand the team the spotlight. If we win, it's because they showed up; I just cleared the path.</p></div></div>
+    <div class="faq"><div class="faq-q"><span data-en="What do teammates & clients say?" data-es="¿Qué dicen compañeros y clientes?">What do teammates &amp; clients say?</span><span class="pm">+</span></div><div class="faq-a"><p data-en="That I make work feel personal. I take time to actually know the people I work with, so trust comes fast and hard conversations get easier." data-es="Que hago el trabajo personal. Conozco de verdad a la gente, así la confianza llega rápido.">That I make work feel personal. I take time to actually know the people I work with, so trust comes fast and hard conversations get easier.</p></div></div>
+    <div class="faq"><div class="faq-q"><span data-en="Outside of work?" data-es="¿Fuera del trabajo?">Outside of work?</span><span class="pm">+</span></div><div class="faq-a"><p data-en="Gym, long walks to think, cricket whenever I can, and exploring the outdoors — most recently the mountains of Colorado." data-es="Gimnasio, caminatas para pensar, cricket cuando puedo, y explorar la naturaleza — últimamente las montañas de Colorado.">Gym, long walks to think, cricket whenever I can, and exploring the outdoors — most recently the mountains of Colorado.</p></div></div>
   </div>
-</div>
+  <div class="chips" style="margin-top:24px"><span class="chip">🏋️ Gym</span><span class="chip">🚶 Walks</span><span class="chip">🏏 Cricket</span><span class="chip">🏔️ Outdoors</span><span class="chip">✈️ Travel</span></div>
+  <h3 style="color:var(--ink);margin:40px 0 16px;font-size:1.05rem">Recently, in Colorado 📸</h3>
+  <div class="gallery" id="gallery">
+    <div class="gphoto" data-img="photo1.jpg" data-cap="Rocky Mountains, CO">photo1.jpg</div>
+    <div class="gphoto" data-img="photo2.jpg" data-cap="Big Thompson River, CO">photo2.jpg</div>
+    <div class="gphoto" data-img="photo3.jpg" data-cap="Estes Park, CO">photo3.jpg</div>
+  </div>
 </div></section>
 
+<!-- WORLD -->
+<section id="world" class="reveal"><div class="wrap">
+  <span class="kicker" data-en="Always On" data-es="Siempre Activo">Always On</span>
+  <h2 data-en="A little global. 🌙" data-es="Un poco global. 🌙">A little global. 🌙</h2>
+  <p class="lead" data-en="Comfortable working across time zones — ordered west to east, live right now." data-es="Cómodo trabajando entre zonas horarias — de oeste a este, en vivo ahora.">Comfortable working across time zones — ordered west to east, live right now.</p>
+  <div class="clocks" id="clocks">
+    <div class="clock" data-tz="America/Los_Angeles" data-city="Los Angeles" data-off="UTC−7"></div>
+    <div class="clock" data-tz="America/Chicago" data-city="Dallas" data-off="UTC−5"></div>
+    <div class="clock" data-tz="America/New_York" data-city="New York" data-off="UTC−4"></div>
+    <div class="clock" data-tz="Europe/London" data-city="London" data-off="UTC+1"></div>
+    <div class="clock" data-tz="Asia/Kolkata" data-city="Delhi" data-off="UTC+5:30"></div>
+    <div class="clock" data-tz="Australia/Melbourne" data-city="Melbourne" data-off="UTC+10"></div>
+  </div>
+</div></section>
+
+<!-- EDUCATION -->
+<section id="education" class="reveal"><div class="wrap">
+  <span class="kicker" data-en="Credentials" data-es="Credenciales">Credentials</span>
+  <h2 data-en="Certifications & education." data-es="Certificaciones y educación.">Certifications &amp; education.</h2>
+  <div class="two" style="margin-top:6px">
+    <div class="skillcol"><h3>📜 <span data-en="Certifications" data-es="Certificaciones">Certifications</span></h3><ul><li>PMP — PMI, 2026</li><li>Six Sigma Green Belt — AIGPE, 2026</li><li>CPMAI™ (Cognitive PM in AI) — PMI, 2026</li><li>Scrum (SFPC) — ScrumStudy, 2026</li><li>Agile — PMI / Atlassian Jira, 2026</li><li>AI Micro-Certification (AIC) — PMI</li><li>Product Analytics, 2026</li><li>Salesforce Platform Foundations — 2024</li></ul></div>
+    <div class="skillcol"><h3>🎓 <span data-en="Education" data-es="Educación">Education</span></h3><ul><li>M.S. Information Studies (GPA 3.82) — Trine University, 2026</li><li>MBA — Trine University · starting Aug 2026</li><li>B.Tech Computer Science — Kurukshetra University, 2021</li></ul></div>
+  </div>
+</div></section>
+
+<!-- PLAY -->
+<section id="play" class="reveal"><div class="wrap">
+  <span class="kicker" data-en="Coffee Break" data-es="Pausa de Café">Coffee Break</span>
+  <h2 data-en="Stuck around this long? Have a Sudoku. ☕" data-es="¿Llegaste hasta aquí? Toma un Sudoku. ☕">Stuck around this long? Have a Sudoku. ☕</h2>
+  <p class="lead" data-en="Fill it so every row, column, and 2×2 box has 1–4. New puzzle daily." data-es="Complétalo: cada fila, columna y caja 2×2 con 1–4. Nuevo cada día.">Fill it so every row, column, and 2×2 box has 1–4. New puzzle daily.</p>
+  <div class="sudoku-wrap">
+    <div id="sudoku" class="sudoku"></div>
+    <div class="sudoku-side">
+      <div id="sudoku-msg" class="sudoku-msg">Pick a cell, type 1–4.</div>
+      <div class="numpad" id="numpad"><button data-n="1">1</button><button data-n="2">2</button><button data-n="3">3</button><button data-n="4">4</button><button class="clr" data-n="0">Clear</button></div>
+      <div class="sudoku-btns"><button id="sud-check" class="btn gold" style="padding:11px 20px">Check</button><button id="sud-reset" class="btn ghost" style="padding:11px 20px">Reset</button></div>
+      <p style="color:var(--muted);font-size:.82rem;margin-top:14px">🧩 Puzzle #<span id="sud-num"></span> · resets at midnight</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- CONTACT -->
 <section id="contact" class="final reveal"><div class="wrap">
-<span class="kicker">Let's Talk</span>
-<h2>Shortlist me. You won't regret it.</h2>
-<p class="lead" style="margin:8px auto 0">Got a program that needs to land on time? Download my résumé, email me, or send a quick message — I reply fast.</p>
-<div class="cta">
-<a class="btn accent" href="Apurv_Duhan_Resume.pdf" download>⬇ Download Résumé</a>
-<a class="btn ghost" href="mailto:apurvduhan23@gmail.com">✉ Email Me</a>
-<a class="btn ghost" href="https://linkedin.com/in/apurvduhan23" target="_blank">in Connect on LinkedIn</a>
-</div>
-<div class="socials">
-  <a class="soc" href="https://linkedin.com/in/apurvduhan23" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
-  <a class="soc" href="https://instagram.com/duhan_23" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.12 1.38C1.35 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.12.66.66 1.33 1.08 2.12 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.72 2.12-1.38.66-.66 1.08-1.33 1.38-2.12.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.72-1.46-1.38-2.12C21.32 1.35 20.65.93 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.41a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
-  <a class="soc" href="https://x.com/duhan_23" target="_blank" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.48 3.24H4.29L17.61 20.65z"/></svg></a>
-</div>
-<div class="handle">LinkedIn /apurvduhan23 &nbsp;·&nbsp; Instagram @duhan_23 &nbsp;·&nbsp; X @duhan_23</div>
+  <span class="kicker" data-en="Let's Talk" data-es="Hablemos">Let's Talk</span>
+  <h2 data-en="Shortlist me. You won't regret it." data-es="Seleccióname. No te arrepentirás.">Shortlist me. You won't regret it.</h2>
+  <p class="lead" style="margin:8px auto 0" data-en="Got a program that needs to land on time? Download my résumé, email me, or send a quick message — I reply fast." data-es="¿Tienes un programa que debe entregarse a tiempo? Descarga mi CV, escríbeme — respondo rápido.">Got a program that needs to land on time? Download my résumé, email me, or send a quick message — I reply fast.</p>
+  <div class="cta">
+    <a class="btn gold mag" href="Apurv_Duhan_Resume.pdf" download><span data-en="⬇ Download Résumé" data-es="⬇ Descargar CV">⬇ Download Résumé</span></a>
+    <a class="btn ghost mag" href="mailto:apurvduhan23@gmail.com"><span data-en="✉ Email Me" data-es="✉ Escríbeme">✉ Email Me</span></a>
+    <a class="btn ghost mag" href="https://linkedin.com/in/apurvduhan23" target="_blank">in LinkedIn</a>
+  </div>
+  <div class="socials">
+    <a class="soc" href="https://linkedin.com/in/apurvduhan23" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+    <a class="soc" href="https://instagram.com/duhan_23" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.12 1.38C1.35 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.12.66.66 1.33 1.08 2.12 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.72 2.12-1.38.66-.66 1.08-1.33 1.38-2.12.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.72-1.46-1.38-2.12C21.32 1.35 20.65.93 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.41a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
+    <a class="soc" href="https://x.com/duhan_23" target="_blank" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.48 3.24H4.29L17.61 20.65z"/></svg></a>
+  </div>
+  <div class="handle">LinkedIn /apurvduhan23 &nbsp;·&nbsp; Instagram @duhan_23 &nbsp;·&nbsp; X @duhan_23</div>
 </div></section>
 
 <footer><div class="wrap">© 2026 Apurv Duhan · Dallas, TX · apurvduhan23@gmail.com · (940) 703-1721 · www.apurvduhan-8.com</div></footer>
 
+<!-- CHATBOT -->
 <div class="chat-bubble" id="chatBubble">Looking to hire? Start here 👋</div>
 <button class="chat-fab" id="chatFab" aria-label="Open chat">💬</button>
 <div class="chat-panel" id="chatPanel">
-  <div class="chat-head"><button class="chat-close" id="chatClose" aria-label="Close chat">&times;</button><b>Ask about Apurv</b><span>Quick guide · I'll point you to the right spot</span></div>
-  <div class="chat-body" id="chatBody"><div class="msg bot">Hi! 👋 I'm Apurv's mini-guide. Ask me anything — experience, skills, résumé, how to reach him — or tap a shortcut below.</div></div>
-  <div class="chat-sugg">
-    <button data-q="experience">Experience</button><button data-q="wins">Best wins</button><button data-q="skills">Skills</button><button data-q="resume">Résumé</button><button data-q="contact">Contact</button><button data-q="play">Fun stuff</button>
+  <div class="chat-head">
+    <div class="chat-head-row">
+      <div class="chat-bot-av">🤖</div>
+      <div class="chat-head-text"><b>Ask about Apurv</b><span><span class="chat-online"></span>AI Guide · always on</span></div>
+    </div>
+    <button class="chat-close" id="chatClose" aria-label="Close">✕</button>
   </div>
-  <div class="chat-input"><input id="chatInput" placeholder="Type a question…" autocomplete="off"><button id="chatSend">➤</button></div>
+  <div class="chat-body" id="chatBody"><div class="msg bot">Hi there! 👋 I'm Apurv's AI guide. Ask me anything about his experience, skills, certifications, or how to reach him.</div></div>
+  <div class="chat-sugg" id="chatSugg">
+    <button data-q="experience">📋 Experience</button><button data-q="wins">🏆 Top wins</button><button data-q="certs">📜 Certs</button><button data-q="skills">🛠️ Skills</button><button data-q="contact">📬 Contact</button>
+  </div>
+  <div class="chat-input"><input id="chatInput" placeholder="Ask me anything…" autocomplete="off"><button id="chatSend">➤</button></div>
 </div>
 
 <script>
+/* ===== SCROLL PROGRESS ===== */
+const progress=document.getElementById('progress');
+addEventListener('scroll',()=>{const h=document.documentElement;progress.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';},{passive:true});
+
+/* ===== NAV ===== */
 const nav=document.getElementById('nav');
-addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.08});
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+
+/* ===== THEME TOGGLE ===== */
+const themeToggle=document.getElementById('themeToggle'),htmlEl=document.documentElement;
+const savedTheme=localStorage.getItem('theme')||'dark';
+htmlEl.setAttribute('data-theme',savedTheme);themeToggle.textContent=savedTheme==='dark'?'🌙':'☀️';
+themeToggle.addEventListener('click',()=>{const cur=htmlEl.getAttribute('data-theme')==='dark'?'light':'dark';htmlEl.setAttribute('data-theme',cur);themeToggle.textContent=cur==='dark'?'🌙':'☀️';localStorage.setItem('theme',cur);});
+
+/* ===== LANGUAGE TOGGLE ===== */
+const langToggle=document.getElementById('langToggle');
+function applyLang(lang){
+  document.querySelectorAll('[data-en]').forEach(el=>{const t=el.getAttribute('data-'+lang);if(t!=null)el.textContent=t;});
+  htmlEl.setAttribute('data-lang',lang);langToggle.textContent=lang==='en'?'EN':'ES';localStorage.setItem('lang',lang);
+}
+const savedLang=localStorage.getItem('lang')||'en';
+if(savedLang==='es')applyLang('es');
+langToggle.addEventListener('click',()=>applyLang(htmlEl.getAttribute('data-lang')==='en'?'es':'en'));
+
+/* ===== MOBILE DRAWER ===== */
+const hamburger=document.getElementById('hamburger'),drawer=document.getElementById('drawer');
+hamburger.addEventListener('click',()=>drawer.classList.toggle('open'));
+drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>drawer.classList.remove('open')));
+
+/* ===== GLOW CURSOR ===== */
+const glow=document.getElementById('glow');let mx=0,my=0,cx=0,cy=0;
+addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
+(function loop(){cx+=(mx-cx)*.09;cy+=(my-cy)*.09;glow.style.left=cx+'px';glow.style.top=cy+'px';requestAnimationFrame(loop);})();
+
+/* ===== TYPEWRITER ===== */
+const roles=['Project Manager','Delivery Lead','Program Manager','Operations PM'];
+const tw=document.getElementById('typewriter');let ri=0,ci=0,deleting=false;
+(function type(){
+  const cur=roles[ri];
+  tw.textContent=deleting?cur.substring(0,ci--):cur.substring(0,ci++);
+  if(!deleting&&ci===cur.length+1){deleting=true;setTimeout(type,1400);return;}
+  if(deleting&&ci===0){deleting=false;ri=(ri+1)%roles.length;setTimeout(type,200);return;}
+  setTimeout(type,deleting?45:80);
+})();
+
+/* ===== MARQUEE ===== */
+const mqItems=['JIRA','Confluence','Power BI','SAP ECC','Agile/Scrum','Six Sigma','Salesforce','SQL','Tableau','Smartsheet','MS Project','RAID','UAT','ServiceNow','Risk Mgmt','OKRs','KPIs','Roadmaps'];
+function fillMarquee(id,items){document.getElementById(id).innerHTML=items.map(i=>`<span class="marquee-item">${i}</span>`).join('');}
+fillMarquee('mq1',mqItems);fillMarquee('mq1b',mqItems);
+const mqItems2=[...mqItems].reverse();
+fillMarquee('mq2',mqItems2);fillMarquee('mq2b',mqItems2);
+
+/* ===== REVEAL ===== */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}}),{threshold:.07});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-const glow=document.getElementById('glow');
-addEventListener('mousemove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';});
+
+/* ===== COUNTERS ===== */
 const fmt=(el,target,suffix,prefix)=>{let n=0;const step=target/40;const t=setInterval(()=>{n+=step;if(n>=target){n=target;clearInterval(t);}el.textContent=(prefix||'')+Math.round(n)+(suffix||'');},22);};
 const mio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const el=e.target,raw=el.dataset.v;if(el.dataset.done)return;el.dataset.done=1;if(raw==='600')fmt(el,600,'K+','$');else if(raw==='100')fmt(el,100,'%','');else if(raw==='32')fmt(el,32,'%','');else if(raw==='20')fmt(el,20,'+','');mio.unobserve(el);}}),{threshold:.5});
 document.querySelectorAll('.metric .n[data-v]').forEach(el=>mio.observe(el));
-const img=new Image();img.onload=()=>{const a=document.getElementById('avatar');a.style.backgroundImage="url('profile.jpg')";a.textContent='';a.style.fontSize='0';};img.src='profile.jpg';
-document.querySelectorAll('.gphoto').forEach(g=>{const f=g.dataset.img,cap=g.dataset.cap||'';const t=new Image();t.onload=()=>{g.style.backgroundImage="linear-gradient(to top,rgba(5,7,13,.85),transparent 45%),url('"+f+"')";g.innerHTML='<span class="cap">'+cap+'</span>';g.style.border='1px solid var(--line)';g.classList.add('filled');};t.src=f;});
+
+/* ===== CERTIFICATIONS CAROUSEL ===== */
+const certs=[
+  {name:'PMP — Project Management Professional',issuer:'Project Management Institute',date:'2026',tag:'Flagship',init:'PMP',color:'#f59e0b',flagship:true},
+  {name:'Six Sigma Green Belt',issuer:'AIGPE',date:'May 2026 · 16.5 hrs',tag:'Quality',init:'SS',color:'#3b82f6'},
+  {name:'CPMAI™ — Cognitive PM in AI',issuer:'Project Management Institute',date:'Jun 2026',tag:'AI Delivery',init:'AI',color:'#a855f7'},
+  {name:'Scrum Fundamentals Certified',issuer:'ScrumStudy',date:'2026',tag:'Agile',init:'SF',color:'#10b981'},
+  {name:'Agile with Atlassian Jira',issuer:'PMI / LinkedIn',date:'2026',tag:'Agile',init:'AG',color:'#f59e0b'},
+  {name:'AI Micro-Certification (AIC)',issuer:'Project Management Institute',date:'2026',tag:'AI',init:'AIC',color:'#a855f7'},
+  {name:'Product Analytics',issuer:'Certification',date:'2026',tag:'Data',init:'PA',color:'#3b82f6'},
+  {name:'Agile Foundations',issuer:'LinkedIn Learning',date:'2026',tag:'Agile',init:'AF',color:'#6366f1'},
+  {name:'Scrum: The Basics',issuer:'LinkedIn Learning',date:'2026',tag:'Agile',init:'SB',color:'#6366f1'}
+];
+const certTrack=document.getElementById('certTrack');
+certTrack.innerHTML=certs.map((c,i)=>`
+  <div class="cert-card${c.flagship?' cert-flagship':''}" style="--cc:${c.color}">
+    <span class="cert-rank">#${i+1}</span>
+    <div class="cert-badge">${c.init}</div>
+    <div class="cert-name">${c.name}</div>
+    <div class="cert-issuer">${c.issuer}</div>
+    <div class="cert-date">${c.date}</div>
+    <span class="cert-tag">${c.tag}</span>
+  </div>`).join('');
+let certIdx=0;
+function perView(){return window.innerWidth<=560?1:window.innerWidth<=860?2:3;}
+function maxIdx(){return Math.max(0,certs.length-perView());}
+const certDots=document.getElementById('certDots');
+function buildDots(){certDots.innerHTML='';for(let i=0;i<=maxIdx();i++){const d=document.createElement('span');d.className='cert-dot'+(i===certIdx?' active':'');d.addEventListener('click',()=>{certIdx=i;updateCarousel();});certDots.appendChild(d);}}
+function updateCarousel(){
+  certIdx=Math.min(certIdx,maxIdx());
+  const card=certTrack.children[0];
+  const gap=20,w=card.getBoundingClientRect().width+gap;
+  certTrack.style.transform=`translateX(${-certIdx*w}px)`;
+  certDots.querySelectorAll('.cert-dot').forEach((d,i)=>d.classList.toggle('active',i===certIdx));
+}
+document.getElementById('certPrev').addEventListener('click',()=>{certIdx=certIdx<=0?maxIdx():certIdx-1;updateCarousel();});
+document.getElementById('certNext').addEventListener('click',()=>{certIdx=certIdx>=maxIdx()?0:certIdx+1;updateCarousel();});
+let certTimer=setInterval(()=>{certIdx=certIdx>=maxIdx()?0:certIdx+1;updateCarousel();},4500);
+const certCarousel=document.querySelector('.cert-carousel');
+certCarousel.addEventListener('mouseenter',()=>clearInterval(certTimer));
+certCarousel.addEventListener('mouseleave',()=>certTimer=setInterval(()=>{certIdx=certIdx>=maxIdx()?0:certIdx+1;updateCarousel();},4500));
+// swipe
+let touchX=0;
+certCarousel.addEventListener('touchstart',e=>touchX=e.touches[0].clientX,{passive:true});
+certCarousel.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-touchX;if(dx<-40){certIdx=certIdx>=maxIdx()?0:certIdx+1;updateCarousel();}else if(dx>40){certIdx=certIdx<=0?maxIdx():certIdx-1;updateCarousel();}});
+addEventListener('resize',()=>{buildDots();updateCarousel();});
+buildDots();updateCarousel();
+
+/* ===== GSAP ===== */
+if(typeof gsap!=='undefined'){
+  gsap.registerPlugin(ScrollTrigger);
+  const heroTL=gsap.timeline({delay:.1});
+  heroTL.from('.hero-badge',{duration:.7,y:18,opacity:0,ease:'power3.out'})
+    .from('.huge',{duration:1,y:34,opacity:0,ease:'power3.out'},'-=.4')
+    .from('.role-line',{duration:.6,y:16,opacity:0,ease:'power3.out'},'-=.55')
+    .from('.hero-sub',{duration:.6,y:14,opacity:0,ease:'power3.out'},'-=.4')
+    .from('.hero-meta',{duration:.5,y:12,opacity:0,ease:'power3.out'},'-=.35')
+    .from('.hero .cta',{duration:.6,y:14,opacity:0,ease:'power3.out'},'-=.3');
+  gsap.from('.metric',{scrollTrigger:{trigger:'.metrics',start:'top 82%'},duration:.6,y:42,opacity:0,stagger:.1,ease:'power3.out'});
+  gsap.from('#why .tile',{scrollTrigger:{trigger:'#why .grid3',start:'top 82%'},duration:.55,y:34,opacity:0,stagger:.08,ease:'power3.out'});
+  gsap.from('.win',{scrollTrigger:{trigger:'.wins',start:'top 82%'},duration:.6,y:38,opacity:0,stagger:.12,ease:'back.out(1.2)'});
+  gsap.from('.case',{scrollTrigger:{trigger:'#cases',start:'top 80%'},duration:.65,y:38,opacity:0,stagger:.14,ease:'power3.out'});
+  gsap.from('.cert-card',{scrollTrigger:{trigger:'.cert-carousel',start:'top 84%'},duration:.5,y:30,opacity:0,stagger:.07,ease:'power3.out'});
+  gsap.from('.chip',{scrollTrigger:{trigger:'.skillcols',start:'top 84%'},duration:.4,scale:.8,opacity:0,stagger:.02,ease:'back.out(1.7)'});
+  gsap.from('.pr',{scrollTrigger:{trigger:'.principles',start:'top 82%'},duration:.55,y:28,opacity:0,stagger:.1,ease:'power3.out'});
+  gsap.from('.clock',{scrollTrigger:{trigger:'.clocks',start:'top 84%'},duration:.5,y:24,opacity:0,stagger:.07,ease:'power3.out'});
+}
+
+/* ===== CARD TILT ===== */
+document.querySelectorAll('.metric,.tile,.win').forEach(card=>{
+  card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`translateY(-8px) perspective(700px) rotateX(${-y*6}deg) rotateY(${x*6}deg)`;});
+  card.addEventListener('mouseleave',()=>card.style.transform='');
+});
+
+/* ===== MAGNETIC BUTTONS ===== */
+document.querySelectorAll('.mag').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();btn.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.18}px,${(e.clientY-r.top-r.height/2)*.28-3}px)`;});
+  btn.addEventListener('mouseleave',()=>btn.style.transform='');
+});
+
+/* ===== PROFILE (hidden avatar fallback) ===== */
+/* profile shown elsewhere if needed */
+
+/* ===== GALLERY ===== */
+document.querySelectorAll('.gphoto').forEach(g=>{const f=g.dataset.img,cap=g.dataset.cap||'';const t=new Image();t.onload=()=>{g.style.backgroundImage=`linear-gradient(to top,rgba(5,7,13,.85),transparent 45%),url('${f}')`;g.innerHTML=`<span class="cap">${cap}</span>`;g.style.border='1px solid var(--border)';g.classList.add('filled');};t.src=f;});
+
+/* ===== FAQ ===== */
 document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{const f=q.parentElement,a=f.querySelector('.faq-a'),open=f.classList.contains('open');f.classList.toggle('open');a.style.maxHeight=open?null:a.scrollHeight+'px';}));
-function tick(){document.querySelectorAll('.clock').forEach(c=>{const tz=c.dataset.tz,now=new Date();const t=new Intl.DateTimeFormat('en-US',{timeZone:tz,hour:'2-digit',minute:'2-digit',hour12:true}).formatToParts(now);const hh=t.find(p=>p.type==='hour').value,mm=t.find(p=>p.type==='minute').value,ap=t.find(p=>p.type==='dayPeriod').value;const day=new Intl.DateTimeFormat('en-US',{timeZone:tz,weekday:'short'}).format(now);c.innerHTML='<div class="city">'+c.dataset.city+'</div><div class="off">'+c.dataset.off+'</div><div class="time">'+hh+':'+mm+'<span class="ampm">'+ap+'</span></div><div class="day">'+day+'</div>';});}
+
+/* ===== CLOCKS ===== */
+function tick(){document.querySelectorAll('.clock').forEach(c=>{const tz=c.dataset.tz,now=new Date();const t=new Intl.DateTimeFormat('en-US',{timeZone:tz,hour:'2-digit',minute:'2-digit',hour12:true}).formatToParts(now);const hh=t.find(p=>p.type==='hour').value,mm=t.find(p=>p.type==='minute').value,ap=t.find(p=>p.type==='dayPeriod').value;const day=new Intl.DateTimeFormat('en-US',{timeZone:tz,weekday:'short'}).format(now);c.innerHTML=`<div class="city">${c.dataset.city}</div><div class="off">${c.dataset.off}</div><div class="time">${hh}:${mm}<span class="ampm">${ap}</span></div><div class="day">${day}</div>`;});}
 tick();setInterval(tick,1000);
+
+/* ===== SUDOKU ===== */
 const base=[[1,2,3,4],[3,4,1,2],[2,1,4,3],[4,3,2,1]];
 function sh(arr,seed){const a=arr.slice();for(let i=a.length-1;i>0;i--){seed=(seed*9301+49297)%233280;const j=Math.floor(seed/233280*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 const daynum=Math.floor(new Date()/8.64e7);document.getElementById('sud-num').textContent=daynum%1000;
@@ -498,76 +840,42 @@ for(let i=0;i<16;i++){const d=document.createElement('div');d.className='scell';
 addEventListener('keydown',e=>{if(!sel||sel.dataset.given)return;if(e.key>='1'&&e.key<='4'){const i=[...grid.children].indexOf(sel);state[i]=+e.key;sel.textContent=e.key;sel.classList.remove('bad');}if(e.key==='Backspace'){const i=[...grid.children].indexOf(sel);state[i]=0;sel.textContent='';}});
 document.getElementById('sud-check').addEventListener('click',()=>{const msg=document.getElementById('sudoku-msg');let filled=true,ok=true;for(let i=0;i<16;i++){const r=Math.floor(i/4),c=i%4;if(state[i]===0)filled=false;else if(state[i]!==sol[r][c]){ok=false;grid.children[i].classList.add('bad');}else grid.children[i].classList.remove('bad');}if(!filled)msg.textContent='Almost — a few cells still empty. 🙂';else if(ok)msg.innerHTML='🎉 Solved it! Now <a href="#contact">say hi</a>.';else msg.textContent='Close! The red ones need another look.';});
 document.getElementById('sud-reset').addEventListener('click',()=>{for(let i=0;i<16;i++){if(!grid.children[i].dataset.given){state[i]=0;grid.children[i].textContent='';grid.children[i].classList.remove('bad');}}document.getElementById('sudoku-msg').textContent='Fresh grid. Tap a cell, then a number.';});
-// sudoku number pad (mobile-friendly — no keyboard needed)
 document.getElementById('numpad').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||!sel||sel.dataset.given)return;const n=+b.dataset.n,i=[...grid.children].indexOf(sel);if(n===0){state[i]=0;sel.textContent='';}else{state[i]=n;sel.textContent=n;}sel.classList.remove('bad');});
 
-// hero "by the numbers" dropdown
-const nt=document.getElementById('numToggle'),npn=document.getElementById('numPanel');
-nt.addEventListener('click',()=>{const o=npn.classList.toggle('open');nt.classList.toggle('open',o);nt.textContent=(o?'▾':'▸')+' By the numbers';nt.setAttribute('aria-expanded',o);});
-
-// feedback form (private — emails Apurv, never auto-publishes)
+/* ===== FEEDBACK ===== */
 let stars=0;const rate=document.getElementById('rate');
 rate.querySelectorAll('.st').forEach(s=>s.addEventListener('click',()=>{stars=+s.dataset.v;rate.querySelectorAll('.st').forEach(x=>x.classList.toggle('on',+x.dataset.v<=stars));}));
-// Formspree endpoint — replace YOUR_FORM_ID with your Formspree form ID (falls back to email until then)
 const FORM_ID='xzdqpqyw';
-document.getElementById('fb-send').addEventListener('click',()=>{const nm=document.getElementById('fb-name').value,rl=document.getElementById('fb-role').value,ms=document.getElementById('fb-msg').value,note=document.getElementById('fb-note');if(!stars&&!ms){alert('Add a rating or a note first 🙂');return;}
-  if(FORM_ID==='YOUR_FORM_ID'){const sub=encodeURIComponent('Website feedback'+(stars?' — '+stars+'★':''));const bd=encodeURIComponent('Rating: '+(stars||'-')+'/5\nName: '+(nm||'-')+'\nRole: '+(rl||'-')+'\n\n'+ms);window.location.href='mailto:apurvduhan23@gmail.com?subject='+sub+'&body='+bd;return;}
-  const fd=new FormData();fd.append('rating',(stars||'-')+'/5');fd.append('name',nm||'-');fd.append('role',rl||'-');fd.append('message',ms);fd.append('_subject','Website feedback'+(stars?' — '+stars+'★':''));
-  note.textContent='Sending…';
-  fetch('https://formspree.io/f/'+FORM_ID,{method:'POST',headers:{'Accept':'application/json'},body:fd}).then(r=>{if(r.ok){document.querySelector('.fb-form').innerHTML='<h3 style="color:#27e3b3;font-size:1.1rem">✓ Thank you!</h3><p style="color:var(--muted);font-size:.92rem;margin-top:8px">Your feedback is on its way to Apurv. It will not appear on the site unless he chooses to feature it.</p>';}else{note.textContent='Hmm, that did not go through — please email apurvduhan23@gmail.com instead.';}}).catch(()=>{note.textContent='Network issue — please email apurvduhan23@gmail.com instead.';});});
+document.getElementById('fb-send').addEventListener('click',()=>{const nm=document.getElementById('fb-name').value,rl=document.getElementById('fb-role').value,ms=document.getElementById('fb-msg').value,note=document.getElementById('fb-note');if(!stars&&!ms){alert('Add a rating or a note first 🙂');return;}const fd=new FormData();fd.append('rating',(stars||'-')+'/5');fd.append('name',nm||'-');fd.append('role',rl||'-');fd.append('message',ms);fd.append('_subject','Website feedback'+(stars?' — '+stars+'★':''));note.textContent='Sending…';fetch('https://formspree.io/f/'+FORM_ID,{method:'POST',headers:{'Accept':'application/json'},body:fd}).then(r=>{if(r.ok)document.querySelector('.fb-form').innerHTML='<h3 style="color:var(--green);font-size:1.1rem">✓ Thank you!</h3><p style="color:var(--muted);font-size:.92rem;margin-top:8px">Your feedback is on its way to Apurv.</p>';else note.textContent='Please email apurvduhan23@gmail.com instead.';}).catch(()=>note.textContent='Network issue — please email apurvduhan23@gmail.com instead.');});
 
-// navigation chatbot
+/* ===== SMART CHATBOT ===== */
 const fab=document.getElementById('chatFab'),panel=document.getElementById('chatPanel'),cbody=document.getElementById('chatBody'),cinput=document.getElementById('chatInput'),chatBubble=document.getElementById('chatBubble');
 let chatTouched=false;
-fab.addEventListener('click',()=>{chatTouched=true;panel.classList.toggle('open');if(chatBubble)chatBubble.classList.remove('show');});
+fab.addEventListener('click',()=>{chatTouched=true;panel.classList.toggle('open');chatBubble.classList.remove('show');});
 document.getElementById('chatClose').addEventListener('click',()=>{chatTouched=true;panel.classList.remove('open');});
-// auto-open after 8s (once) unless the user already interacted
-setTimeout(()=>{if(!chatTouched&&!panel.classList.contains('open')){panel.classList.add('open');if(chatBubble)chatBubble.classList.remove('show');}},8000);
-// gentle teaser bubble at 4s
-setTimeout(()=>{if(!chatTouched&&!panel.classList.contains('open')&&chatBubble)chatBubble.classList.add('show');},4000);
-function botSay(t){const m=document.createElement('div');m.className='msg bot';m.innerHTML=t;cbody.appendChild(m);cbody.scrollTop=cbody.scrollHeight;}
+setTimeout(()=>{if(!chatTouched&&!panel.classList.contains('open')){panel.classList.add('open');chatBubble.classList.remove('show');}},9000);
+setTimeout(()=>{if(!chatTouched&&!panel.classList.contains('open'))chatBubble.classList.add('show');},4000);
+const KB={
+  experience:{test:q=>/exp|work|role|job|history|background|career|years/i.test(q),responses:["Apurv has <strong>4+ years of PM experience</strong> across fintech (Freedom Mortgage, 2024–25), global supply chain (Agilent, 2022–23), and enterprise tech (Bharat Optimum, 2020–22). Every role has measured results. Want the case studies?","His career spans fintech, global supply chain, and enterprise tech. Most recently at <strong>Freedom Mortgage</strong> — a $600K program, zero slippage, zero defects."],go:'#cases',followups:['wins','certs','skills','contact']},
+  wins:{test:q=>/win|achiev|result|best|proud|metric|number|outcome|deliver|impact/i.test(q),responses:["Top 3 outcomes:<br><br>🏆 <strong>$600K program — zero slippage</strong><br>📉 <strong>−32% defects</strong> via UAT gates<br>⚡ <strong>−18–20% supply chain turnaround</strong><br><br>Every number is measured. Want details?"],go:'#wins',followups:['experience','certs','why','contact']},
+  certs:{test:q=>/cert|pmp|six.?sigma|scrum|agile|cpmai|credential|qualif|aic|license/i.test(q),responses:["Apurv's certifications, sorted by recruiter value:<br><br>🏆 <strong>PMP</strong> — PMI (the gold standard)<br>🔵 <strong>Six Sigma Green Belt</strong> — AIGPE<br>🟣 <strong>CPMAI™</strong> — Cognitive PM in AI<br>🟢 <strong>Scrum Fundamentals</strong> — ScrumStudy<br>+ Agile, AI Micro-Cert, Product Analytics & more.<br><br>Opening the carousel!"],go:'#certifications',followups:['skills','experience','contact']},
+  skills:{test:q=>/skill|tool|tech|stack|software|platform|jira|sap|power.?bi/i.test(q),responses:["Apurv's toolkit:<br><br>🚦 <strong>Delivery</strong>: Agile/Scrum, SAFe, Kanban, RAID, OKRs<br>🛠️ <strong>Tools</strong>: JIRA, Confluence, Power BI, Tableau, SAP ECC, SQL<br>🤝 <strong>Leadership</strong>: Stakeholder & vendor mgmt, UAT, exec presentations"],go:'#skills',followups:['certs','experience','wins']},
+  resume:{test:q=>/resume|cv|download|pdf|résumé/i.test(q),responses:["Apurv's résumé is a one-click <strong>PDF download</strong> — top of the page or the contact section. Taking you there! ⬇️"],go:'#contact',followups:['contact','experience','wins']},
+  contact:{test:q=>/contact|email|reach|hire|call|connect|linkedin|talk|message|phone|interview|available/i.test(q),responses:["Best ways to connect:<br><br>📧 <strong>apurvduhan23@gmail.com</strong><br>💼 <strong>LinkedIn</strong>: /apurvduhan23<br>📄 Download his résumé right here<br><br>U.S. work-authorized, no sponsorship, available now."],go:'#contact',followups:['resume','experience','wins']},
+  why:{test:q=>/why|differ|stand.?out|shortlist|better|unique|value|strength|pick/i.test(q),responses:["What sets Apurv apart:<br><br>🎯 <strong>Systems over heroics</strong><br>🛡️ <strong>Risk killed early</strong><br>📊 <strong>Every claim is data-backed</strong><br>🌐 <strong>Cross-industry scale</strong><br>🤝 <strong>Teams trust him</strong>"],go:'#why',followups:['wins','certs','contact']},
+  education:{test:q=>/education|school|degree|university|gpa|mba|masters|academic|trine/i.test(q),responses:["🎓 <strong>M.S. Information Studies</strong> — Trine, GPA <strong>3.82</strong> (2026)<br>🎓 <strong>MBA</strong> — Trine, starting Aug 2026<br>🎓 <strong>B.Tech CS</strong> — Kurukshetra University (2021)"],go:'#education',followups:['certs','skills','experience']},
+  location:{test:q=>/where|locat|dallas|remote|relocat|visa|sponsor|authorized|based/i.test(q),responses:["Apurv is in <strong>Dallas, TX</strong> — open to remote or relocation anywhere in the U.S. <strong>No sponsorship required</strong>, so zero hiring delays."],go:'#contact',followups:['contact','why','experience']},
+  fun:{test:q=>/fun|play|game|sudoku|hobby|personal|beyond|colorado|cricket|gym/i.test(q),responses:["Outside work: gym, long walks, cricket, and the outdoors — most recently the Colorado mountains. There's also a daily Sudoku on this page! ☕"],go:'#beyond',followups:['experience','contact','wins']},
+  hello:{test:q=>/^(hi|hello|hey|howdy|yo|sup|good\s|morning|afternoon|evening)/i.test(q),responses:["Hey there! 👋 I'm Apurv's AI guide — happy to answer anything about his experience, certs, skills, or how to connect. What can I help with?"],go:null,followups:['experience','wins','certs','contact']}
+};
+const seen={};
+function pick(k){const rs=KB[k].responses;const i=(seen[k]||0)%rs.length;seen[k]=(seen[k]||0)+1;return rs[i];}
+function updateSuggs(k){const sugg=document.getElementById('chatSugg');const labels={experience:'📋 Experience',wins:'🏆 Top wins',certs:'📜 Certs',skills:'🛠️ Skills',resume:'📄 Résumé',contact:'📬 Contact',why:'❓ Why hire?',education:'🎓 Education',fun:'☕ Fun',location:'📍 Location'};const f=(k&&KB[k])?KB[k].followups:['experience','wins','certs','skills','contact'];sugg.innerHTML=f.slice(0,5).map(x=>`<button data-q="${x}">${labels[x]||x}</button>`).join('');sugg.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{userSay(b.textContent.replace(/^\S+\s/,''));answer(b.dataset.q);}));}
+function botSay(h){const m=document.createElement('div');m.className='msg bot';m.innerHTML=h;cbody.appendChild(m);cbody.scrollTop=cbody.scrollHeight;}
 function userSay(t){const m=document.createElement('div');m.className='msg user';m.textContent=t;cbody.appendChild(m);cbody.scrollTop=cbody.scrollHeight;}
-function typing(){const m=document.createElement('div');m.className='msg bot typing';m.innerHTML='<span class="dot"></span><span class="dot"></span><span class="dot"></span>';cbody.appendChild(m);cbody.scrollTop=cbody.scrollHeight;return m;}
-const INTENTS=[
- {id:'about',k:['who is apurv','about apurv','tell me about','background','profile','summary'],t:"Apurv is a PMI-certified Project Management Professional (PMP) with 4+ years leading cross-functional delivery across fintech, supply chain and enterprise tech. Calm under pressure, metrics-driven, and big on giving the team the credit."},
- {id:'experience',k:['experience','work','career','history','worked','companies','employer'],t:"4+ years of delivery: <b>Freedom Mortgage</b> (fintech PM), <b>Agilent Technologies</b> (global supply-chain PM), plus earlier customer-ops. Want detail on Freedom Mortgage or Agilent?",go:'#cases'},
- {id:'freedom',k:['freedom','mortgage','fintech','portal','loan'],t:"At <b>Freedom Mortgage</b> he ran a $600K+ portal migration protecting 12,000+ loan accounts — zero slippage, a zero-defect launch, 100% on-time across 16 sprints, 32% fewer defects.",go:'#cases'},
- {id:'agilent',k:['agilent','supply','logistics','vendor','sku','procurement'],t:"At <b>Agilent</b> he led a multi-region supply-chain redesign: 18–20% faster turnaround, 96% continuity, 120+ SKUs across 4 continents, with Power BI dashboards.",go:'#cases'},
- {id:'wins',k:['win','achievement','result','best','proud','impact','metric','number'],t:"Top 3: a zero-slippage $600K program, defects cut 32%, and turnaround down 18–20%. Featured Wins has them.",go:'#wins'},
- {id:'skills',k:['skill','tool','tech','stack','software','agile','scrum','jira'],t:"Agile/Scrum, SAFe, RAID risk, roadmaps, OKRs — plus JIRA, Confluence, Asana, MS Project, Power BI, Tableau, SAP, SQL.",go:'#skills'},
- {id:'why',k:['why hire','why you','why apurv','differ','stand out','shortlist','strength'],t:"Predictable delivery, risk killed early, fluent in metrics, scale + cross-industry, teams that trust him, ready day one. Full breakdown here.",go:'#why'},
- {id:'education',k:['education','degree','study','university','mba','master','college'],t:"M.S. Information Studies (GPA 3.82, Trine), B.Tech CS (Kurukshetra), and an MBA starting Aug 2026 (online, weekends).",go:'#education'},
- {id:'certs',k:['cert','pmp','sigma','credential','qualified'],t:"PMP (PMI), Six Sigma Green Belt, Scrum (SFPC), Agile with Jira, Salesforce Platform Foundations.",go:'#education'},
- {id:'auth',k:['visa','sponsor','authorization','authorized','green card','permit','citizen','eligible'],t:"Authorized to work in the U.S. with <b>no sponsorship required</b> (green card in process)."},
- {id:'location',k:['location','based','dallas','remote','relocate','relocation','onsite'],t:"Based in <b>Dallas, TX</b>, open to <b>remote or relocation</b>."},
- {id:'role',k:['looking for','position','open to','target','want','seeking'],t:"Targeting <b>Project Manager</b> roles — also fits Program, Delivery, and Operations PM."},
- {id:'salary',k:['salary','pay','compensation','expectation'],t:"Best discussed directly — drop a note via contact and he'll share expectations for the role.",go:'#contact'},
- {id:'resume',k:['resume','cv','download','pdf'],t:"Grab the résumé PDF from the top or the contact section. Taking you there →",go:'#contact'},
- {id:'contact',k:['contact','email','reach','call','connect','linkedin','talk','hire me','message'],t:"Easiest: email <a href='mailto:apurvduhan23@gmail.com'>apurvduhan23@gmail.com</a> or connect on LinkedIn. Sliding to contact →",go:'#contact'},
- {id:'personal',k:['hobby','fun','outside','interest','cricket','gym','travel','personal'],t:"Outside work: the gym, long walks, cricket, and exploring the outdoors — recently Colorado.",go:'#beyond'},
- {id:'reviews',k:['review','feedback','testimonial'],t:"You can leave a private review + rating — it goes straight to Apurv and won't post publicly without his ok.",go:'#reviews'},
- {id:'play',k:['sudoku','game','play','puzzle'],t:"There's a daily Sudoku near the bottom — good luck beating it. ☕",go:'#play'}
-];
-const SMALL=[
- {k:['hi','hey','hello','yo','hii','heyy','howdy'],t:"Hey there! 👋 I'm Apurv's assistant. Ask about his experience, skills, or how to reach him."},
- {k:['how are you','hows it going'],t:"Doing great, thanks! What would you like to know about Apurv?"},
- {k:['thanks','thank you','thx','appreciate'],t:"Anytime! 🙌 Want his résumé or a way to reach him?"},
- {k:['bye','goodbye','see ya'],t:"Take care! If you're hiring, Contact is one tap away. 👋"},
- {k:['are you a bot','are you ai','real person','chatbot'],t:"Guilty — I'm a friendly assistant built into the site to help you find things fast. For the real human, hit Contact 🙂"},
- {k:['your name','who are you'],t:"I'm Apurv's site guide. Ask me about his work, skills, or how to get in touch!"},
- {k:['help','what can you do','options','menu'],t:"I can cover his <b>experience</b>, <b>skills</b>, <b>education</b>, <b>why hire him</b>, <b>availability</b>, or <b>contact</b>. What's up?"}
-];
-function hit(q,kw){const b=kw.length<=3?('\\b'+kw+'\\b'):('\\b'+kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));return new RegExp(b).test(q);}
-function score(q,arr){let best=null,bs=0;arr.forEach(it=>{let s=0;it.k.forEach(kw=>{if(hit(q,kw))s+=kw.split(' ').length;});if(s>bs){bs=s;best=it;}});return bs>0?best:null;}
-let lastIntent=null;
-function reply(q){q=' '+q.toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ')+' ';
-  if(/\b(more|detail|elaborate|go on|tell me more)\b/.test(q)&&lastIntent)return{t:"Scrolling you to the full section so you can dig in 👇",go:lastIntent.go||'#cases'};
-  const it=score(q,INTENTS);if(it){lastIntent=it;return it;}
-  const sm=score(q,SMALL);if(sm)return sm;
-  return{t:"Good question! I can cover experience, wins, skills, education, availability, or contact — or just email <a href='mailto:apurvduhan23@gmail.com'>apurvduhan23@gmail.com</a> 🙂"};}
-function respond(q){const tp=typing();setTimeout(()=>{tp.remove();const r=reply(q);botSay(r.t);if(r.go){setTimeout(()=>{const el=document.querySelector(r.go);if(el)el.scrollIntoView({behavior:'smooth'});},500);}},Math.min(900,420+q.length*8));}
-document.querySelectorAll('.chat-sugg button').forEach(b=>b.addEventListener('click',()=>{userSay(b.textContent);respond(b.dataset.q);}));
-function csend(){const v=cinput.value.trim();if(!v)return;userSay(v);cinput.value='';respond(v);}
+function answer(q){const s=String(q).toLowerCase();let k=null;for(const[key,e]of Object.entries(KB)){if(e.test(s)){k=key;break;}}const resp=k?pick(k):`Good question! For anything specific, email <strong>apurvduhan23@gmail.com</strong> — Apurv replies fast. Or ask about his experience, wins, certs, skills, or contact.`;const go=k?KB[k].go:null;const typing=document.createElement('div');typing.className='typing';typing.innerHTML='<span></span><span></span><span></span>';cbody.appendChild(typing);cbody.scrollTop=cbody.scrollHeight;setTimeout(()=>{typing.remove();botSay(resp);if(go)setTimeout(()=>{const el=document.querySelector(go);if(el)el.scrollIntoView({behavior:'smooth'});},600);updateSuggs(k);},380+Math.random()*520);}
+document.querySelectorAll('.chat-sugg button').forEach(b=>b.addEventListener('click',()=>{userSay(b.textContent.replace(/^\S+\s/,''));answer(b.dataset.q);}));
+function csend(){const v=cinput.value.trim();if(!v)return;userSay(v);cinput.value='';answer(v);}
 document.getElementById('chatSend').addEventListener('click',csend);
 cinput.addEventListener('keydown',e=>{if(e.key==='Enter')csend();});
 </script>
