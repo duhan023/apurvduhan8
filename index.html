@@ -57,6 +57,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-3;transition:opacity .35
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;border-bottom:1px solid transparent;transition:.35s}
 nav.scrolled{background:var(--navbg);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
 nav .wrap{display:flex;justify-content:space-between;align-items:center;height:68px}
+nav .nav-wrap{justify-content:center}
 .logo{font-weight:800;font-size:1.05rem;letter-spacing:1.5px;cursor:pointer;
   background:linear-gradient(90deg,var(--gold),var(--blue2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .nav-right{display:flex;align-items:center;gap:8px}
@@ -346,6 +347,52 @@ footer{border-top:1px solid var(--border);padding:30px 0;text-align:center;color
 .chat-input input:focus{border-color:var(--gold)}
 .chat-input button{background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;color:#1a1205;width:40px;height:40px;cursor:pointer;border-radius:11px;font-weight:700;font-size:1rem;flex-shrink:0;transition:.2s}
 .chat-input button:hover{transform:scale(1.08)}
+
+/* ============ NAV SOCIALS ============ */
+.nav-socials{display:flex;align-items:center;gap:6px;margin-left:18px;padding-left:18px;border-left:1px solid var(--border)}
+.nav-socials a{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;transition:.22s}
+.nav-socials a:hover{background:var(--surface2);transform:translateY(-2px)}
+.nav-socials svg{width:17px;height:17px;fill:var(--muted);transition:.22s}
+.nav-socials a:hover svg{fill:var(--gold)}
+@media(max-width:860px){.links,.nav-socials{display:none}}
+
+/* ============ CORNER SWITCHES ============ */
+.lang-switch{position:fixed;top:18px;left:24px;z-index:150;display:inline-flex;align-items:center;gap:0;
+  background:var(--navbg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--border);
+  border-radius:30px;padding:4px;cursor:pointer;user-select:none;position:fixed;box-shadow:0 6px 20px rgba(0,0,0,.18)}
+.lang-switch .ls-opt{position:relative;z-index:2;font-family:'Plus Jakarta Sans';font-weight:700;font-size:.74rem;letter-spacing:.5px;
+  padding:7px 14px;border-radius:24px;color:var(--muted);transition:color .3s}
+.lang-switch .ls-opt.active{color:#1a1205}
+.lang-switch .ls-knob{position:absolute;top:4px;left:4px;height:calc(100% - 8px);width:46px;border-radius:24px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));transition:transform .32s cubic-bezier(.16,.8,.3,1);z-index:1}
+.lang-switch.es .ls-knob{transform:translateX(44px)}
+
+.theme-switch{position:fixed;top:18px;right:24px;z-index:150;width:74px;height:36px;border-radius:30px;cursor:pointer;
+  background:var(--navbg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--border);
+  padding:0;box-shadow:0 6px 20px rgba(0,0,0,.18);overflow:hidden}
+.theme-switch .ts-ic{position:absolute;top:50%;transform:translateY(-50%);font-size:.95rem;z-index:1;transition:opacity .3s}
+.theme-switch .ts-sun{left:11px;color:var(--gold2)}
+.theme-switch .ts-moon{right:11px;color:var(--blue2)}
+.theme-switch .ts-knob{position:absolute;top:4px;left:4px;width:28px;height:28px;border-radius:50%;z-index:2;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));transition:transform .32s cubic-bezier(.16,.8,.3,1);box-shadow:0 2px 8px rgba(0,0,0,.3)}
+[data-theme="light"] .theme-switch .ts-knob{transform:translateX(38px);background:linear-gradient(135deg,var(--blue),var(--blue2))}
+@media(max-width:560px){.lang-switch{top:14px;left:14px}.theme-switch{top:14px;right:14px}}
+
+/* ============ CERT CARD ACTIONS + LOGO ============ */
+.cert-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.cert-logo{width:54px;height:54px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;flex-shrink:0;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.cert-logo img{width:42px;height:42px;object-fit:contain}
+.cert-logo .fallback{font-family:'Plus Jakarta Sans';font-weight:800;font-size:1.1rem;color:#fff;
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--cc,var(--gold)),color-mix(in srgb,var(--cc,var(--gold)) 55%,#000))}
+.cert-actions{display:flex;gap:9px;margin-top:18px}
+.cert-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:.8rem;font-weight:600;
+  padding:9px 12px;border-radius:10px;transition:.22s;cursor:pointer;border:1px solid var(--border)}
+.cert-btn.view{background:var(--cc,var(--gold));color:#1a1205;border-color:transparent}
+.cert-btn.view:hover{filter:brightness(1.08);transform:translateY(-2px)}
+.cert-btn.dl{background:transparent;color:var(--ink)}
+.cert-btn.dl:hover{border-color:var(--cc,var(--gold));transform:translateY(-2px)}
 </style>
 </head>
 <body>
@@ -353,22 +400,32 @@ footer{border-top:1px solid var(--border);padding:30px 0;text-align:center;color
 <div id="progress"></div>
 <div id="glow"></div>
 
+<!-- CORNER SWITCHES (top-left lang · top-right theme) -->
+<div class="lang-switch" id="langSwitch" role="button" tabindex="0" aria-label="Language">
+  <span class="ls-opt active" data-set="en">EN</span>
+  <span class="ls-opt" data-set="es">ES</span>
+  <span class="ls-knob"></span>
+</div>
+<button class="theme-switch" id="themeSwitch" aria-label="Toggle theme">
+  <span class="ts-ic ts-sun">☀</span>
+  <span class="ts-ic ts-moon">☾</span>
+  <span class="ts-knob"></span>
+</button>
+
 <!-- NAV -->
-<nav id="nav"><div class="wrap">
-  <span class="logo" onclick="scrollTo(0,0)">APURV&nbsp;DUHAN</span>
+<nav id="nav"><div class="wrap nav-wrap">
   <div class="nav-right">
     <span class="links">
       <a href="#impact" data-en="Impact" data-es="Impacto">Impact</a>
-      <a href="#why" data-en="Why Me" data-es="Por Qué Yo">Why Me</a>
-      <a href="#wins" data-en="Wins" data-es="Logros">Wins</a>
-      <a href="#cases" data-en="Cases" data-es="Casos">Cases</a>
+      <a href="#cases" data-en="Work" data-es="Trabajo">Work</a>
       <a href="#certifications" data-en="Certs" data-es="Certificados">Certs</a>
-      <a href="#skills" data-en="Skills" data-es="Habilidades">Skills</a>
-      <a href="#beyond" data-en="Beyond" data-es="Personal">Beyond</a>
       <a href="#contact" data-en="Connect" data-es="Contacto">Connect</a>
     </span>
-    <button class="icbtn icbtn-lang" id="langToggle" aria-label="Language">EN</button>
-    <button class="icbtn" id="themeToggle" aria-label="Theme">🌙</button>
+    <span class="nav-socials">
+      <a href="https://linkedin.com/in/apurvduhan23" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+      <a href="https://instagram.com/duhan_23" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.12 1.38C1.35 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.12.66.66 1.33 1.08 2.12 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.72 2.12-1.38.66-.66 1.08-1.33 1.38-2.12.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.72-1.46-1.38-2.12C21.32 1.35 20.65.93 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.41a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
+      <a href="https://x.com/duhan_23" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.48 3.24H4.29L17.61 20.65z"/></svg></a>
+    </span>
     <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
   </div>
 </div></nav>
@@ -684,21 +741,25 @@ addEventListener('scroll',()=>{const h=document.documentElement;progress.style.w
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
 
-/* ===== THEME TOGGLE ===== */
-const themeToggle=document.getElementById('themeToggle'),htmlEl=document.documentElement;
+/* ===== THEME SWITCH (corner) ===== */
+const themeSwitch=document.getElementById('themeSwitch'),htmlEl=document.documentElement;
 const savedTheme=localStorage.getItem('theme')||'dark';
-htmlEl.setAttribute('data-theme',savedTheme);themeToggle.textContent=savedTheme==='dark'?'🌙':'☀️';
-themeToggle.addEventListener('click',()=>{const cur=htmlEl.getAttribute('data-theme')==='dark'?'light':'dark';htmlEl.setAttribute('data-theme',cur);themeToggle.textContent=cur==='dark'?'🌙':'☀️';localStorage.setItem('theme',cur);});
+htmlEl.setAttribute('data-theme',savedTheme);
+themeSwitch.addEventListener('click',()=>{const cur=htmlEl.getAttribute('data-theme')==='dark'?'light':'dark';htmlEl.setAttribute('data-theme',cur);localStorage.setItem('theme',cur);});
 
-/* ===== LANGUAGE TOGGLE ===== */
-const langToggle=document.getElementById('langToggle');
+/* ===== LANGUAGE SWITCH (corner) ===== */
+const langSwitch=document.getElementById('langSwitch');
 function applyLang(lang){
   document.querySelectorAll('[data-en]').forEach(el=>{const t=el.getAttribute('data-'+lang);if(t!=null)el.textContent=t;});
-  htmlEl.setAttribute('data-lang',lang);langToggle.textContent=lang==='en'?'EN':'ES';localStorage.setItem('lang',lang);
+  htmlEl.setAttribute('data-lang',lang);
+  langSwitch.classList.toggle('es',lang==='es');
+  langSwitch.querySelectorAll('.ls-opt').forEach(o=>o.classList.toggle('active',o.dataset.set===lang));
+  localStorage.setItem('lang',lang);
 }
 const savedLang=localStorage.getItem('lang')||'en';
-if(savedLang==='es')applyLang('es');
-langToggle.addEventListener('click',()=>applyLang(htmlEl.getAttribute('data-lang')==='en'?'es':'en'));
+applyLang(savedLang);
+langSwitch.addEventListener('click',()=>applyLang(htmlEl.getAttribute('data-lang')==='en'?'es':'en'));
+langSwitch.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();applyLang(htmlEl.getAttribute('data-lang')==='en'?'es':'en');}});
 
 /* ===== MOBILE DRAWER ===== */
 const hamburger=document.getElementById('hamburger'),drawer=document.getElementById('drawer');
@@ -738,27 +799,35 @@ const mio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const
 document.querySelectorAll('.metric .n[data-v]').forEach(el=>mio.observe(el));
 
 /* ===== CERTIFICATIONS CAROUSEL ===== */
+function certImgErr(img){if(img.dataset.step!=='g'){img.dataset.step='g';img.src='https://www.google.com/s2/favicons?sz=128&domain='+img.dataset.domain;}else{img.parentNode.innerHTML='<span class="fallback">'+img.dataset.init+'</span>';}}
 const certs=[
-  {name:'PMP — Project Management Professional',issuer:'Project Management Institute',date:'2026',tag:'Flagship',init:'PMP',color:'#f59e0b',flagship:true},
-  {name:'Six Sigma Green Belt',issuer:'AIGPE',date:'May 2026 · 16.5 hrs',tag:'Quality',init:'SS',color:'#3b82f6'},
-  {name:'CPMAI™ — Cognitive PM in AI',issuer:'Project Management Institute',date:'Jun 2026',tag:'AI Delivery',init:'AI',color:'#a855f7'},
-  {name:'Scrum Fundamentals Certified',issuer:'ScrumStudy',date:'2026',tag:'Agile',init:'SF',color:'#10b981'},
-  {name:'Agile with Atlassian Jira',issuer:'PMI / LinkedIn',date:'2026',tag:'Agile',init:'AG',color:'#f59e0b'},
-  {name:'AI Micro-Certification (AIC)',issuer:'Project Management Institute',date:'2026',tag:'AI',init:'AIC',color:'#a855f7'},
-  {name:'Product Analytics',issuer:'Certification',date:'2026',tag:'Data',init:'PA',color:'#3b82f6'},
-  {name:'Agile Foundations',issuer:'LinkedIn Learning',date:'2026',tag:'Agile',init:'AF',color:'#6366f1'},
-  {name:'Scrum: The Basics',issuer:'LinkedIn Learning',date:'2026',tag:'Agile',init:'SB',color:'#6366f1'}
+  {name:'PMP — Project Management Professional',issuer:'Project Management Institute',date:'2026',tag:'Flagship',init:'PMP',color:'#f59e0b',flagship:true,logo:'pmi.org',pdf:'certs/pmp.pdf'},
+  {name:'Six Sigma Green Belt',issuer:'AIGPE',date:'May 2026 · 16.5 hrs',tag:'Quality',init:'SS',color:'#3b82f6',logo:'aigpe.com',pdf:'certs/six-sigma-green-belt.pdf'},
+  {name:'CPMAI™ — Cognitive PM in AI',issuer:'Project Management Institute',date:'Jun 2026',tag:'AI Delivery',init:'AI',color:'#a855f7',logo:'pmi.org',pdf:'certs/cpmai.pdf'},
+  {name:'Scrum Fundamentals Certified',issuer:'ScrumStudy',date:'2026',tag:'Agile',init:'SF',color:'#10b981',logo:'scrumstudy.com',pdf:'certs/scrum-fundamentals.pdf'},
+  {name:'Agile with Atlassian Jira',issuer:'PMI / Atlassian',date:'2026',tag:'Agile',init:'AG',color:'#f59e0b',logo:'pmi.org',pdf:'certs/agile-pmi.pdf'},
+  {name:'AI Micro-Certification (AIC)',issuer:'Project Management Institute',date:'2026',tag:'AI',init:'AIC',color:'#a855f7',logo:'pmi.org',pdf:'certs/ai-micro-certification.pdf'},
+  {name:'Product Analytics',issuer:'Pendo',date:'2026',tag:'Data',init:'PA',color:'#3b82f6',logo:'pendo.io',pdf:'certs/product-analytics.pdf'},
+  {name:'Agile Foundations',issuer:'LinkedIn Learning',date:'2026',tag:'Agile',init:'AF',color:'#6366f1',logo:'linkedin.com',pdf:'certs/agile-foundations.pdf'},
+  {name:'Scrum: The Basics',issuer:'LinkedIn Learning',date:'2026',tag:'Agile',init:'SB',color:'#6366f1',logo:'linkedin.com',pdf:'certs/scrum-basics.pdf'}
 ];
 const certTrack=document.getElementById('certTrack');
 certTrack.innerHTML=certs.map((c,i)=>`
   <div class="cert-card${c.flagship?' cert-flagship':''}" style="--cc:${c.color}">
-    <span class="cert-rank">#${i+1}</span>
-    <div class="cert-badge">${c.init}</div>
+    <div class="cert-top">
+      <div class="cert-logo"><img src="https://logo.clearbit.com/${c.logo}" data-domain="${c.logo}" data-init="${c.init}" alt="${c.issuer}" onerror="certImgErr(this)"></div>
+      <span class="cert-rank">#${i+1}</span>
+    </div>
     <div class="cert-name">${c.name}</div>
     <div class="cert-issuer">${c.issuer}</div>
     <div class="cert-date">${c.date}</div>
     <span class="cert-tag">${c.tag}</span>
+    <div class="cert-actions">
+      <a class="cert-btn view" href="${c.pdf}" target="_blank" rel="noopener" data-en="View" data-es="Ver">View</a>
+      <a class="cert-btn dl" href="${c.pdf}" download data-en="⬇ Download" data-es="⬇ Descargar">⬇ Download</a>
+    </div>
   </div>`).join('');
+applyLang(htmlEl.getAttribute('data-lang'));
 let certIdx=0;
 function perView(){return window.innerWidth<=560?1:window.innerWidth<=860?2:3;}
 function maxIdx(){return Math.max(0,certs.length-perView());}
@@ -853,8 +922,9 @@ const fab=document.getElementById('chatFab'),panel=document.getElementById('chat
 let chatTouched=false;
 fab.addEventListener('click',()=>{chatTouched=true;panel.classList.toggle('open');chatBubble.classList.remove('show');});
 document.getElementById('chatClose').addEventListener('click',()=>{chatTouched=true;panel.classList.remove('open');});
-setTimeout(()=>{if(!chatTouched&&!panel.classList.contains('open')){panel.classList.add('open');chatBubble.classList.remove('show');}},9000);
-setTimeout(()=>{if(!chatTouched&&!panel.classList.contains('open'))chatBubble.classList.add('show');},4000);
+setTimeout(()=>{if(!chatTouched&&!panel.classList.contains('open'))chatBubble.classList.add('show');},4500);
+setTimeout(()=>{if(!chatTouched)chatBubble.classList.remove('show');},12000);
+chatBubble.addEventListener('click',()=>{chatTouched=true;panel.classList.add('open');chatBubble.classList.remove('show');});
 const KB={
   experience:{test:q=>/exp|work|role|job|history|background|career|years/i.test(q),responses:["Apurv has <strong>4+ years of PM experience</strong> across fintech (Freedom Mortgage, 2024–25), global supply chain (Agilent, 2022–23), and enterprise tech (Bharat Optimum, 2020–22). Every role has measured results. Want the case studies?","His career spans fintech, global supply chain, and enterprise tech. Most recently at <strong>Freedom Mortgage</strong> — a $600K program, zero slippage, zero defects."],go:'#cases',followups:['wins','certs','skills','contact']},
   wins:{test:q=>/win|achiev|result|best|proud|metric|number|outcome|deliver|impact/i.test(q),responses:["Top 3 outcomes:<br><br>🏆 <strong>$600K program — zero slippage</strong><br>📉 <strong>−32% defects</strong> via UAT gates<br>⚡ <strong>−18–20% supply chain turnaround</strong><br><br>Every number is measured. Want details?"],go:'#wins',followups:['experience','certs','why','contact']},
