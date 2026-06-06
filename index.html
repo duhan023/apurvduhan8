@@ -789,9 +789,15 @@ fillMarquee('mq1',mqItems);fillMarquee('mq1b',mqItems);
 const mqItems2=[...mqItems].reverse();
 fillMarquee('mq2',mqItems2);fillMarquee('mq2b',mqItems2);
 
-/* ===== REVEAL ===== */
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}}),{threshold:.07});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+/* ===== REVEAL (IntersectionObserver + scroll/load fallback) ===== */
+const revEls=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}}),{threshold:0,rootMargin:'0px 0px -8% 0px'});
+revEls.forEach(el=>io.observe(el));
+// Fallback: reveal anything within/above the viewport even if IO misfires.
+function revealCheck(){revEls.forEach(el=>{if(el.classList.contains('show'))return;const r=el.getBoundingClientRect();if(r.top<innerHeight*0.95){el.classList.add('show');}});}
+addEventListener('scroll',revealCheck,{passive:true});
+addEventListener('load',()=>{revealCheck();setTimeout(revealCheck,400);});
+revealCheck();
 
 /* ===== COUNTERS ===== */
 const fmt=(el,target,suffix,prefix)=>{let n=0;const step=target/40;const t=setInterval(()=>{n+=step;if(n>=target){n=target;clearInterval(t);}el.textContent=(prefix||'')+Math.round(n)+(suffix||'');},22);};
@@ -871,6 +877,13 @@ if(typeof gsap!=='undefined'){
   gsap.from('.chip',{scrollTrigger:{trigger:'.skillcols',start:'top 84%'},duration:.4,scale:.8,opacity:0,stagger:.02,ease:'back.out(1.7)'});
   gsap.from('.pr',{scrollTrigger:{trigger:'.principles',start:'top 82%'},duration:.55,y:28,opacity:0,stagger:.1,ease:'power3.out'});
   gsap.from('.clock',{scrollTrigger:{trigger:'.clocks',start:'top 84%'},duration:.5,y:24,opacity:0,stagger:.07,ease:'power3.out'});
+  // Recompute trigger positions once layout settles (fonts/images shift the page),
+  // otherwise far-down sections (Skills, Philosophy) can stay stuck at opacity 0.
+  window.addEventListener('load',()=>ScrollTrigger.refresh());
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>ScrollTrigger.refresh());
+  setTimeout(()=>ScrollTrigger.refresh(),1200);
+  // Safety net: if any reveal element is still invisible after load, force it visible.
+  window.addEventListener('load',()=>setTimeout(()=>{document.querySelectorAll('.chip,.pr,.metric,.tile,.win,.case,.cert-card,.clock').forEach(el=>{if(parseFloat(getComputedStyle(el).opacity)===0){el.style.opacity='1';el.style.transform='none';}});},1600));
 }
 
 /* ===== CARD TILT ===== */
