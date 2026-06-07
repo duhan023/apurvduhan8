@@ -818,15 +818,15 @@ const certs=[
 ];
 // Degrees (static, shown above the carousel)
 const degrees=[
-  {name:'M.S. Information Studies',issuer:'Trine University · GPA 3.82',date:'May 2026',init:'TU',color:'#f59e0b',logo:'trine.edu',pdf:'certs/degree-ms-trine.pdf'},
+  {name:'M.S. Information Studies',issuer:'Trine University · GPA 3.82',date:'May 2026',init:'TU',color:'#f59e0b',logo:'trine.edu',img:'logos/trine.jpg',pdf:'certs/degree-ms-trine.pdf'},
   {name:'B.Tech, Computer Science',issuer:'Kurukshetra University',date:'2021',init:'KU',color:'#3b82f6',logo:'kuk.ac.in',pdf:'certs/degree-btech-kuk.pdf'},
-  {name:'MBA (in progress)',issuer:'Trine University',date:'Starting Aug 2026',init:'TU',color:'#a855f7',logo:'trine.edu',pdf:''}
+  {name:'MBA (in progress)',issuer:'Trine University',date:'Starting Aug 2026',init:'TU',color:'#a855f7',logo:'trine.edu',img:'logos/trine.jpg',pdf:''}
 ];
 const degreesEl=document.getElementById('degrees');
 degreesEl.innerHTML=degrees.map(c=>`
   <div class="cert-card degree-card" style="--cc:${c.color}">
     <div class="cert-top">
-      <div class="cert-logo"><img src="https://logo.clearbit.com/${c.logo}" data-domain="${c.logo}" data-init="${c.init}" alt="${c.issuer}" onerror="certImgErr(this)"></div>
+      <div class="cert-logo"><img src="${c.img||('https://logo.clearbit.com/'+c.logo)}" data-domain="${c.logo}" data-init="${c.init}" alt="${c.issuer}" onerror="certImgErr(this)"></div>
       ${c.pdf?`<button class="cert-eye" data-pdf="${c.pdf}" data-title="${c.name}" aria-label="Preview">${eyeSVG}</button>`:''}
     </div>
     <div class="cert-name">${c.name}</div>
