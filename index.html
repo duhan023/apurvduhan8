@@ -386,17 +386,19 @@ footer{border-top:1px solid var(--border);padding:30px 0;text-align:center;color
 .cert-logo .fallback{font-family:'Plus Jakarta Sans';font-weight:800;font-size:1.1rem;color:#fff;
   width:100%;height:100%;display:flex;align-items:center;justify-content:center;
   background:linear-gradient(135deg,var(--cc,var(--gold)),color-mix(in srgb,var(--cc,var(--gold)) 55%,#000))}
-.cert-actions{display:flex;gap:9px;margin-top:18px}
-.cert-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:.8rem;font-weight:600;
-  padding:9px 12px;border-radius:10px;transition:.22s;cursor:pointer;border:1px solid var(--border)}
-.cert-btn.view{background:var(--cc,var(--gold));color:#1a1205;border-color:transparent}
-.cert-btn.view:hover{filter:brightness(1.08);transform:translateY(-2px)}
-.cert-btn.dl{background:transparent;color:var(--ink);flex:0 0 46px}
-.cert-btn.dl:hover{border-color:var(--cc,var(--gold));transform:translateY(-2px)}
-.cert-btn.view svg{flex-shrink:0}
-.cert-eye{width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:var(--surface2);color:var(--ink);
-  cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.22s;flex-shrink:0}
-.cert-eye:hover{background:var(--cc,var(--gold));color:#1a1205;border-color:transparent;transform:translateY(-2px) scale(1.05)}
+/* Sleek, monochrome, classy preview/download controls */
+.cert-actions{display:flex;gap:8px;margin-top:16px}
+.cert-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;font-size:.78rem;font-weight:700;
+  letter-spacing:.3px;border-radius:9px;transition:background .2s,color .2s,border-color .2s,transform .2s;cursor:pointer;
+  border:1px solid var(--border);background:transparent;color:var(--ink)}
+.cert-btn.view{flex:1;padding:9px 12px}
+.cert-btn.view:hover{background:var(--ink);color:var(--bg);border-color:var(--ink);transform:translateY(-1px)}
+.cert-btn.dl{flex:0 0 40px;height:36px;color:var(--muted)}
+.cert-btn.dl:hover{background:var(--ink);color:var(--bg);border-color:var(--ink);transform:translateY(-1px)}
+.cert-btn svg{flex-shrink:0}
+.cert-eye{width:34px;height:34px;border-radius:9px;border:1px solid var(--border);background:transparent;color:var(--muted);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;flex-shrink:0}
+.cert-eye:hover{background:var(--ink);color:var(--bg);border-color:var(--ink);transform:translateY(-1px)}
 
 /* ============ CERT SUBHEADS + DEGREES ============ */
 .cert-subhead{font-size:1.1rem;font-weight:700;color:var(--ink);margin:8px 0 18px;display:flex;align-items:center;gap:9px}
@@ -601,7 +603,7 @@ footer{border-top:1px solid var(--border);padding:30px 0;text-align:center;color
   <h2 data-en="Credentials, current and verified." data-es="Credenciales, vigentes y verificadas.">Credentials, current and verified.</h2>
   <p class="lead" data-en="PMP is the gold standard — the rest stack depth across Agile, quality, and AI-driven delivery." data-es="PMP es el estándar de oro — el resto suma profundidad en Agile, calidad y entrega con IA.">PMP is the gold standard — the rest stack depth across Agile, quality, and AI-driven delivery.</p>
 
-  <h3 class="cert-subhead" data-en="🎓 Degrees" data-es="🎓 Títulos">🎓 Degrees</h3>
+  <h3 class="cert-subhead" data-en="🎓 Degrees & Flagship Credential" data-es="🎓 Títulos y Credencial Insignia">🎓 Degrees &amp; Flagship Credential</h3>
   <div class="degrees" id="degrees"></div>
 
   <h3 class="cert-subhead" data-en="📜 Professional Certifications" data-es="📜 Certificaciones Profesionales">📜 Professional Certifications</h3>
@@ -803,52 +805,56 @@ const mio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const
 document.querySelectorAll('.metric .n[data-v]').forEach(el=>mio.observe(el));
 
 /* ===== CERTIFICATIONS CAROUSEL ===== */
-const eyeSVG='<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>';
-function certImgErr(img){if(img.dataset.step!=='g'){img.dataset.step='g';img.src='https://www.google.com/s2/favicons?sz=128&domain='+img.dataset.domain;}else{img.parentNode.innerHTML='<span class="fallback">'+img.dataset.init+'</span>';}}
+const eyeSVG='<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>';
+const dlSVG='<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>';
+function certImgErr(img){img.parentNode.innerHTML='<span class="fallback">'+img.dataset.init+'</span>';}
+function logoSrc(c){return c.img||('https://www.google.com/s2/favicons?sz=128&domain='+c.logo);}
+// Weighty certifications only, ordered by weightage (PMP is pinned up top).
 const certs=[
-  {name:'PMP — Project Management Professional',issuer:'Project Management Institute',date:'2026',tag:'Flagship',init:'PMP',color:'#f59e0b',flagship:true,logo:'pmi.org',pdf:'certs/pmp.pdf'},
-  {name:'Six Sigma Green Belt',issuer:'AIGPE',date:'May 2026 · 16.5 hrs',tag:'Quality',init:'SS',color:'#3b82f6',logo:'aigpe.com',pdf:'certs/six-sigma-green-belt.pdf'},
-  {name:'CPMAI™ — Cognitive PM in AI',issuer:'Project Management Institute',date:'Jun 2026',tag:'AI Delivery',init:'AI',color:'#a855f7',logo:'pmi.org',pdf:'certs/cpmai.pdf'},
-  {name:'Scrum Fundamentals Certified',issuer:'ScrumStudy',date:'2026',tag:'Agile',init:'SF',color:'#10b981',logo:'scrumstudy.com',pdf:'certs/scrum-fundamentals.pdf'},
-  {name:'Agile with Atlassian Jira',issuer:'PMI / Atlassian',date:'2026',tag:'Agile',init:'AG',color:'#f59e0b',logo:'pmi.org',pdf:'certs/agile-pmi.pdf'},
-  {name:'AI Micro-Certification (AIC)',issuer:'Project Management Institute',date:'2026',tag:'AI',init:'AIC',color:'#a855f7',logo:'pmi.org',pdf:'certs/ai-micro-certification.pdf'},
-  {name:'Product Analytics',issuer:'Pendo',date:'2026',tag:'Data',init:'PA',color:'#3b82f6',logo:'pendo.io',pdf:'certs/product-analytics.pdf'},
-  {name:'Agile Foundations',issuer:'LinkedIn Learning',date:'2026',tag:'Agile',init:'AF',color:'#6366f1',logo:'linkedin.com',pdf:'certs/agile-foundations.pdf'},
-  {name:'Scrum: The Basics',issuer:'LinkedIn Learning',date:'2026',tag:'Agile',init:'SB',color:'#6366f1',logo:'linkedin.com',pdf:'certs/scrum-basics.pdf'}
+  {name:'Six Sigma Green Belt Masterclass',issuer:'AIGPE',date:'May 2026',init:'SS',logo:'aigpe.com',pdf:'certs/six-sigma-green-belt.pdf'},
+  {name:'PMI-CPMAI™ — Cognitive PM in AI',issuer:'Project Management Institute',date:'Jun 2026',init:'AI',logo:'pmi.org',pdf:'certs/cpmai.pdf'},
+  {name:'Agile PM Professional Certificate',issuer:'Atlassian',date:'Jun 2026',init:'AT',logo:'atlassian.com',pdf:'certs/atlassian-agile.pdf'},
+  {name:'Azure Essentials Professional Certificate',issuer:'Microsoft',date:'Jun 2026',init:'MS',logo:'microsoft.com',pdf:'certs/azure-essentials.pdf'},
+  {name:'Google AI Essentials',issuer:'Google',date:'Mar 2026',init:'G',logo:'google.com',pdf:''},
+  {name:'Scrum Fundamentals Certified (SFC)',issuer:'ScrumStudy · VMEdu',date:'May 2026',init:'SF',logo:'scrumstudy.com',img:'logos/scrumstudy.png',pdf:'certs/scrum-fundamentals.pdf'},
+  {name:'CSCMP Supply Chain Foundations',issuer:'CSCMP',date:'Jun 2026',init:'SC',logo:'cscmp.org',pdf:'certs/cscmp-supply-chain.pdf'},
+  {name:'Product Analytics Micro-Cert (PAC)™',issuer:'Product School',date:'Jun 2026',init:'PA',logo:'productschool.com',pdf:'certs/product-analytics.pdf'},
+  {name:'AI Micro-Certification (AIC)™',issuer:'Product School',date:'Jun 2026',init:'AIC',logo:'productschool.com',pdf:'certs/ai-micro-certification.pdf'},
+  {name:'Salesforce Platform Foundations',issuer:'Salesforce',date:'May 2024',init:'SF',logo:'salesforce.com',pdf:''},
+  {name:'IBM Computer Network & Security',issuer:'IBM · Coursera',date:'Nov 2024',init:'IBM',logo:'ibm.com',pdf:''}
 ];
-// Degrees (static, shown above the carousel)
+// Degrees + flagship PMP (static, pinned above the carousel)
 const degrees=[
   {name:'M.S. Information Studies',issuer:'Trine University · GPA 3.82',date:'May 2026',init:'TU',color:'#f59e0b',logo:'trine.edu',img:'logos/trine.jpg',pdf:'certs/degree-ms-trine.pdf'},
   {name:'B.Tech, Computer Science',issuer:'Kurukshetra University',date:'2021',init:'KU',color:'#3b82f6',logo:'kuk.ac.in',pdf:'certs/degree-btech-kuk.pdf'},
-  {name:'MBA (in progress)',issuer:'Trine University',date:'Starting Aug 2026',init:'TU',color:'#a855f7',logo:'trine.edu',img:'logos/trine.jpg',pdf:''}
+  {name:'PMP — Project Management Professional',issuer:'Project Management Institute',date:'Jun 2026 · ID 4402739',init:'PMP',color:'#f59e0b',logo:'pmi.org',pdf:'certs/pmp.pdf',flagship:true,tag:'Flagship'}
 ];
 const degreesEl=document.getElementById('degrees');
 degreesEl.innerHTML=degrees.map(c=>`
-  <div class="cert-card degree-card" style="--cc:${c.color}">
+  <div class="cert-card degree-card${c.flagship?' cert-flagship':''}" style="--cc:${c.color||'var(--gold)'}">
     <div class="cert-top">
-      <div class="cert-logo"><img src="${c.img||('https://logo.clearbit.com/'+c.logo)}" data-domain="${c.logo}" data-init="${c.init}" alt="${c.issuer}" onerror="certImgErr(this)"></div>
+      <div class="cert-logo"><img src="${logoSrc(c)}" data-domain="${c.logo}" data-init="${c.init}" alt="${c.issuer}" onerror="certImgErr(this)"></div>
       ${c.pdf?`<button class="cert-eye" data-pdf="${c.pdf}" data-title="${c.name}" aria-label="Preview">${eyeSVG}</button>`:''}
     </div>
     <div class="cert-name">${c.name}</div>
     <div class="cert-issuer">${c.issuer}</div>
     <div class="cert-date">${c.date}</div>
+    ${c.tag?`<span class="cert-tag">${c.tag}</span>`:''}
   </div>`).join('');
 
 const certTrack=document.getElementById('certTrack');
 certTrack.innerHTML=certs.map((c,i)=>`
-  <div class="cert-card${c.flagship?' cert-flagship':''}" style="--cc:${c.color}">
+  <div class="cert-card" style="--cc:${c.color||'var(--gold)'}">
     <div class="cert-top">
-      <div class="cert-logo"><img src="https://logo.clearbit.com/${c.logo}" data-domain="${c.logo}" data-init="${c.init}" alt="${c.issuer}" onerror="certImgErr(this)"></div>
-      <span class="cert-rank">#${i+1}</span>
+      <div class="cert-logo"><img src="${logoSrc(c)}" data-domain="${c.logo}" data-init="${c.init}" alt="${c.issuer}" onerror="certImgErr(this)"></div>
     </div>
     <div class="cert-name">${c.name}</div>
     <div class="cert-issuer">${c.issuer}</div>
     <div class="cert-date">${c.date}</div>
-    <span class="cert-tag">${c.tag}</span>
-    <div class="cert-actions">
+    ${c.pdf?`<div class="cert-actions">
       <button class="cert-btn view" data-pdf="${c.pdf}" data-title="${c.name}">${eyeSVG}<span data-en="Preview" data-es="Vista">Preview</span></button>
-      <a class="cert-btn dl" href="${c.pdf}" download aria-label="Download" data-en="⬇" data-es="⬇">⬇</a>
-    </div>
+      <a class="cert-btn dl" href="${c.pdf}" download aria-label="Download">${dlSVG}</a>
+    </div>`:''}
   </div>`).join('');
 applyLang(htmlEl.getAttribute('data-lang'));
 
