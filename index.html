@@ -52,7 +52,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-3;transition:opacity .35
 @keyframes bar{to{background-position:200% 0}}
 
 /* ============ GLOW CURSOR ============ */
-#glow{position:fixed;width:440px;height:440px;border-radius:50%;pointer-events:none;z-index:1;
+#glow{position:fixed;width:240px;height:240px;border-radius:50%;pointer-events:none;z-index:1;
   transform:translate(-50%,-50%);mix-blend-mode:screen;
   background:radial-gradient(circle,var(--glow),transparent 64%)}
 [data-theme="light"] #glow{mix-blend-mode:multiply;opacity:.5}
@@ -413,21 +413,25 @@ footer{border-top:1px solid var(--border);padding:30px 0;text-align:center;color
 .degree-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--cc,var(--gold))}
 .degree-card:hover{transform:translateY(-6px);border-color:var(--cc,var(--gold));box-shadow:0 22px 50px rgba(0,0,0,.4)}
 
-/* ============ PDF MODAL ============ */
+/* ============ CERTIFICATE IMAGE LIGHTBOX (Photos-style) ============ */
 .pdf-modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:24px}
 .pdf-modal.open{display:flex;animation:fade .25s ease}
-.pdf-backdrop{position:absolute;inset:0;background:rgba(4,7,12,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.pdf-box{position:relative;z-index:2;width:min(960px,100%);height:min(88vh,100%);background:var(--surface);border:1px solid var(--border);
-  border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 40px 100px rgba(0,0,0,.7);animation:chatin .3s cubic-bezier(.16,.8,.3,1)}
-.pdf-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border);background:var(--surface2)}
-.pdf-title{font-family:'Plus Jakarta Sans';font-weight:700;font-size:.98rem;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pdf-head-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.pdf-dl{font-size:.82rem;font-weight:600;padding:8px 14px;border-radius:10px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1205}
-.pdf-dl:hover{filter:brightness(1.08);opacity:1}
-.pdf-close{width:34px;height:34px;border-radius:9px;border:1px solid var(--border);background:var(--surface);color:var(--ink);cursor:pointer;font-size:1rem;transition:.2s}
-.pdf-close:hover{background:var(--border)}
-.pdf-frame{flex:1;width:100%;border:none;background:#525659}
-@media(max-width:560px){.pdf-modal{padding:10px}.pdf-box{height:92vh}.pdf-title{font-size:.85rem}}
+.pdf-backdrop{position:absolute;inset:0;background:rgba(4,7,12,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.img-view{position:relative;z-index:2;max-width:94vw;max-height:90vh;border-radius:10px;background:#fff;
+  box-shadow:0 40px 100px rgba(0,0,0,.8);cursor:zoom-in;user-select:none;-webkit-user-drag:none;
+  transition:transform .28s cubic-bezier(.16,.8,.3,1);animation:chatin .3s cubic-bezier(.16,.8,.3,1)}
+.img-view.zoom{cursor:zoom-out;transform:scale(2.4)}
+.img-close{position:absolute;top:18px;right:22px;z-index:3;width:42px;height:42px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.45);color:#fff;font-size:1.15rem;cursor:pointer;transition:.2s}
+.img-close:hover{background:rgba(0,0,0,.8);transform:rotate(90deg)}
+.img-hint{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:3;color:rgba(255,255,255,.55);
+  font-size:.74rem;letter-spacing:.5px;pointer-events:none}
+.img-nav{position:absolute;bottom:46px;left:50%;transform:translateX(-50%);z-index:3;display:flex;align-items:center;gap:18px}
+.img-arrow{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.45);
+  color:#fff;font-size:1.6rem;line-height:1;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center}
+.img-arrow:hover{background:rgba(255,255,255,.95);color:#0b0f17;transform:scale(1.08)}
+.img-count{color:rgba(255,255,255,.8);font-size:.84rem;font-variant-numeric:tabular-nums;min-width:54px;text-align:center}
+@media(max-width:560px){.pdf-modal{padding:10px}.img-arrow{width:42px;height:42px;font-size:1.4rem}}
 
 /* ============ COMPACT REVIEW ============ */
 .reviews-sec{padding-top:72px;padding-bottom:72px}
@@ -628,7 +632,7 @@ footer{border-top:1px solid var(--border);padding:30px 0;text-align:center;color
   <div class="grid3" style="margin-top:6px">
     <div class="tile"><h3>2024–25 · Project Manager</h3><p style="color:var(--blue2);font-weight:600;margin-bottom:6px">Freedom Mortgage</p><p data-en="$600K fintech delivery, zero slippage, 32% fewer defects, 20-person team." data-es="Entrega fintech de $600K, cero retrasos, 32% menos defectos, equipo de 20.">$600K fintech delivery, zero slippage, 32% fewer defects, 20-person team.</p></div>
     <div class="tile"><h3>2022–23 · Supply Chain PM</h3><p style="color:var(--blue2);font-weight:600;margin-bottom:6px">Agilent Technologies</p><p data-en="−20% turnaround, 96% continuity, 120+ SKUs across 4 continents." data-es="−20% en tiempos, 96% continuidad, 120+ SKUs en 4 continentes.">−20% turnaround, 96% continuity, 120+ SKUs across 4 continents.</p></div>
-    <div class="tile"><h3>2020–22 · CS Specialist</h3><p style="color:var(--blue2);font-weight:600;margin-bottom:6px">Bharat Optimum</p><p data-en="+15% order accuracy, −25% resolution time via SOPs and validation." data-es="+15% precisión de pedidos, −25% tiempo de resolución vía SOPs.">+15% order accuracy, −25% resolution time via SOPs and validation.</p></div>
+    <div class="tile"><h3>2020–22 · Associate Supply Chain Manager</h3><p style="color:var(--blue2);font-weight:600;margin-bottom:6px">Bharat Optimum</p><p data-en="Standardized SOPs across 50–70 daily SAP ECC orders; +15% order accuracy, −25% issue-resolution time via validation controls and logistics coordination." data-es="SOPs estandarizados en 50–70 pedidos diarios en SAP ECC; +15% precisión de pedidos, −25% tiempo de resolución mediante controles de validación y coordinación logística.">Standardized SOPs across 50–70 daily SAP ECC orders; +15% order accuracy, −25% issue-resolution time via validation controls and logistics coordination.</p></div>
   </div>
 </div></section>
 
@@ -706,16 +710,14 @@ footer{border-top:1px solid var(--border);padding:30px 0;text-align:center;color
 <!-- PDF PREVIEW MODAL -->
 <div class="pdf-modal" id="pdfModal" aria-hidden="true">
   <div class="pdf-backdrop" id="pdfBackdrop"></div>
-  <div class="pdf-box" role="dialog" aria-modal="true">
-    <div class="pdf-head">
-      <span class="pdf-title" id="pdfTitle">Certificate</span>
-      <div class="pdf-head-actions">
-        <a class="pdf-dl" id="pdfDownload" href="#" download data-en="⬇ Download" data-es="⬇ Descargar">⬇ Download</a>
-        <button class="pdf-close" id="pdfClose" aria-label="Close">✕</button>
-      </div>
-    </div>
-    <iframe class="pdf-frame" id="pdfFrame" title="Certificate preview"></iframe>
+  <button class="img-close" id="pdfClose" aria-label="Close">✕</button>
+  <img class="img-view" id="pdfImg" alt="Certificate" draggable="false" role="dialog" aria-modal="true">
+  <div class="img-nav">
+    <button class="img-arrow" id="certPrev" aria-label="Previous certificate">‹</button>
+    <span class="img-count" id="certCount"></span>
+    <button class="img-arrow" id="certNext" aria-label="Next certificate">›</button>
   </div>
+  <span class="img-hint" id="pdfHint" data-en="Click to zoom · swipe or use arrows · Esc to close" data-es="Clic para ampliar · desliza o usa las flechas · Esc para cerrar">Click to zoom · swipe or use arrows · Esc to close</span>
 </div>
 
 <!-- CHATBOT -->
@@ -815,7 +817,7 @@ function certImgErr(img){img.parentNode.innerHTML='<span class="fallback">'+img.
 function logoSrc(c){return c.img||('https://www.google.com/s2/favicons?sz=128&domain='+c.logo);}
 // Weighty certifications only, ordered by weightage (PMP is pinned up top).
 const certs=[
-  {name:'Six Sigma Green Belt Masterclass',issuer:'AIGPE',date:'May 2026',init:'SS',logo:'aigpe.com',pdf:'certs/six-sigma-green-belt.pdf'},
+  {name:'Six Sigma Green Belt Masterclass',issuer:'AIGPE',date:'May 2026',init:'SS',logo:'aigpe.com',img:'logos/aigpe.png',pdf:'certs/six-sigma-green-belt.pdf'},
   {name:'PMI-CPMAI™ — Cognitive PM in AI',issuer:'Project Management Institute',date:'Jun 2026',init:'AI',logo:'pmi.org',pdf:'certs/cpmai.pdf'},
   {name:'Agile PM Professional Certificate',issuer:'Atlassian',date:'Jun 2026',init:'AT',logo:'atlassian.com',pdf:'certs/atlassian-agile.pdf'},
   {name:'Azure Essentials Professional Certificate',issuer:'Microsoft',date:'Jun 2026',init:'MS',logo:'microsoft.com',pdf:'certs/azure-essentials.pdf'},
@@ -863,13 +865,40 @@ certTrack.innerHTML=certs.map((c,i)=>`
 applyLang(htmlEl.getAttribute('data-lang'));
 
 // PDF preview modal
-const pdfModal=document.getElementById('pdfModal'),pdfFrame=document.getElementById('pdfFrame'),pdfTitle=document.getElementById('pdfTitle'),pdfDownload=document.getElementById('pdfDownload');
-function openPdf(pdf,title){pdfFrame.src=pdf;pdfTitle.textContent=title;pdfDownload.href=pdf;pdfModal.classList.add('open');pdfModal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
-function closePdf(){pdfModal.classList.remove('open');pdfModal.setAttribute('aria-hidden','true');pdfFrame.src='';document.body.style.overflow='';}
-document.addEventListener('click',e=>{const t=e.target.closest('.cert-eye,.cert-btn.view');if(t&&t.dataset.pdf){e.preventDefault();openPdf(t.dataset.pdf,t.dataset.title||'Certificate');}});
+const pdfModal=document.getElementById('pdfModal'),pdfImg=document.getElementById('pdfImg'),certCount=document.getElementById('certCount');
+let imgZoom=false,galIdx=0;
+// ordered gallery of every viewable certificate (degrees pinned first, then carousel)
+const CERTGALLERY=[...degrees,...certs].filter(c=>c.pdf).map(c=>({src:c.pdf.replace(/\.pdf$/i,'.jpg'),title:c.name}));
+function showCert(i){
+  if(!CERTGALLERY.length)return;
+  galIdx=(i+CERTGALLERY.length)%CERTGALLERY.length; // wrap around
+  const g=CERTGALLERY[galIdx];
+  imgZoom=false;pdfImg.classList.remove('zoom');pdfImg.style.transformOrigin='center center';
+  pdfImg.src=g.src;pdfImg.alt=g.title;
+  if(certCount)certCount.textContent=(galIdx+1)+' / '+CERTGALLERY.length;
+}
+function openPdf(pdf){
+  const src=pdf.replace(/\.pdf$/i,'.jpg');
+  let idx=CERTGALLERY.findIndex(g=>g.src===src);if(idx<0)idx=0;
+  showCert(idx);
+  pdfModal.classList.add('open');pdfModal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+}
+function closePdf(){pdfModal.classList.remove('open');pdfModal.setAttribute('aria-hidden','true');pdfImg.src='';document.body.style.overflow='';imgZoom=false;pdfImg.classList.remove('zoom');}
+function nextCert(){showCert(galIdx+1);}
+function prevCert(){showCert(galIdx-1);}
+function setOrigin(e){const r=pdfImg.getBoundingClientRect();const x=Math.min(100,Math.max(0,((e.clientX-r.left)/r.width)*100));const y=Math.min(100,Math.max(0,((e.clientY-r.top)/r.height)*100));pdfImg.style.transformOrigin=x+'% '+y+'%';}
+pdfImg.addEventListener('click',e=>{e.stopPropagation();imgZoom=!imgZoom;if(imgZoom){setOrigin(e);pdfImg.classList.add('zoom');}else{pdfImg.classList.remove('zoom');pdfImg.style.transformOrigin='center center';}});
+pdfImg.addEventListener('mousemove',e=>{if(imgZoom)setOrigin(e);});
+document.addEventListener('click',e=>{const t=e.target.closest('.cert-eye,.cert-btn.view');if(t&&t.dataset.pdf){e.preventDefault();openPdf(t.dataset.pdf);}});
 document.getElementById('pdfClose').addEventListener('click',closePdf);
 document.getElementById('pdfBackdrop').addEventListener('click',closePdf);
-addEventListener('keydown',e=>{if(e.key==='Escape'&&pdfModal.classList.contains('open'))closePdf();});
+document.getElementById('certPrev').addEventListener('click',e=>{e.stopPropagation();prevCert();});
+document.getElementById('certNext').addEventListener('click',e=>{e.stopPropagation();nextCert();});
+// touch swipe (skip while zoomed)
+let tsx=0;
+pdfImg.addEventListener('touchstart',e=>{tsx=e.changedTouches[0].clientX;},{passive:true});
+pdfImg.addEventListener('touchend',e=>{if(imgZoom)return;const dx=e.changedTouches[0].clientX-tsx;if(Math.abs(dx)>45){dx<0?nextCert():prevCert();}},{passive:true});
+addEventListener('keydown',e=>{if(!pdfModal.classList.contains('open'))return;if(e.key==='Escape')closePdf();else if(e.key==='ArrowRight')nextCert();else if(e.key==='ArrowLeft')prevCert();});
 let certIdx=0;
 function perView(){return window.innerWidth<=560?1:window.innerWidth<=860?2:3;}
 function maxIdx(){return Math.max(0,certs.length-perView());}
@@ -956,7 +985,7 @@ setTimeout(()=>{if(!chatTouched&&!panel.classList.contains('open'))chatBubble.cl
 setTimeout(()=>{if(!chatTouched)chatBubble.classList.remove('show');},12000);
 chatBubble.addEventListener('click',()=>{chatTouched=true;panel.classList.add('open');chatBubble.classList.remove('show');});
 const KB={
-  experience:{test:q=>/exp|work|role|job|history|background|career|years/i.test(q),responses:["Apurv has <strong>4+ years of PM experience</strong> across fintech (Freedom Mortgage, 2024–25), global supply chain (Agilent, 2022–23), and enterprise tech (Bharat Optimum, 2020–22). Every role has measured results. Want the case studies?","His career spans fintech, global supply chain, and enterprise tech. Most recently at <strong>Freedom Mortgage</strong> — a $600K program, zero slippage, zero defects."],go:'#cases',followups:['wins','certs','skills','contact']},
+  experience:{test:q=>/exp|work|role|job|history|background|career|years/i.test(q),responses:["Apurv has <strong>4+ years of PM experience</strong> across fintech (Freedom Mortgage, 2024–25), global supply chain (Agilent, 2022–23), and supply-chain operations (Bharat Optimum, 2020–22). Every role has measured results. Want the case studies?","His career spans fintech, global supply chain, and enterprise tech. Most recently at <strong>Freedom Mortgage</strong> — a $600K program, zero slippage, zero defects."],go:'#cases',followups:['wins','certs','skills','contact']},
   wins:{test:q=>/win|achiev|result|best|proud|metric|number|outcome|deliver|impact/i.test(q),responses:["Top 3 outcomes:<br><br>🏆 <strong>$600K program — zero slippage</strong><br>📉 <strong>−32% defects</strong> via UAT gates<br>⚡ <strong>−18–20% supply chain turnaround</strong><br><br>Every number is measured. Want details?"],go:'#wins',followups:['experience','certs','why','contact']},
   certs:{test:q=>/cert|pmp|six.?sigma|scrum|agile|cpmai|credential|qualif|aic|license/i.test(q),responses:["Apurv's certifications, sorted by recruiter value:<br><br>🏆 <strong>PMP</strong> — PMI (the gold standard)<br>🔵 <strong>Six Sigma Green Belt</strong> — AIGPE<br>🟣 <strong>CPMAI™</strong> — Cognitive PM in AI<br>🟢 <strong>Scrum Fundamentals</strong> — ScrumStudy<br>+ Agile, AI Micro-Cert, Product Analytics & more.<br><br>Opening the carousel!"],go:'#certifications',followups:['skills','experience','contact']},
   skills:{test:q=>/skill|tool|tech|stack|software|platform|jira|sap|power.?bi/i.test(q),responses:["Apurv's toolkit:<br><br>🚦 <strong>Delivery</strong>: Agile/Scrum, SAFe, Kanban, RAID, OKRs<br>🛠️ <strong>Tools</strong>: JIRA, Confluence, Power BI, Tableau, SAP ECC, SQL<br>🤝 <strong>Leadership</strong>: Stakeholder & vendor mgmt, UAT, exec presentations"],go:'#skills',followups:['certs','experience','wins']},
