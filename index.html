@@ -385,9 +385,9 @@ footer:hover .foot-name{color:var(--lime);-webkit-text-stroke:1px var(--lime)}
   <div class="work-row">
     <div class="work-idx"><b>01</b><span data-en="Fintech" data-es="Fintech">Fintech</span></div>
     <div class="work-head">
-      <div class="role">Project Manager — IT Delivery</div>
+      <div class="role">Project Manager</div>
       <div class="co">Freedom Mortgage</div>
-      <div class="when">Aug 2024 – Apr 2025 · Dallas, TX (Remote)</div>
+      <div class="when">Aug 2024 – Apr 2025 · New Jersey, United States (Remote)</div>
       <div class="work-stats">
         <span class="wstat"><b>0</b> slippage</span><span class="wstat"><b>−32%</b> defects</span>
         <span class="wstat"><b>100%</b> on-time · 16 sprints</span><span class="wstat"><b>−22%</b> escalations</span>
@@ -403,9 +403,9 @@ footer:hover .foot-name{color:var(--lime);-webkit-text-stroke:1px var(--lime)}
   <div class="work-row">
     <div class="work-idx"><b>02</b><span data-en="Supply Chain" data-es="Cadena de Suministro">Supply Chain</span></div>
     <div class="work-head">
-      <div class="role">Supply Chain Project Manager</div>
+      <div class="role">Project Manager</div>
       <div class="co">Agilent Technologies</div>
-      <div class="when">Feb 2022 – Aug 2023 · Manesar, India</div>
+      <div class="when">Feb 2022 – Aug 2023 · Gurugram, India (Hybrid)</div>
       <div class="work-stats">
         <span class="wstat"><b>−18–20%</b> turnaround</span><span class="wstat"><b>96%</b> continuity</span>
         <span class="wstat"><b>120+</b> SKUs</span><span class="wstat"><b>4</b> continents</span>
@@ -421,18 +421,18 @@ footer:hover .foot-name{color:var(--lime);-webkit-text-stroke:1px var(--lime)}
   <div class="work-row">
     <div class="work-idx"><b>03</b><span data-en="Operations" data-es="Operaciones">Operations</span></div>
     <div class="work-head">
-      <div class="role">Associate Supply Chain Manager</div>
+      <div class="role">Associate Project Manager</div>
       <div class="co">Bharat Optimum Sales &amp; Services</div>
-      <div class="when">Jul 2020 – Jan 2022 · Gurugram, India</div>
+      <div class="when">Oct 2020 – Jan 2022 · Gurugram, India (Hybrid)</div>
       <div class="work-stats">
-        <span class="wstat"><b>+15%</b> order accuracy</span><span class="wstat"><b>−25%</b> resolution time</span>
-        <span class="wstat"><b>50–70</b> daily SAP ECC transactions</span>
+        <span class="wstat"><b>4+</b> concurrent accounts</span><span class="wstat"><b>+15%</b> order accuracy</span>
+        <span class="wstat"><b>−25%</b> resolution time</span>
       </div>
     </div>
     <div class="work-body">
-      <p><span class="work-tag wt-p">Problem</span> High-volume order operations — <b>50–70 daily SAP ECC transactions</b> — suffered from inconsistent processing accuracy and slow, cross-team issue resolution that delayed deliveries.</p>
-      <p><span class="work-tag wt-a">Action</span> Designed data-validation checks and SOPs across the order-processing flow, and coordinated cross-functionally between operations and logistics to systematically resolve delivery discrepancies.</p>
-      <p><span class="work-tag wt-r">Result</span> <b>Order-processing accuracy up 15%</b> and average issue-resolution time down 25% — a faster, cleaner supply pipeline end to end.</p>
+      <p><span class="work-tag wt-p">Problem</span> <b>4+ concurrent B2B accounts</b> and 50–70 daily SAP ECC transactions ran on inconsistent processing accuracy and slow, cross-team issue resolution that delayed deliveries.</p>
+      <p><span class="work-tag wt-a">Action</span> Coordinated projects end-to-end — milestone tracking, dependency resolution, stakeholder communication — and engineered data-validation checks, SOPs, and a structured escalation matrix between operations and logistics.</p>
+      <p><span class="work-tag wt-r">Result</span> <b>Order-processing accuracy up 15%</b> and average issue-resolution time down 25% — a faster, cleaner delivery pipeline end to end.</p>
     </div>
   </div>
 
@@ -723,9 +723,10 @@ async function getPdf(url){
 /* ===== PHOTO-STYLE LIGHTBOX ===== */
 const lb=document.getElementById('lb'),lbStage=document.getElementById('lbStage'),lbScroll=document.getElementById('lbScroll'),
       lbTitle=document.getElementById('lbTitle'),lbDl=document.getElementById('lbDl');
-let lbZoom=false;
+let lbZoom=false,lbToken=0;
 function fitWidth(){return Math.min(880,innerWidth-48);}
 async function openLb(pdfUrl,title){
+  const token=++lbToken; // abandon any in-flight render loop from a prior open
   lbTitle.textContent=title||'Document';
   lbDl.href=pdfUrl;
   lbStage.innerHTML='';lbZoom=false;
@@ -737,7 +738,9 @@ async function openLb(pdfUrl,title){
     const doc=await getPdf(pdfUrl);
     const scaleBase=2; // hi-dpi crispness
     for(let p=1;p<=doc.numPages;p++){
+      if(token!==lbToken)return; // a newer open/close superseded this loop
       const page=await doc.getPage(p);
+      if(token!==lbToken)return;
       const vp=page.getViewport({scale:1});
       const scale=(fitWidth()*scaleBase)/vp.width;
       const v2=page.getViewport({scale});
@@ -747,11 +750,12 @@ async function openLb(pdfUrl,title){
       await page.render({canvasContext:cv.getContext('2d'),viewport:v2}).promise;
     }
   }catch(err){
+    if(token!==lbToken)return;
     // graceful fallback: plain iframe (still no extra UI from our side)
     lbStage.innerHTML=`<iframe src="${pdfUrl}#toolbar=0&navpanes=0" style="width:100%;height:78vh;border:none;border-radius:6px;background:#fff"></iframe>`;
   }
 }
-function closeLb(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');document.body.style.overflow='';lbStage.innerHTML='';}
+function closeLb(){lbToken++;lb.classList.remove('open');lb.setAttribute('aria-hidden','true');document.body.style.overflow='';lbStage.innerHTML='';}
 document.getElementById('lbClose').addEventListener('click',closeLb);
 document.getElementById('lbBack').addEventListener('click',closeLb);
 addEventListener('keydown',e=>{if(e.key==='Escape'&&lb.classList.contains('open'))closeLb();});
@@ -867,7 +871,7 @@ setTimeout(()=>{if(!chatTouched&&!panel.classList.contains('open'))chatBubble.cl
 setTimeout(()=>{if(!chatTouched)chatBubble.classList.remove('show');},13000);
 chatBubble.addEventListener('click',()=>{chatTouched=true;panel.classList.add('open');chatBubble.classList.remove('show');});
 const KB={
-  experience:{test:q=>/exp|work|role|job|history|background|career|years/i.test(q),responses:["Apurv has <strong>4+ years of PM experience</strong>: fintech (Freedom Mortgage, 2024–25), global supply chain (Agilent, 2022–23), and supply-chain operations as Associate Supply Chain Manager (Bharat Optimum, 2020–22). Every role has measured results — scroll to Selected Work!"],go:'#work',followups:['wins','certs','contact']},
+  experience:{test:q=>/exp|work|role|job|history|background|career|years/i.test(q),responses:["Apurv has <strong>4+ years of PM experience</strong>: fintech (Freedom Mortgage, 2024–25), global supply chain (Agilent, 2022–23), and B2B delivery as Associate Project Manager (Bharat Optimum, 2020–22). Every role has measured results — scroll to Selected Work!"],go:'#work',followups:['wins','certs','contact']},
   wins:{test:q=>/win|achiev|result|best|proud|metric|number|outcome|deliver|impact/i.test(q),responses:["Top outcomes:<br><br>🏆 <strong>$600K program — zero slippage</strong><br>📉 <strong>−32% defects</strong> via UAT gates<br>⚡ <strong>−18–20% supply chain turnaround</strong><br><br>Every number is measured, not estimated."],go:'#impact',followups:['experience','certs','why','contact']},
   certs:{test:q=>/cert|pmp|six.?sigma|scrum|agile|cpmai|credential|qualif|degree|education|master|btech/i.test(q),responses:["Credentials, sorted by weight:<br><br>🏆 <strong>PMP</strong> — PMI (flagship)<br>🎓 <strong>M.S. Information Studies</strong> — Trine, GPA 3.82<br>🔵 Six Sigma GB, CPMAI, Atlassian Agile, Azure, Google AI + more.<br><br>Each one is previewable right on the site!"],go:'#credentials',followups:['experience','contact','wins']},
   resume:{test:q=>/resume|cv|download|pdf|résumé/i.test(q),responses:["One-click <strong>PDF download</strong> — or hover the eye button for a live preview. Taking you to the top! ⬇️"],go:'#contact',followups:['contact','experience']},
