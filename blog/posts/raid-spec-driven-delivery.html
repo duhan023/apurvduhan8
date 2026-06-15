@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>I'm teaching AI agents to deliver like a team — not a tool | Apurv Duhan</title>
+<meta name="description" content="A project manager's path to spec-driven, agentic delivery. The constitution, spec, and plan I wrote before the AI touched a line of code — with the real documents attached.">
+<link rel="canonical" href="https://www.apurvduhan-8.com/blog/posts/raid-spec-driven-delivery.html">
+<meta name="author" content="Apurv Duhan">
+<meta property="og:type" content="article">
+<meta property="og:title" content="I'm teaching AI agents to deliver like a team — not a tool">
+<meta property="og:description" content="A PM's path to spec-driven, agentic delivery — with the real constitution, spec, and plan attached.">
+<meta property="og:url" content="https://www.apurvduhan-8.com/blog/posts/raid-spec-driven-delivery.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300..800&family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../blog.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"I'm teaching AI agents to deliver like a team — not a tool","datePublished":"2026-06-15","author":{"@type":"Person","name":"Apurv Duhan","url":"https://www.apurvduhan-8.com"},"publisher":{"@type":"Person","name":"Apurv Duhan"},"mainEntityOfPage":"https://www.apurvduhan-8.com/blog/posts/raid-spec-driven-delivery.html","keywords":"spec-driven development, agentic AI, project management, RAID, governance, GitHub Spec Kit, OpenSpec, BMAD"}
+</script>
+</head><body>
+
+<nav>
+  <a href="/">← Portfolio</a>
+  <a href="/blog/">Writing</a>
+  <a href="/#credentials">Credentials</a>
+  <a href="/#contact" class="cta">Hire me</a>
+</nav>
+<button class="theme-switch" id="themeSwitch" aria-label="Toggle theme"><span class="ts-ic ts-sun">☀</span><span class="ts-ic ts-moon">☾</span><span class="ts-knob"></span></button>
+
+<header class="article-head"><div class="wrap">
+  <span class="eyebrow">Build in public · 01</span>
+  <h1>I'm teaching AI agents to deliver like a team — not a tool</h1>
+  <div class="byline"><b>Apurv Duhan, PMP</b> <span>·</span> <span>15 June 2026</span> <span>·</span> <span>7 min read</span></div>
+</div></header>
+<div class="article-cover"><div class="band"></div></div>
+
+<article><div class="wrap">
+
+  <p class="lede">"I use AI" doesn't mean much anymore. Everyone uses AI. The interesting question — the one I've been living in for the past few weeks — is whether you can run an AI agent through a real delivery process: clear roles, clean handoffs, and an audit trail you could hand to a regulator without flinching.</p>
+
+  <p>One of those is a party trick. The other is a discipline. I'm chasing the discipline, and I'm going to show my work the whole way through — including the parts that are still rough.</p>
+
+  <p>This is the first post in that series. By the end of it you'll be able to read the three documents I wrote <em>before</em> the AI was allowed to touch a single line of code. They're attached, in full, further down. But first, why they exist.</p>
+
+  <h2>The gap nobody talks about</h2>
+
+  <p>When a developer prompts an AI to "build me a thing," they usually get a thing. It compiles, it demos, everyone claps. Then someone asks the questions that actually matter on a real project: Which requirement does this satisfy? Who approved that change? Where's the test that proves it works? Can you reconstruct, six months from now, why it was built this way?</p>
+
+  <p>That's the gap. Producing output is easy. <strong>Proving it was built to spec, reviewed at the right gate, and traceable from requirement to test</strong> — that's what earns trust in fintech, supply chain, and defense. It's also, conveniently, exactly the job a project manager already does for human teams. So I started treating the agent like a new team member who's brilliant, fast, and completely without judgment unless I give it some.</p>
+
+  <div class="pull">Anyone can get an agent to produce something. Far fewer can prove it was built to spec.</div>
+
+  <h2>What I mapped before writing anything</h2>
+
+  <p>I'm not interested in vibes-based AI coding. So I spent the first stretch just understanding the landscape, the way I'd scope any unfamiliar program before committing a plan:</p>
+
+  <ul>
+    <li><strong>Spec-Driven Development (SDD).</strong> The core idea is a clean inversion: the spec is the source of truth, and the code serves the spec — not the other way around. The written intent is the artifact you protect; the code is a downstream output of it.</li>
+    <li><strong>Greenfield vs. brownfield.</strong> Building something brand new is the easy demo. Safely changing a system that already exists — with users, history, and consequences — is the real skill. I want to be credible at both, so I'm deliberately practicing the greenfield version first to get the discipline clean, then taking it into brownfield.</li>
+    <li><strong>Three tools I'm going deep on:</strong> <a href="https://github.com/github/spec-kit" target="_blank" rel="noopener">GitHub Spec Kit</a>, <a href="https://github.com/Fission-AI/OpenSpec" target="_blank" rel="noopener">OpenSpec</a>, and <a href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank" rel="noopener">BMAD</a>. Different philosophies, same underlying bet — that structure up front beats cleverness later.</li>
+  </ul>
+
+  <h2>The project: a PMO RAID Register</h2>
+
+  <p>I needed a real thing to build, not a toy. So I picked a problem I've actually lived: the RAID log. Every project has four things a manager watches constantly — <strong>R</strong>isks (what could go wrong), <strong>A</strong>ssumptions (what we're taking for granted), <strong>I</strong>ssues (what's already gone wrong), and <strong>D</strong>ependencies (what we're waiting on from someone else).</p>
+
+  <p>Most teams keep this in a spreadsheet that rots within a month. No record of who changed what. Ownership goes fuzzy. And pulling a clean update for leadership means rebuilding the whole thing by hand every week. I've done that rebuild more times than I'd like to admit.</p>
+
+  <p>So the tool is simple on purpose: one place to log RAID items, keep them current, see the full history behind every one of them, and print a tidy status summary on demand. The interesting part isn't the app. It's <em>how I made the agent build it.</em></p>
+
+  <h2>Three documents, in order</h2>
+
+  <p>Before any code, I wrote three things. Each has a different job, a different reader, and a strict rule about what's allowed inside it. Here they are — open them, they're the real deliverables:</p>
+
+  <div class="docgrid">
+    <div class="doc">
+      <div class="dt">Document 1</div>
+      <h4>The Constitution</h4>
+      <p>The non-negotiable rules the AI must follow before it writes anything. Governance baked in, not bolted on.</p>
+      <div class="dacts">
+        <button class="dbtn v" data-pdf="../docs/constitution.pdf" data-title="Project Constitution — PMO RAID Register">👁 Read</button>
+        <a class="dbtn d" href="../docs/constitution.pdf" download aria-label="Download">⬇</a>
+      </div>
+    </div>
+    <div class="doc">
+      <div class="dt">Document 2</div>
+      <h4>The Spec</h4>
+      <p>The plain <em>what &amp; why</em>. Written so any stakeholder can read it and approve it — zero technical detail.</p>
+      <div class="dacts">
+        <button class="dbtn v" data-pdf="../docs/spec.pdf" data-title="The Spec — PMO RAID Register">👁 Read</button>
+        <a class="dbtn d" href="../docs/spec.pdf" download aria-label="Download">⬇</a>
+      </div>
+    </div>
+    <div class="doc">
+      <div class="dt">Document 3</div>
+      <h4>The Plan</h4>
+      <p>The <em>how</em>. The deliberate technical approach an AI agent actually builds from, checked against the constitution.</p>
+      <div class="dacts">
+        <button class="dbtn v" data-pdf="../docs/plan.pdf" data-title="The Plan — PMO RAID Register">👁 Read</button>
+        <a class="dbtn d" href="../docs/plan.pdf" download aria-label="Download">⬇</a>
+      </div>
+    </div>
+  </div>
+
+  <p><em>Prefer one file? Here's <button class="dbtn v" style="display:inline-flex;width:auto;padding:4px 12px;vertical-align:middle" data-pdf="../docs/raid-spec-plan-constitution.pdf" data-title="The Spec, Plan & Constitution — Apurv Duhan">all three together</button> — the spec, the plan, and the constitution in one document.</em></p>
+
+  <h3>1. The Constitution — rules before code</h3>
+
+  <p>This is the part most people skip, and it's the part I think matters most. Before a single requirement, I wrote down the principles the agent is <em>never</em> allowed to break. Not suggestions — articles. When an article and a feature request conflict, the article wins until I formally amend it.</p>
+
+  <p>A few of them, in plain terms:</p>
+
+  <div class="callout">
+    <div class="clabel">From the Constitution</div>
+    <p><strong>Article I — Spec-First &amp; Traceability.</strong> No code is written without a corresponding requirement. Every requirement carries a stable ID; every task and test references the ID it satisfies. The result is a continuous trace from intent → spec → task → test, reconstructable at any time.</p>
+    <p><strong>Article II — Auditability.</strong> Every create, update, or delete is recorded in an append-only log — timestamp, who, what changed, old value, new value. Audit records are never editable through the app. Absence of an audit trail is a defect, not a missing feature.</p>
+    <p><strong>Article IV — Simplicity.</strong> Start with the simplest design that satisfies the spec. No microservices, no caching layer, no dependency unless a requirement demonstrably needs it.</p>
+  </div>
+
+  <p>There are nine articles in total — covering test-first development, data privacy, a security baseline, accessibility (RAID status never shown by color alone), observability, and plain-language readability. The closing line is the one I keep coming back to: <em>"Compliance is not a final checklist; it is the condition under which the agent is permitted to work."</em></p>
+
+  <h3>2. The Spec — the what, for humans</h3>
+
+  <p>The spec has one hard rule: a non-technical stakeholder has to be able to read it and approve it. No implementation detail is allowed to leak in. It describes the problem, who uses the tool, every action walked through in plain English, and then a numbered list of testable requirements — because that numbering is the thread that later lets me prove the finished tool does exactly what was agreed.</p>
+
+  <p>It also does something I wish more specs did: it writes down the questions I answered before building (one user or many? one export format or several?), and an explicit list of what this version <strong>deliberately leaves out</strong>. Every omission is a decision on the record, not an oversight someone discovers later.</p>
+
+  <h3>3. The Plan — the how, for the agent</h3>
+
+  <p>The plan is where the technical decisions live, and it's written for two readers: the AI agent that builds from it, and the human reviewing my work. Every choice is justified against the constitution — and where I kept things boring (a single local file, SQLite, plain pages, a locked history backed up at the database level), I said <em>why</em> boring was the right call.</p>
+
+  <div class="pull">If a future need forces something more complicated, I write down why — and update the rules first. Even the decision to add complexity is on the record.</div>
+
+  <h2>My angle: traceability is the product</h2>
+
+  <p>Here's the thing the demo videos miss. The RAID app is fine. What I actually built is a <strong>repeatable, governed way to direct an AI agent</strong> — one where I can stand in front of a reviewer and draw the line from "here's what we agreed to build" to "here's the code, and here's the test that proves it."</p>
+
+  <p>That's the same instinct I bring to a $600K program with zero room for slippage: decide deliberately up front, leave a trail, and never let "it works" stand in for "it's right." The agent just made that instinct portable to code.</p>
+
+  <hr>
+
+  <p>I'm sharing every step of this — the documents above are the real start. Next up: turning the plan into a task list, writing the tests first, and letting the agent build against them. If you run delivery and you're trying to make agents trustworthy rather than just fast, I'd genuinely like to compare notes.</p>
+
+  <div class="share">
+    <span>Share</span>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.apurvduhan-8.com/blog/posts/raid-spec-driven-delivery.html" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://twitter.com/intent/tweet?text=I%27m%20teaching%20AI%20agents%20to%20deliver%20like%20a%20team%20%E2%80%94%20not%20a%20tool&url=https://www.apurvduhan-8.com/blog/posts/raid-spec-driven-delivery.html" target="_blank" rel="noopener">X / Twitter</a>
+    <a href="mailto:?subject=Spec-driven, agentic delivery&body=Thought you'd find this interesting: https://www.apurvduhan-8.com/blog/posts/raid-spec-driven-delivery.html" target="_blank" rel="noopener">Email</a>
+  </div>
+
+  <div class="author">
+    <div class="av">AD</div>
+    <div>
+      <b>Apurv Duhan, PMP</b>
+      <p>Project Manager — fintech, supply chain, enterprise tech. $600K+ delivered with zero slippage. Writing about spec-driven, agentic delivery and the governance that makes it trustworthy. <a href="/" style="color:var(--lime);text-decoration:none">See the portfolio →</a></p>
+    </div>
+  </div>
+
+</div></article>
+
+<footer><div class="wrap-wide">
+  © 2026 Apurv Duhan · All rights reserved · <a href="/">apurvduhan-8.com</a> · Please credit the author when referencing or reusing these documents.
+</div></footer>
+
+<!-- PDF LIGHTBOX -->
+<div class="lb" id="lb" aria-hidden="true">
+  <div class="lb-back" id="lbBack"></div>
+  <div class="lb-top">
+    <span class="lb-title" id="lbTitle">Document</span>
+    <div class="lb-acts">
+      <a class="lb-ic" id="lbDl" href="#" download aria-label="Download"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg></a>
+      <button class="lb-ic" id="lbClose" aria-label="Close">✕</button>
+    </div>
+  </div>
+  <div class="lb-scroll" id="lbScroll"><div class="lb-stage" id="lbStage"></div></div>
+  <div class="lb-hint">Click to zoom · drag to pan · esc to close</div>
+</div>
+
+<script src="../blog.js"></script>
+</body></html>
