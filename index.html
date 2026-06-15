@@ -135,7 +135,10 @@ h2.split em{font-style:normal;color:var(--muted)}
 .icard p{color:var(--muted);font-size:.94rem}
 
 /* ================= WORK ROWS ================= */
-.work-row{border-top:1px solid var(--line);padding:64px 0;display:grid;grid-template-columns:90px 1.05fr 1.2fr;gap:36px;align-items:start;transition:background .3s}
+.work-row{border-top:1px solid var(--line);padding:46px 0;display:grid;grid-template-columns:118px 1fr auto;gap:36px;align-items:center;transition:background .3s}
+.work-tagline{color:var(--muted);font-size:.95rem;margin-top:10px}
+.work-arrow{color:var(--dim);font-size:1.4rem;transition:.25s}
+.work-row:hover .work-arrow{color:var(--lime);transform:translateX(4px)}
 .work-row:last-of-type{border-bottom:1px solid var(--line)}
 .work-row:hover{background:var(--bg2)}
 .work-idx{font-family:'Host Grotesk';font-weight:700;font-size:1rem;color:var(--dim);padding-top:8px}
@@ -363,7 +366,7 @@ footer:hover .foot-name{color:var(--lime);-webkit-text-stroke:1px var(--lime)}
     <span class="w"><i data-en="chaos" data-es="el caos">chaos</i></span>
     <span class="w"><i><span data-en="becomes" data-es="se vuelve">becomes</span> <span class="accent" data-en="delivery." data-es="entrega.">delivery.</span></i></span>
   </h1>
-  <p class="hero-sub"><b>Apurv Duhan</b> — <span data-en="PMP-certified Project Manager. $600K+ shipped with zero slippage, 100% on-time across 16 sprints." data-es="Project Manager certificado PMP. $600K+ entregados sin retrasos, 100% a tiempo en 16 sprints.">PMP-certified Project Manager. $600K+ shipped with zero slippage, 100% on-time across 16 sprints.</span></p>
+  <p class="hero-sub"><b>Apurv Duhan</b> — <span data-en="PMP-certified, AI-driven Project Manager across supply chain & fintech. Fluent in spec-driven, agentic delivery — and in both greenfield and brownfield builds." data-es="Project Manager certificado PMP e impulsado por IA en supply chain y fintech. Experto en entrega spec-driven y con agentes — y en proyectos greenfield y brownfield.">PMP-certified, AI-driven Project Manager across supply chain &amp; fintech. Fluent in spec-driven, agentic delivery — and in both greenfield and brownfield builds.</span></p>
   <div class="hero-cta">
     <a class="btn lime" href="Apurv_Duhan_Resume.pdf" download><span data-en="⬇ Download Résumé" data-es="⬇ Descargar CV">⬇ Download Résumé</span></a>
     <button class="btn eye" data-pdf="Apurv_Duhan_Resume.pdf" data-title="Apurv Duhan — Résumé" data-hover="1" aria-label="Preview résumé">
@@ -392,24 +395,18 @@ footer:hover .foot-name{color:var(--lime);-webkit-text-stroke:1px var(--lime)}
 <section id="work" class="reveal"><div class="wrap">
   <span class="kick" data-en="Selected Work" data-es="Trabajo Seleccionado">Selected Work</span>
   <h2 class="split"><span data-en="Different industries," data-es="Industrias distintas,">Different industries,</span> <em data-en="one silent engine behind every launch." data-es="un mismo motor silencioso detrás de cada entrega.">one silent engine behind every launch.</em></h2>
-  <div style="margin-top:64px">
+  <p class="lead" data-en="The track record in brief. The numbers, scope, and outcomes live on the résumé." data-es="La trayectoria en breve. Los números, el alcance y los resultados están en el CV.">The track record in brief. The numbers, scope, and outcomes live on the résumé.</p>
+  <div style="margin-top:40px">
 
   <div class="work-row">
     <div class="work-idx"><b>01</b><span data-en="Fintech" data-es="Fintech">Fintech</span></div>
     <div class="work-head">
       <div class="role">Project Manager</div>
       <div class="co">Freedom Mortgage</div>
-      <div class="when">Aug 2024 – Apr 2025 · New Jersey, United States (Remote)</div>
-      <div class="work-stats">
-        <span class="wstat"><b>0</b> slippage</span><span class="wstat"><b>−32%</b> defects</span>
-        <span class="wstat"><b>100%</b> on-time · 16 sprints</span><span class="wstat"><b>−22%</b> escalations</span>
-      </div>
+      <div class="when">Aug 2024 – Apr 2025 · New Jersey, US (Remote)</div>
+      <div class="work-tagline" data-en="Enterprise fintech delivery — mortgage servicing." data-es="Entrega fintech empresarial — servicios hipotecarios.">Enterprise fintech delivery — mortgage servicing.</div>
     </div>
-    <div class="work-body">
-      <p><span class="work-tag wt-p">Problem</span> A customer-portal migration touched <b>12,000+ loan accounts</b> across delinquent, cured, and paid-off segments — high regulatory risk, zero room for downtime, a 20-person team, and a $600K budget on a fixed timeline.</p>
-      <p><span class="work-tag wt-a">Action</span> Owned end-to-end planning: structured risk register + dependency matrix, UAT gates and sprint quality checkpoints, 2-week Agile cycles with clear ownership, weekly data-backed status to sponsors.</p>
-      <p><span class="work-tag wt-r">Result</span> <b>Zero schedule slippage, a zero-defect launch on budget</b>, 100% on-time milestones across 16 sprints, defects down 32%, post-launch escalations down 22%.</p>
-    </div>
+    <div class="work-arrow">→</div>
   </div>
 
   <div class="work-row">
@@ -418,16 +415,9 @@ footer:hover .foot-name{color:var(--lime);-webkit-text-stroke:1px var(--lime)}
       <div class="role">Project Manager</div>
       <div class="co">Agilent Technologies</div>
       <div class="when">Feb 2022 – Aug 2023 · Gurugram, India (Hybrid)</div>
-      <div class="work-stats">
-        <span class="wstat"><b>−18–20%</b> turnaround</span><span class="wstat"><b>96%</b> continuity</span>
-        <span class="wstat"><b>120+</b> SKUs</span><span class="wstat"><b>4</b> continents</span>
-      </div>
+      <div class="work-tagline" data-en="Global supply-chain delivery across 4 continents." data-es="Entrega de cadena de suministro global en 4 continentes.">Global supply-chain delivery across 4 continents.</div>
     </div>
-    <div class="work-body">
-      <p><span class="work-tag wt-p">Problem</span> A multi-region supply chain — 12+ vendors, 120+ SKUs, customs across Germany, Brazil, Europe and Asia Pacific — had slow turnaround and limited visibility for leadership.</p>
-      <p><span class="work-tag wt-a">Action</span> Led a process redesign (root-cause analysis, SOP standardization, vendor escalation protocols), built Power BI / Excel KPI dashboards, ran capital scheduling + budget tracking for 6 concurrent work streams.</p>
-      <p><span class="work-tag wt-r">Result</span> <b>Turnaround down 18–20% across 18 monthly cycles</b>, 96% supply-continuity compliance, full leadership visibility, 30% faster onboarding for new associates.</p>
-    </div>
+    <div class="work-arrow">→</div>
   </div>
 
   <div class="work-row">
@@ -436,29 +426,24 @@ footer:hover .foot-name{color:var(--lime);-webkit-text-stroke:1px var(--lime)}
       <div class="role">Associate Project Manager</div>
       <div class="co">Bharat Optimum Sales &amp; Services</div>
       <div class="when">Oct 2020 – Jan 2022 · Gurugram, India (Hybrid)</div>
-      <div class="work-stats">
-        <span class="wstat"><b>4+</b> concurrent accounts</span><span class="wstat"><b>+15%</b> order accuracy</span>
-        <span class="wstat"><b>−25%</b> resolution time</span>
-      </div>
+      <div class="work-tagline" data-en="B2B project coordination &amp; process design." data-es="Coordinación de proyectos B2B y diseño de procesos.">B2B project coordination &amp; process design.</div>
     </div>
-    <div class="work-body">
-      <p><span class="work-tag wt-p">Problem</span> <b>4+ concurrent B2B accounts</b> and 50–70 daily SAP ECC transactions ran on inconsistent processing accuracy and slow, cross-team issue resolution that delayed deliveries.</p>
-      <p><span class="work-tag wt-a">Action</span> Coordinated projects end-to-end — milestone tracking, dependency resolution, stakeholder communication — and engineered data-validation checks, SOPs, and a structured escalation matrix between operations and logistics.</p>
-      <p><span class="work-tag wt-r">Result</span> <b>Order-processing accuracy up 15%</b> and average issue-resolution time down 25% — a faster, cleaner delivery pipeline end to end.</p>
-    </div>
+    <div class="work-arrow">→</div>
   </div>
 
   </div>
+  <p style="margin-top:30px"><a href="Apurv_Duhan_Resume.pdf" download style="color:var(--muted);font-weight:600;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px" data-en="See the full track record on my résumé →" data-es="Ver la trayectoria completa en mi CV →">See the full track record on my résumé →</a></p>
 </div></section>
 
 <!-- STEPS -->
 <section id="how" class="reveal"><div class="wrap">
   <span class="kick" data-en="How It Works" data-es="Cómo Funciona">How It Works</span>
-  <h2 class="split"><span data-en="One plan to begin," data-es="Un plan para empezar,">One plan to begin,</span> <em data-en="three moves to delivery." data-es="tres pasos hasta la entrega.">three moves to delivery.</em></h2>
+  <h2 class="split"><span data-en="One plan to begin," data-es="Un plan para empezar,">One plan to begin,</span> <em data-en="four moves to delivery." data-es="cuatro pasos hasta la entrega.">four moves to delivery.</em></h2>
   <div class="steps">
     <div class="step"><div class="num">1 — <span data-en="MAP" data-es="MAPEAR">MAP</span></div><h3 data-en="Risk before it's real" data-es="El riesgo antes de ser real">Risk before it's real</h3><p data-en="RAID logs and dependency matrices surface problems weeks ahead. Sponsors hear it from me first — never from an escalation." data-es="Registros RAID y matrices de dependencias detectan problemas con semanas de antelación.">RAID logs and dependency matrices surface problems weeks ahead. Sponsors hear it from me first — never from an escalation.</p></div>
     <div class="step"><div class="num">2 — <span data-en="DRIVE" data-es="DIRIGIR">DRIVE</span></div><h3 data-en="Systems over heroics" data-es="Sistemas, no heroísmos">Systems over heroics</h3><p data-en="Sprint cadence, UAT gates, quality checkpoints — the process makes on-time the default, not a last-minute scramble." data-es="Cadencia de sprints, puertas UAT, controles de calidad — el proceso hace que entregar a tiempo sea lo normal.">Sprint cadence, UAT gates, quality checkpoints — the process makes on-time the default, not a last-minute scramble.</p></div>
     <div class="step"><div class="num">3 — <span data-en="PROVE" data-es="DEMOSTRAR">PROVE</span></div><h3 data-en="Every claim, data-backed" data-es="Cada logro, con datos">Every claim, data-backed</h3><p data-en="Defect density, velocity, KPI dashboards in Power BI and Tableau. If I claim it, I can show you the number behind it." data-es="Densidad de defectos, velocidad, paneles KPI en Power BI y Tableau. Si lo digo, lo demuestro.">Defect density, velocity, KPI dashboards in Power BI and Tableau. If I claim it, I can show you the number behind it.</p></div>
+    <div class="step"><div class="num">4 — <span data-en="AUGMENT" data-es="AUMENTAR">AUGMENT</span></div><h3 data-en="AI agents, governed" data-es="Agentes de IA, gobernados">AI agents, governed</h3><p data-en="I run AI coding agents through a spec-driven process — a constitution, spec, and plan — so delivery is faster and still traceable from requirement to test. Agentic speed, PM discipline." data-es="Dirijo agentes de IA con un proceso spec-driven — constitución, spec y plan — para entregar más rápido y con trazabilidad de requisito a prueba. Velocidad con disciplina de PM.">I run AI coding agents through a spec-driven process — a constitution, spec, and plan — so delivery is faster and still traceable from requirement to test. Agentic speed, PM discipline.</p></div>
   </div>
 </div></section>
 
