@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>I built a project tool without writing the code. Here's exactly how. | Apurv Duhan</title>
+<meta name="description" content="I built a working RAID register this week without typing the code — by directing an AI agent through a spec-driven, governed delivery process. Demo + the real documents inside.">
+<link rel="canonical" href="https://www.apurvduhan-8.com/blog/posts/built-a-tool-without-writing-code.html">
+<meta name="author" content="Apurv Duhan">
+<meta property="og:type" content="article">
+<meta property="og:title" content="I built a project tool without writing the code. Here's exactly how.">
+<meta property="og:description" content="Directing an AI agent through a spec-driven, governed delivery process — with a live demo and the real documents.">
+<meta property="og:url" content="https://www.apurvduhan-8.com/blog/posts/built-a-tool-without-writing-code.html">
+<meta property="og:video" content="https://www.apurvduhan-8.com/blog/media/raid-demo.mp4">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300..800&family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../blog.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"I built a project tool without writing the code. Here's exactly how.","datePublished":"2026-06-17","author":{"@type":"Person","name":"Apurv Duhan","url":"https://www.apurvduhan-8.com"},"publisher":{"@type":"Person","name":"Apurv Duhan"},"mainEntityOfPage":"https://www.apurvduhan-8.com/blog/posts/built-a-tool-without-writing-code.html","keywords":"spec-driven development, agentic AI, project management, RAID, governance, traceability"}
+</script>
+</head><body>
+
+<nav>
+  <a href="/">← Portfolio</a>
+  <a href="/blog/">Writing</a>
+  <a href="/#credentials">Credentials</a>
+  <a href="/#contact" class="cta">Hire me</a>
+</nav>
+<button class="theme-switch" id="themeSwitch" aria-label="Toggle theme"><span class="ts-ic ts-sun">☀</span><span class="ts-ic ts-moon">☾</span><span class="ts-knob"></span></button>
+
+<header class="article-head"><div class="wrap">
+  <span class="eyebrow">Build in public · 02</span>
+  <h1>I built a project tool without writing the code. Here's exactly how.</h1>
+  <div class="byline"><b>Apurv Duhan, PMP</b> <span>·</span> <span>17 June 2026</span> <span>·</span> <span>5 min read</span></div>
+</div></header>
+<div class="article-cover"><div class="band"></div></div>
+
+<article><div class="wrap">
+
+  <div class="demo">
+    <video controls preload="metadata" playsinline poster="">
+      <source src="../media/raid-demo.mp4" type="video/mp4">
+      Your browser doesn't support embedded video — <a href="../media/raid-demo.mp4">download the demo</a>.
+    </video>
+  </div>
+  <p class="demo-cap" data-en="The finished RAID register — add, edit, full change history, filters, and a printable status report." data-es="">The finished RAID register — add, edit, full change history, filters, and a printable status report.</p>
+
+  <p class="lede">I spent this week building a working project-management tool, and I didn't write the code for it. I want to be careful about what that sentence means, because "I used AI to build an app" has been said so many times it doesn't tell you anything anymore.</p>
+
+  <p>I didn't type a wish into a chatbot and ship whatever came back. I built this the way I'd run any project: I decided what it should do, wrote down the rules the work wasn't allowed to break, and checked the output at every stage. The only real difference is that the team doing the building was an AI agent instead of a room of engineers. I directed; it built.</p>
+
+  <h2>Why a RAID register</h2>
+
+  <p>The tool is deliberately ordinary. It's a RAID register, the log every project manager keeps to track Risks, Assumptions, Issues and Dependencies. Most teams run this in a spreadsheet that turns into a mess: no record of who changed what, ownership goes fuzzy, and every status update for leadership means rebuilding the thing by hand.</p>
+
+  <p>I picked something ordinary on purpose. The point of this wasn't a clever app. It was to prove a way of working. And a RAID log has a quality I wanted to show off: it only matters if you can trust its history.</p>
+
+  <h2>How I built it, step by step</h2>
+
+  <p><strong>1. I wrote the rules before anything else.</strong> The first document wasn't code or even a feature list. It was a one-page "constitution" of non-negotiables: every change must be logged to a record that can't be erased, tests get written before the code they check, and keep the whole thing as simple as it can be. These are the rules the AI had to follow, no matter what I asked for later.</p>
+
+  <p><strong>2. I wrote a plain-English spec.</strong> Next, a description of what the tool does and why, written so a non-technical colleague could read it and say "yes, that's right." No mention of databases or frameworks. Just the what and the why.</p>
+
+  <p><strong>3. I turned that into a plan, then a task list.</strong> The plan is the "how" the spec deliberately left out: the approach, how the data is shaped, what screens exist. Then I broke that plan into a checklist of small, ordered steps, with the foundation and the locked history first because everything else sits on top of them.</p>
+
+  <p><strong>4. I let the agent build, and reviewed at every gate.</strong> This is the part people get wrong. I didn't sit and watch it type. I let the AI agent work through the task list, and my job was to review at each handoff and push back when it strayed from the spec or tried to over-complicate something. Directing the work, not doing the typing.</p>
+
+  <p><strong>5. The result is a working, auditable tool.</strong> You can add a risk, edit it, see its full history, filter the list, and print a status report for leadership. Every feature traces back to a numbered requirement, and the change history can't be altered. I even wrote a test that tries to tamper with the history and confirms it gets blocked.</p>
+
+  <div class="artifacts">
+    <span class="alabel">📂 The real documents:</span>
+    <a href="../docs/raid-register/constitution.md" target="_blank" rel="noopener">Constitution</a><span class="sep">·</span>
+    <a href="../docs/raid-register/spec.md" target="_blank" rel="noopener">Spec</a><span class="sep">·</span>
+    <a href="../docs/raid-register/plan.md" target="_blank" rel="noopener">Plan</a><span class="sep">·</span>
+    <a href="../docs/raid-register/tasks.md" target="_blank" rel="noopener">Tasks</a><span class="sep">·</span>
+    <a href="../docs/raid-register/README.md" target="_blank" rel="noopener">README</a>
+  </div>
+
+  <h2>The part that actually matters</h2>
+
+  <p>Here's the thing I keep coming back to. Getting an AI to produce something is easy now. What's rare is being able to prove the something was built to an agreed spec, governed by rules you set up front, and traceable from a requirement all the way to the test that proves it works.</p>
+
+  <p>That traceability isn't busywork. In regulated worlds like finance, supply chain, and government, it's the difference between a tool you can put into production and a tool nobody will trust. It's also, frankly, the difference between a person who uses AI and a person who can be handed a delivery and trusted to govern it.</p>
+
+  <div class="pull">The difference between a person who uses AI and a person who can be trusted to govern a delivery.</div>
+
+  <h2>Want to build one yourself?</h2>
+
+  <p>I wrote a full step-by-step guide that walks through doing this on your own machine, including where to slow down and review. If you want it, head to my <a href="https://www.linkedin.com/in/apurvduhan23" target="_blank" rel="noopener">LinkedIn post</a> about this project and comment "RAID" — I'll send it over. Or just <a href="/#contact">reach out through this site</a>.</p>
+
+  <p>This is one piece of a longer build I'm doing in public. More to come.</p>
+
+  <div class="share">
+    <span>Share</span>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.apurvduhan-8.com/blog/posts/built-a-tool-without-writing-code.html" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://twitter.com/intent/tweet?text=I%20built%20a%20project%20tool%20without%20writing%20the%20code.%20Here%27s%20how.&url=https://www.apurvduhan-8.com/blog/posts/built-a-tool-without-writing-code.html" target="_blank" rel="noopener">X / Twitter</a>
+    <a href="mailto:?subject=I built a project tool without writing the code&body=Thought you'd find this interesting: https://www.apurvduhan-8.com/blog/posts/built-a-tool-without-writing-code.html" target="_blank" rel="noopener">Email</a>
+  </div>
+
+  <div class="author">
+    <div class="av">AD</div>
+    <div>
+      <b>Apurv Duhan, PMP</b>
+      <p>AI-driven Project Manager — supply chain &amp; fintech. Building in public on spec-driven, agentic delivery and the governance that makes it trustworthy. <a href="/" style="color:var(--lime);text-decoration:none">See the portfolio →</a></p>
+    </div>
+  </div>
+
+</div></article>
+
+<footer><div class="wrap-wide">
+  © 2026 Apurv Duhan · All rights reserved · <a href="/">apurvduhan-8.com</a> · Please credit the author when referencing or reusing these documents.
+</div></footer>
+
+<script src="../blog.js"></script>
+</body></html>

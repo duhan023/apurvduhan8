@@ -81,6 +81,19 @@ article hr{border:none;border-top:1px solid var(--line);margin:44px 0}
 .callout p:last-child{margin-bottom:0}
 .article-tag{display:inline-block;font-size:.72rem;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:30px;padding:5px 12px;margin:0 6px 8px 0}
 
+/* demo video */
+.demo{margin:30px 0 10px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#000;box-shadow:0 24px 70px rgba(0,0,0,.4)}
+.demo video{display:block;width:100%;height:auto}
+.demo-cap{color:var(--dim);font-size:.85rem;text-align:center;margin:14px 0 0}
+
+/* compact artifacts line */
+.artifacts{margin:30px 0;padding:16px 20px;border:1px solid var(--line);border-radius:14px;background:var(--surface);
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:.92rem}
+.artifacts .alabel{font-weight:700;font-family:'Host Grotesk';color:var(--ink);margin-right:2px}
+.artifacts a{color:var(--blue);text-decoration:none;font-weight:600;border-bottom:1px solid transparent;transition:.2s}
+.artifacts a:hover{border-bottom-color:var(--blue)}
+.artifacts .sep{color:var(--dim)}
+
 /* doc cards (RAID artifacts) */
 .docgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:28px 0 36px}
 .doc{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;transition:.3s}
