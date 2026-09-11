@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Supply-chain operations exhibit — Apurv Duhan</title>
+<meta name="description" content="A public rebuild of the multi-region supply-chain KPI dashboard Apurv Duhan ran in 2022–23: on-time delivery, order accuracy, backlog ageing and vendor performance across four regions and eighteen monthly cycles. Synthetic data.">
+<meta property="og:title" content="Supply-chain operations exhibit — Apurv Duhan">
+<meta property="og:description" content="Four regions, eighteen cycles. On-time delivery, order accuracy, backlog and vendor performance, rebuilt in public with synthetic data.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://www.apurvduhan-8.com/supply-chain/">
+<meta property="og:url" content="https://www.apurvduhan-8.com/supply-chain/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2306080D'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' fill='%23E9B04A' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head><body>
+<a class="skip" href="#main">Skip to the exhibit</a>
+
+<nav class="top" aria-label="Site"><div class="wrap">
+  <a href="../index.html" class="brand">Apurv Duhan<small>Delivery record</small></a>
+  <span class="navlinks">
+    <a href="index.html" aria-current="page">Exhibit</a>
+    <a href="case-study.html">Case study</a>
+    <a href="../index.html#work" class="back">Back to the record</a>
+  </span>
+</div></nav>
+
+<main id="main">
+<header class="xhead"><div class="wrap">
+  <div class="kick label rv">
+    <span class="eyebrow">Operations exhibit</span>
+    <span class="pill syn">Synthetic data</span>
+    <span class="pill">18 monthly cycles · Feb 2022 – Jul 2023</span>
+  </div>
+  <h1 class="display rv">Four regions, eighteen cycles.</h1>
+  <p class="lede rv">A public rebuild of the KPI dashboard I ran for a multi-region supply chain in 2022–23. Same four measures, same regions, same monthly cadence. The vendors, orders and figures are generated, and tuned so the outcomes land where the record says they did.</p>
+  <div class="xlinks rv">
+    <a class="qlink" href="case-study.html">Read the case study
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8h-1.7V5.9L4.2 13 3 11.8l7.1-7.1H5V3z"/></svg></a>
+    <a class="qlink" href="#about">How the data was made</a>
+  </div>
+</div></header>
+
+<div class="filters" role="region" aria-label="Filters"><div class="wrap">
+  <div class="fgroup" role="group" aria-label="Period">
+    <span class="label">Period</span>
+    <button class="chip" data-period="all" aria-pressed="true">All 18 months</button>
+    <button class="chip" data-period="post" aria-pressed="false">Since Aug 2022</button>
+    <button class="chip" data-period="last6" aria-pressed="false">Last 6 months</button>
+  </div>
+  <div class="fgroup" role="group" aria-label="Region">
+    <span class="label">Region</span>
+    <button class="chip" data-region="ALL" aria-pressed="true">All</button>
+    <button class="chip" data-region="DE" aria-pressed="false">Germany</button>
+    <button class="chip" data-region="EU" aria-pressed="false">Europe</button>
+    <button class="chip" data-region="AP" aria-pressed="false">Asia-Pacific</button>
+    <button class="chip" data-region="BR" aria-pressed="false">Brazil</button>
+  </div>
+  <div class="fgroup">
+    <label class="label" for="fvendor">Vendor</label>
+    <span class="fsel"><select id="fvendor"><option value="ALL">All vendors</option></select>
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 11 2.5 5.5 3.6 4.4 8 8.8l4.4-4.4 1.1 1.1L8 11z"/></svg></span>
+  </div>
+  <button class="qlink freset" id="freset" type="button">Reset</button>
+  <p class="fsummary" id="fsummary" aria-live="polite"></p>
+</div></div>
+
+<section class="first"><div class="wrap">
+  <div class="kpis rv" id="kpis" aria-label="Headline measures"></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead rv">
+    <div><span class="label eyebrow">On-time delivery</span>
+      <h2 class="head">One panel per region, one scale for all four.</h2></div>
+    <p>Nobody has to ask which line is Brazil. Each region sits on its own panel at the same scale, so a lagging region is visible from across the room.</p>
+  </div>
+  <div class="chart rv" id="sm-card">
+    <div class="chead"><div><h3>On-time delivery by region</h3><p id="sm-note"></p></div>
+      <div class="ctools"><button class="tbtn" aria-pressed="false" type="button">Table</button></div></div>
+    <div class="cbody" aria-label="On-time delivery by region, line charts. Use arrow keys to read values by month."><div class="sm" id="sm"></div><div class="ctable"></div></div>
+    <div class="legend"><span><i class="line" style="background:var(--on-surface)"></i>Region</span><span><i class="line" style="background:var(--on-surface-muted);opacity:.6"></i>All regions</span><span><i class="line" style="background:var(--steel-200)"></i>95% target</span><span><i class="ann"></i>SOPs live</span></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead rv">
+    <div><span class="label eyebrow">Flow</span>
+      <h2 class="head">Faster, and staying faster.</h2></div>
+    <p>Turnaround is the measure that moved the most and the one the root-cause work was aimed at. Backlog age is the measure that tells you whether the gain is real or borrowed.</p>
+  </div>
+  <div class="grid2">
+    <div class="chart rv" id="tat-card">
+      <div class="chead"><div><h3>Turnaround, order to delivery</h3><p>Average days, weighted by orders. Target 10 days.</p></div>
+        <div class="ctools"><button class="tbtn" aria-pressed="false" type="button">Table</button></div></div>
+      <div class="cbody" aria-label="Turnaround in days by month, line chart. Use arrow keys to read values by month."><div id="tat"></div><div class="ctable"></div></div>
+      <div class="legend"><span><i class="line" style="background:var(--on-surface)"></i>Days</span><span><i class="line" style="background:var(--steel-200)"></i>Target</span><span><i class="ann"></i>Intervention</span></div>
+    </div>
+    <div class="chart rv" id="bl-card">
+      <div class="chead"><div><h3>Open backlog by age</h3><p id="bl-note"></p></div>
+        <div class="ctools"><button class="tbtn" aria-pressed="false" type="button">Table</button></div></div>
+      <div class="cbody" aria-label="Open backlog by age bucket, stacked columns by month. Use arrow keys to read values by month."><div id="bl"></div><div class="ctable"></div></div>
+      <div class="legend"></div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead rv">
+    <div><span class="label eyebrow">Root cause</span>
+      <h2 class="head">Why shipments were late.</h2></div>
+    <p>Eighteen cycles of late-shipment reasons, coded and counted. The point of the chart is the distance between the two dots, cause by cause. The split is modelled, not measured.</p>
+  </div>
+  <div class="chart rv" id="cz-card">
+    <div class="chead"><div><h3>Late shipments per 100 orders, by cause</h3><p id="cz-note"></p></div>
+      <div class="ctools"><button class="tbtn" aria-pressed="false" type="button">Table</button></div></div>
+    <div class="cbody" aria-label="Late shipments per 100 orders by cause, before and after. Use arrow keys to read values by cause."><div id="cz"></div><div class="ctable"></div></div>
+    <div class="legend"></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead rv">
+    <div><span class="label eyebrow">Vendor performance</span>
+      <h2 class="head">Accountability, one row per vendor.</h2></div>
+    <p>Sort any column. Select a row to filter the whole exhibit to that vendor. Status is on-time delivery against the 95% target: on target, watch below 95, breached below 90.</p>
+  </div>
+  <div class="chart rv">
+    <div class="chead"><div><h3>Vendor scorecard</h3><p id="vt-count"></p></div></div>
+    <div class="tscroll">
+    <table class="dt" id="vt">
+      <thead><tr>
+        <th scope="col" data-key="name"><button type="button">Vendor <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 9 .5 1h9z"/></svg></button></th>
+        <th scope="col" class="hide-sm hide-md">Regions</th>
+        <th scope="col" class="r" data-key="n"><button type="button">Orders <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 9 .5 1h9z"/></svg></button></th>
+        <th scope="col" class="r" data-key="otd"><button type="button">On-time <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 9 .5 1h9z"/></svg></button></th>
+        <th scope="col" class="r hide-sm hide-md" data-key="accp"><button type="button">Accuracy <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 9 .5 1h9z"/></svg></button></th>
+        <th scope="col" class="r" data-key="tat"><button type="button">Days <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 9 .5 1h9z"/></svg></button></th>
+        <th scope="col" class="r hide-sm" data-key="esc"><button type="button">Escalated <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 9 .5 1h9z"/></svg></button></th>
+        <th scope="col" class="hide-sm">Trend</th>
+        <th scope="col">Status</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead rv">
+    <div><span class="label eyebrow">Capital import</span>
+      <h2 class="head">Six work streams, one variance column.</h2></div>
+    <p>Budget tracking ran alongside the shipment work. The column that mattered was variance against plan to date, because it surfaced a cost problem before it became a timeline problem. These six streams and their budgets are illustrative.</p>
+  </div>
+  <div class="chart rv">
+    <div class="chead"><div><h3>Capital-import work streams</h3><p>Illustrative work streams with synthetic budgets, USD thousands. Variance is spent minus planned to date; over $25K either way is flagged.</p></div></div>
+    <div class="tscroll">
+    <table class="dt" id="ws">
+      <thead><tr>
+        <th scope="col">Work stream</th><th scope="col" class="r">Budget</th><th scope="col" class="r hide-sm hide-md">Planned to date</th>
+        <th scope="col" class="r">Spent</th><th scope="col" class="r">Variance</th><th scope="col" class="hide-sm">Progress</th><th scope="col" class="r">Complete</th><th scope="col">Status</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer class="about" id="about"><div class="wrap">
+  <div class="cols">
+    <div>
+      <span class="label eyebrow">About this exhibit</span>
+      <h2 class="head">What is real, and what is made.</h2>
+      <p>The programme was real: eighteen monthly shipment cycles across Germany, Brazil, Europe and Asia-Pacific, fifty-plus vendors and customs partners, a hundred and twenty active SKUs, six capital-import work streams, and a Power BI dashboard leadership actually opened. The outcomes on the record are real: turnaround down 18–20%, supply continuity sustained at 96%.</p>
+      <p>Everything on this page is generated. A seeded script produces 24 fictional vendors, their monthly orders in each region, late-shipment causes, backlog age and continuity, with an intervention in August 2022 and a response curve after it. The generator is tuned so the headline outcomes match the record. No company data left the company.</p>
+    </div>
+    <div>
+      <span class="label eyebrow">Method</span>
+      <ul>
+        <li><a class="qlink" href="case-study.html">The case study: what the dashboard changed
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8h-1.7V5.9L4.2 13 3 11.8l7.1-7.1H5V3z"/></svg></a></li>
+        <li><a class="qlink" href="data.json" download>Dataset (JSON, 96 KB)
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 11.5 3.5 7l1.1-1.1L7.2 8.5V1h1.6v7.5l2.6-2.6L12.5 7 8 11.5zM2 13.4h12V15H2v-1.6z"/></svg></a></li>
+        <li><a class="qlink" href="generate_data.py" download>Generator (Python, seed 2022)
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 11.5 3.5 7l1.1-1.1L7.2 8.5V1h1.6v7.5l2.6-2.6L12.5 7 8 11.5zM2 13.4h12V15H2v-1.6z"/></svg></a></li>
+        <li><a class="qlink" href="../index.html#work">Back to the delivery record</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="fine">Built by hand: vanilla JavaScript and SVG, no charting library. Every chart has a table view, every value is reachable by keyboard, and the page respects reduced motion. Palette validated as an ordinal ramp against the surface; status is always a word beside a dot.</p>
+</div></footer>
+
+<script src="data.js"></script>
+<script src="app.js" defer></script>
+</body></html>
