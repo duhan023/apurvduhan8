@@ -9,7 +9,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2306080D'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' fill='%23E9B04A' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
@@ -20,7 +20,7 @@
   --primary:#E9B04A; --on-primary:#14100A;
   --rule:#1B2432; --rule-hover:#2A3648; --positive:#4FD1A0;
   --r-sm:3px; --r-md:8px; --r-full:999px;
-  --serif:'Instrument Serif',Georgia,serif;
+  --serif:'Newsreader',Georgia,serif;
   --sans:'Inter',system-ui,-apple-system,sans-serif;
   --section:clamp(110px,16vh,180px);
   --gap-rule:clamp(64px,9vh,100px);
@@ -44,11 +44,11 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   background:radial-gradient(900px 620px at 84% -8%,rgba(233,176,74,.045),transparent 62%)}
 
 /* ── type ─────────────────────────────────────────────────────────────── */
-.display{font-family:var(--serif);font-weight:400;font-size:clamp(3.25rem,8.5vw,7rem);
-  line-height:.94;letter-spacing:-.022em}
+.display{font-family:var(--serif);font-weight:400;font-size:clamp(3rem,7.6vw,6.25rem);
+  line-height:1.02;letter-spacing:-.012em;font-optical-sizing:auto}
 h2.head{font-family:var(--serif);font-weight:400;font-size:clamp(2.25rem,5vw,3.6rem);
-  line-height:1.04;letter-spacing:-.018em;margin:12px 0 20px}
-.head-sm{font-family:var(--serif);font-weight:400;font-size:1.5rem;line-height:1.2;letter-spacing:-.01em}
+  line-height:1.06;letter-spacing:-.01em;margin:12px 0 20px}
+.head-sm{font-family:var(--serif);font-weight:400;font-size:1.5rem;line-height:1.25;letter-spacing:-.005em}
 .label{font-family:var(--sans);font-size:.6875rem;font-weight:500;letter-spacing:.2em;
   text-transform:uppercase;line-height:1.2}
 .eyebrow{color:var(--primary)}
@@ -112,7 +112,7 @@ header{min-height:100svh;display:flex;align-items:center;padding:150px 0 var(--s
   padding-top:44px;border-top:1px solid var(--rule)}
 @media(max-width:720px){.stats{grid-template-columns:1fr;gap:32px}}
 .fig{font-family:var(--serif);font-weight:400;font-size:clamp(2.5rem,4.6vw,3.5rem);
-  line-height:1;letter-spacing:-.02em;color:var(--primary)}
+  line-height:1;letter-spacing:-.01em;color:var(--primary)}
 .fig-cap{color:var(--on-surface-muted);font-size:.875rem;line-height:1.55;margin-top:12px;max-width:26ch}
 
 /* ── journey ──────────────────────────────────────────────────────────── */
