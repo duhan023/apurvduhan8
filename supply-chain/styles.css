@@ -275,6 +275,17 @@ footer.about ul{list-style:none;display:flex;flex-direction:column;gap:14px;marg
 footer.about .disclose p,.disclose p{font-size:.875rem;line-height:1.7;color:var(--on-surface-muted);max-width:82ch}
 footer.about .disclose p+p,.disclose p+p{margin-top:14px}
 @media(max-width:600px){.disclose{padding:20px}}
+.projlabel{display:block;font-family:var(--sans);font-size:.6875rem;font-weight:500;letter-spacing:.13em;
+  text-transform:uppercase;line-height:1.6;color:var(--on-surface);max-width:none;
+  border:1px solid var(--primary);border-radius:var(--r-sm);background:rgba(233,176,74,.07);
+  padding:11px 15px;margin:22px 0 0}
+.ctarow{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;margin-top:34px}
+.datanote{border:1px solid var(--rule);border-left:2px solid var(--steel-200);border-radius:var(--r-sm);
+  background:var(--surface);padding:20px 24px}
+.datanote .label{display:block;margin-bottom:10px;color:var(--on-surface-muted)}
+.datanote p{font-size:.875rem;line-height:1.7;color:var(--on-surface-muted);max-width:82ch}
+.closing-line{font-family:var(--serif);font-size:1.3rem;line-height:1.5;color:var(--on-surface);max-width:56ch}
+@media(max-width:600px){.ctarow{gap:12px 18px}.ctarow .btn{width:100%;justify-content:center}}
 
 /* ── case study (editorial) ───────────────────────────────────────────── */
 .cs header.xhead{padding-bottom:0}

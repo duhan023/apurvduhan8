@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Apurv Duhan — Project Manager</title>
-<meta name="description" content="Apurv Duhan — PMP-certified project manager. $600K+ enterprise program delivered with zero schedule slippage. Fintech, supply chain, enterprise technology. Dallas, TX.">
+<meta name="description" content="Apurv Duhan — PMP-certified project manager. $600K+ enterprise program delivered with zero schedule slippage. Fintech, supply chain, enterprise technology. Northwest Arkansas.">
 <meta property="og:title" content="Apurv Duhan — Project Manager">
 <meta property="og:description" content="PMP-certified project manager. $600K+ delivered with zero schedule slippage across fintech and supply chain.">
 <meta property="og:type" content="profile">
@@ -49,6 +49,10 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 h2.head{font-family:var(--serif);font-weight:400;font-size:clamp(2.25rem,5vw,3.6rem);
   line-height:1.06;letter-spacing:-.01em;margin:12px 0 20px}
 .head-sm{font-family:var(--serif);font-weight:400;font-size:1.5rem;line-height:1.25;letter-spacing:-.005em}
+.projlabel{display:block;font-family:var(--sans);font-size:.6875rem;font-weight:500;letter-spacing:.13em;
+  text-transform:uppercase;line-height:1.6;color:var(--on-surface);max-width:none;
+  border:1px solid var(--primary);border-radius:var(--r-sm);background:rgba(233,176,74,.07);
+  padding:11px 15px;margin:22px 0 0}
 .label{font-family:var(--sans);font-size:.6875rem;font-weight:500;letter-spacing:.2em;
   text-transform:uppercase;line-height:1.2}
 .eyebrow{color:var(--primary)}
@@ -275,7 +279,7 @@ footer{border-top:1px solid var(--rule);padding:30px 0 40px;color:var(--on-surfa
     <a href="#journey">Journey</a><a href="#work">Work</a>
     <a href="blog/">Writing</a><a href="#credentials">Credentials</a><a href="#contact">Contact</a>
   </span>
-  <span class="status label"><i></i><span>Available · Dallas, TX</span></span>
+  <span class="status label"><i></i><span>Available · Northwest Arkansas</span></span>
 </div></nav>
 
 <header id="top"><div class="wrap">
@@ -439,7 +443,8 @@ footer{border-top:1px solid var(--rule);padding:30px 0 40px;color:var(--on-surfa
       <div class="plabel label">Action</div>
       <p>Root-cause analysis across 18 monthly shipment cycles, SOP standardization, vendor escalation protocols, and Power BI dashboards tracking on-time delivery, order accuracy, backlog and vendor performance — while running six concurrent capital import work streams.</p>
       <div class="plabel label">Result</div>
-      <p>Turnaround down 18–20%, 96% supply-continuity compliance across four regions, and an SAP onboarding curriculum that lifted new-associate productivity 30%.</p>
+      <p>Turnaround down 18–20% and 96% supply-continuity compliance across four regions.</p>
+      <p class="projlabel">Independent portfolio project · Synthetic data · Based on verified professional scope and outcomes</p>
       <p style="margin-top:22px;display:flex;flex-wrap:wrap;gap:14px 28px">
         <a class="qlink" href="supply-chain/case-study.html">Read the case study
           <svg viewBox="0 0 16 16"><path d="M5 3h8v8h-1.7V5.9L4.2 13 3 11.8l7.1-7.1H5V3z"/></svg></a>
@@ -514,7 +519,7 @@ footer{border-top:1px solid var(--rule);padding:30px 0 40px;color:var(--on-surfa
 </div></section>
 
 <footer><div class="wrap">
-  © 2026 Apurv Duhan · Dallas, TX · apurvduhan-8.com
+  © 2026 Apurv Duhan · Centerton, AR · apurvduhan-8.com
   <button id="colophon" type="button" aria-label="Colophon">◦</button>
   <div id="eggbox">
     <p class="muted" style="font-size:.8125rem;margin:0 auto">A small break. Rows, columns and 2×2 boxes — 1 to 4.</p>
@@ -663,7 +668,7 @@ addEventListener('keydown', function(e){
 
 /* world clock — one line, evidence of range, not a widget */
 function tickClock(){
-  var z = [['Los Angeles','America/Los_Angeles'],['Dallas','America/Chicago'],
+  var z = [['Los Angeles','America/Los_Angeles'],['Centerton','America/Chicago'],
            ['London','Europe/London'],['Delhi','Asia/Kolkata'],['Melbourne','Australia/Melbourne']];
   document.getElementById('clockline').innerHTML = 'Comfortable across time zones — right now it’s ' +
     z.map(function(p){
