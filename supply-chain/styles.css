@@ -269,6 +269,12 @@ footer.about p{color:var(--on-surface-muted);font-size:.9375rem}
 footer.about p+p{margin-top:16px}
 footer.about ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
 .fine{font-size:.8125rem;color:var(--on-surface-muted);margin-top:36px}
+.disclose{border:1px solid var(--rule);border-radius:var(--r-sm);background:var(--surface);
+  padding:24px 26px;margin-top:40px}
+.disclose .label{display:block;margin-bottom:14px}
+footer.about .disclose p,.disclose p{font-size:.875rem;line-height:1.7;color:var(--on-surface-muted);max-width:82ch}
+footer.about .disclose p+p,.disclose p+p{margin-top:14px}
+@media(max-width:600px){.disclose{padding:20px}}
 
 /* ── case study (editorial) ───────────────────────────────────────────── */
 .cs header.xhead{padding-bottom:0}
